@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[X1B Plan!]]></title>
+  <link href="http://www.esc-plan.com/atom.xml" rel="self"/>
+  <link href="http://www.esc-plan.com/"/>
+  <updated>2012-10-25T10:22:23+01:00</updated>
+  <id>http://www.esc-plan.com/</id>
+  <author>
+    <name><![CDATA[Tom Swann]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+</feed>
