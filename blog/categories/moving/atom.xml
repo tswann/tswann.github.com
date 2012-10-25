@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[X1B Plan]]></title>
-  <link href="http://www.esc-plan.com/atom.xml" rel="self"/>
+  <title><![CDATA[Category: Moving | X1B Plan]]></title>
+  <link href="http://www.esc-plan.com/blog/categories/moving/atom.xml" rel="self"/>
   <link href="http://www.esc-plan.com/"/>
   <updated>2012-10-25T16:50:42+01:00</updated>
   <id>http://www.esc-plan.com/</id>
@@ -20,17 +20,17 @@
     <id>http://www.esc-plan.com/blog/2012/10/25/moving</id>
     <content type="html"><![CDATA[<h2>Just Keep Moving</h2>
 
-<p>I&#8217;ve finally got round to re-locating my blog from posterous to it&#8217;s shiny new home on <a href="http://pages.github.com">Github Pages</a>.</p>
+<p>I've finally got round to re-locating my blog from posterous to it's shiny new home on <a href="http://pages.github.com">Github Pages</a>.</p>
 
 <p><span class='pullquote-right' data-pullquote='just needed to give myself the requisite shove'>
-It was a while coming really. I&#8217;ve been a bit desirous of <a href="http://yobriefca.se/">Jame&#8217;s</a> setup using <a href="http://octopress.org/">Octopress</a> for some while now and just needed to give myself the requisite shove to sort it out.</p>
+It was a while coming really. I've been a bit desirous of <a href="http://yobriefca.se/">Jame's</a> setup using <a href="http://octopress.org/">Octopress</a> for some while now and just needed to give myself the requisite shove to sort it out.</p>
 
-<p>Now all it needs is some shiny content! I&#8217;ll spend some time migrating the old stuff over, then it&#8217;ll be time to plough ahead with some exciting new ramblings!
+<p>Now all it needs is some shiny content! I'll spend some time migrating the old stuff over, then it'll be time to plough ahead with some exciting new ramblings!
 </span></p>
 
 <p>I might have something to say on the <a href="http://www.raspberrypi.org/">Raspberry Pi</a> shortly as my order <em>finally</em> shipped after 3 months of tortured waiting.</p>
 
-<p>The <a href="http://www.thedailybrick.co.uk/lego-sets/custom/lego-custom-raspberry-pi-case.html">Lego case</a> is obviously being assembled as we speak&#8230;</p>
+<p>The <a href="http://www.thedailybrick.co.uk/lego-sets/custom/lego-custom-raspberry-pi-case.html">Lego case</a> is obviously being assembled as we speak...</p>
 ]]></content>
   </entry>
   
