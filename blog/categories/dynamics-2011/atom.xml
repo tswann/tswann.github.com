@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Dynamics 2011 | X1B Plan]]></title>
   <link href="http://www.esc-plan.com/blog/categories/dynamics-2011/atom.xml" rel="self"/>
   <link href="http://www.esc-plan.com/"/>
-  <updated>2012-11-01T16:42:30+00:00</updated>
+  <updated>2012-11-02T11:32:55+00:00</updated>
   <id>http://www.esc-plan.com/</id>
   <author>
     <name><![CDATA[Tom Swann]]></name>
@@ -54,7 +54,7 @@ Dynamics has quite a tight coupling between this concept of the entity's "data t
 
 <p><a href="http://www.powermockup.com/">Power Mockup</a>* is a nice wireframing tool which I've used to define a large number of the screens/forms in our solution where specific layout requirements are warranted. It provides a set of easy to use templates from within MS PowerPoint - the learning curve is fairly non-existent and it saves to a common format.</p>
 
-<p>The implication that not all entities require a tailored layout is important. If an entity only has a few fields and it's function is purely as reference data item, well... it probably doesn't warrant a screen design all of it's own. A bit of common sense should prevail here.</p>
+<p>The implication that not all entities require a tailored layout is important. If an entity only has a few fields and its function is purely as reference data item, well... it probably doesn't warrant a screen design all of its own. A bit of common sense should prevail here.</p>
 
 <p>In these cases it's sufficient to set a general principle that fields will appear on a form in the order that they appear in the entity's data definition (from top to bottom, left to right).</p>
 
@@ -108,7 +108,7 @@ Console.WriteLine(&quot;The bank account entity has been created.&quot;);</code>
 
 <ul>
 <li><p>One is a 'header' file which defines the general entity information - Name, ownership level, primary attribute etc.
-You must define these seperately and up front as it's the easiest way to avoid order dependencies when creating Lookup fields in the next file...</p></li>
+You must define these separately and up front as it's the easiest way to avoid order dependencies when creating Lookup fields in the next file...</p></li>
 <li><p>The second file contains the field definitions. This captures our data types, min/max values etc.</p></li>
 </ul>
 
@@ -121,13 +121,13 @@ You must define these seperately and up front as it's the easiest way to avoid o
 
 <p>The alternative to the scenario described is obviously some form of Agile. That almost goes without saying. In this blog, I'm trying to think of a way to get round doing a whole lot of CRM configuration up front at the start of a build phase after a lengthly period of analysis.</p>
 
-<p>You can feasibly cut down on the overall time by doing your field creation and form defintion at once from the Form designer (rather than creating all the fields and <strong>then</strong> firing up the form designer).</p>
+<p>You can feasibly cut down on the overall time by doing your field creation and form definition at once from the Form designer (rather than creating all the fields and <strong>then</strong> firing up the form designer).</p>
 
-<p>The problem is that if you have a whole slew of custom processes for which the CRM configuration is a dependency (as part of a Portal for example) then many of your team are going to be twiddling their thumbs until the underlying entity model is in place (at least, in place to some extent). That means getting the field defintions done has to take priority over form layouts.</p>
+<p>The problem is that if you have a whole slew of custom processes for which the CRM configuration is a dependency (as part of a Portal for example) then many of your team are going to be twiddling their thumbs until the underlying entity model is in place (at least, in place to some extent). That means getting the field definitions done has to take priority over form layouts.</p>
 
 <h2>In other news</h2>
 
-<p>As previously mentioned my Raspberry Pi finally arrived last week. Unfortunately it arrived at my parents house deep in the darkest hills. So I still haven't got to play with it yet. <a href="http://xbmc.org/about/">XBMC</a> looks like it could be the way to go for me though.</p>
+<p>As previously mentioned my Raspberry Pi finally arrived last week. Unfortunately it arrived at my parent's house deep in the darkest hills. So I still haven't got to play with it yet. <a href="http://xbmc.org/about/">XBMC</a> looks like it could be the way to go for me though.</p>
 
 <p>I wonder how long I can keep making blog posts and working in a mention of <a href="http://en.wikipedia.org/wiki/Dark_Souls">Dark Souls</a>? Let's find out!</p>
 ]]></content>
