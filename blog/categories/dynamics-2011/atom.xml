@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Dynamics 2011 | X1B Plan]]></title>
   <link href="http://www.esc-plan.com/blog/categories/dynamics-2011/atom.xml" rel="self"/>
   <link href="http://www.esc-plan.com/"/>
-  <updated>2012-11-02T11:32:55+00:00</updated>
+  <updated>2012-12-07T11:04:01+00:00</updated>
   <id>http://www.esc-plan.com/</id>
   <author>
     <name><![CDATA[Tom Swann]]></name>
@@ -30,6 +30,9 @@ This is where we say: What fields? Which data types are they?
 What are my OptionSet values? So on and so forth.</li>
 <li>A wireframe defining the layout of the entity's main form.</li>
 </ul>
+
+
+<!-- more -->
 
 
 <h2>The Long Slog</h2>
