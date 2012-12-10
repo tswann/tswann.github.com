@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Requirements | X1B Plan]]></title>
   <link href="http://www.esc-plan.com/blog/categories/requirements/atom.xml" rel="self"/>
   <link href="http://www.esc-plan.com/"/>
-  <updated>2012-12-07T11:04:01+00:00</updated>
+  <updated>2012-12-10T20:54:20+00:00</updated>
   <id>http://www.esc-plan.com/</id>
   <author>
     <name><![CDATA[Tom Swann]]></name>
@@ -18,7 +18,7 @@
     <link href="http://www.esc-plan.com/blog/2012/10/31/defining-crm-entities/"/>
     <updated>2012-10-31T16:29:00+00:00</updated>
     <id>http://www.esc-plan.com/blog/2012/10/31/defining-crm-entities</id>
-    <content type="html"><![CDATA[<p>In work at the moment I'm beginning to get down to the nitty gritty of configuring a sizable Dynamics CRM solution. Having been through a lengthy analysis cycle it's somewhat nice to be building again. So, I thought it would be useful to reflect on some of the work that's led up to this point.</p>
+    <content type="html"><![CDATA[<p>Over the last few weeks I have been tasked with configuring a sizable Dynamics CRM solution. Having been through a lengthy period of analysis it's somewhat nice to be building again. So, I thought it would be useful to reflect on some of the work that's led up to this point.</p>
 
 <p>Particularly as regards defining the entities themselves. This is the guts of any CRM project, and I'm coming to some conclusions around what works and what doesn't work so well (and how I'd ideally like to do it in future).</p>
 
@@ -43,7 +43,7 @@ What are my OptionSet values? So on and so forth.</li>
 
 <p>When it comes to manually creating all of these via the Dynamics administrative GUI, well... it's time to get the headphones in shall we say.</p>
 
-<p>We document this information in Word. Each entity has a table listing the required fields, the data type, minimum/maximum values any default values and so on.</p>
+<p>Somewhat unsurprisingly, all of this must be documented in Word. Each entity has a table listing the required fields, the data type, minimum/maximum values any default values and so on.</p>
 
 <p>It's a lot of information to capture, and no matter how nicely it's formatted it's always going to be a dry read for the customer (and the developer, let's be honest).</p>
 
