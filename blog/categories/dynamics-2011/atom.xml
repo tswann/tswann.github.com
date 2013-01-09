@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Dynamics 2011 | X1B Plan]]></title>
   <link href="http://www.esc-plan.com/blog/categories/dynamics-2011/atom.xml" rel="self"/>
   <link href="http://www.esc-plan.com/"/>
-  <updated>2013-01-09T20:04:00+00:00</updated>
+  <updated>2013-01-09T20:06:38+00:00</updated>
   <id>http://www.esc-plan.com/</id>
   <author>
     <name><![CDATA[Tom Swann]]></name>
@@ -49,7 +49,7 @@
 
 <p><img src="https://dl.dropbox.com/u/47685018/Blog/2013/01-09/Security_Role.png" title="Custom entity permissions" alt="Custom entity permissions" /></p>
 
-<p>So to specify that this role can access the Upload File ribbon button we are setting the 'Write' permission on it's associated entity. Really we could use any of the permissions for this, but what's important is that you adopt a convention and 'Read', 'Write' or 'Create' probably make more sense than the others.</p>
+<p>So to specify that this role can access the Upload File ribbon button we are setting the 'Write' permission on it's associated entity. Really we could use any of the permissions for this, but what's important is that you adopt a convention and 'Read' or 'Write'probably make more sense than the others (you don't want anyone creating instances of these entities).</p>
 
 <h2>Defining the Display Rule</h2>
 
