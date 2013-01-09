@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Moving - X1B Plan</title>
+  <title>Controlling Access to Dynamics CRM ribbon buttons - X1B Plan</title>
   <meta name="author" content="Tom Swann">
 
   
-  <meta name="description" content="Just Keep Moving I&#8217;ve finally got round to re-locating my blog from posterous to it&#8217;s shiny new home on Github Pages. It was a while &hellip;">
+  <meta name="description" content="At the moment I&#8217;m working on a project which is an interesting combination of core Dynamics CRM functionality and a set of custom processes &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://www.esc-plan.com/blog/2012/10/25/moving/">
+  <link rel="canonical" href="http://www.esc-plan.com/blog/2013/01/07/controlling-access-to-dynamics-crm-ribbon-buttons/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -79,7 +79,7 @@
   
   <header>
     
-      <h1 class="entry-title">Moving</h1>
+      <h1 class="entry-title">Controlling Access to Dynamics CRM Ribbon Buttons</h1>
     
     
       <p class="meta">
@@ -95,28 +95,73 @@
   
 
 
-<time datetime="2012-10-25T16:24:00+01:00" pubdate data-updated="true">Oct 25<span>th</span>, 2012</time>
+<time datetime="2013-01-07T14:46:00+00:00" pubdate data-updated="true">Jan 7<span>th</span>, 2013</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><h2>Just Keep Moving</h2>
+<div class="entry-content"><p>At the moment I&#8217;m working on a project which is an interesting combination of core Dynamics CRM functionality and a set of custom processes written using ASP.NET MVC 4 and Web API.</p>
 
-<p>I&#8217;ve finally got round to re-locating my blog from posterous to it&#8217;s shiny new home on <a href="http://pages.github.com">Github Pages</a>.</p>
+<p>Each custom process is something like an [OOTB CRM dialog] - a sequence of screens which the user can progress backwards and forwards through using Next/Previous navigation. At the end of the flow the dialog is completed and a series of CRM records is saved off/workflow invoked or whatever.</p>
 
-<p><span class='pullquote-right' data-pullquote='just needed to give myself the requisite shove'>
-It was a while coming really. I&#8217;ve been a bit desirous of <a href="http://yobriefca.se/">Jame&#8217;s</a> setup using <a href="http://octopress.org/">Octopress</a> for some while now and just needed to give myself the requisite shove to sort it out.</p>
+<p>While there is much the OOTB CRM dialogs can achieve, they weren&#8217;t a fit for the level of control we required - i.e. a more complex UI and with a slicker user experience and integration with various external systems.</p>
 
-<p>Now all it needs is some shiny content! I&#8217;ll spend some time migrating the old stuff over, then it&#8217;ll be time to plough ahead with some exciting new ramblings!
-</span></p>
+<p>Each process is launched from a custom CRM ribbon button.</p>
 
-<p>I might have something to say on the <a href="http://www.raspberrypi.org/">Raspberry Pi</a> shortly as my order <em>finally</em> shipped after 3 months of tortured waiting.</p>
+<p>In this blog, I&#8217;ll take a look at the access control scheme we came up with to restrict access to these processes to particular users.</p>
 
-<p>The <a href="http://www.thedailybrick.co.uk/lego-sets/custom/lego-custom-raspberry-pi-case.html">Lego case</a> is obviously being assembled as we speak&#8230;</p>
+<!-- more -->
 
-<p><strong><em>EDIT</em></strong> Hmm. On second thoughts - lifes too short by far. You can find the old stuff at <a href="http://tswann.posterous.com">tswann.posterous.com</a>. Enjoy!</p>
+
+<h2>Using Security Roles</h2>
+
+<p>We would like to be able to specify which users have access to certain ribbon buttons using the Dynamics CRM built-in security roles mechanism.</p>
+
+<p>To achieve this, you will need to create a custom entity for each ribbon button you want to hide or display.</p>
+
+<p>For example, for a custom &#8216;Upload File&#8217; button on your Contact ribbon - create a &#8216;new_rbnUploadFile&#8217; entity. (new_ being whatever your organisation prefix actually happens to be).</p>
+
+<p>It&#8217;s a good idea to include RBN in the name to help distinguish entities which are being used for this purpose from any other business oriented custom entities in the schema.</p>
+
+<p>You don&#8217;t need to add anything to this entity definition beyond creating it - it should have the bare minimum of options enabled and &#8216;Organisation&#8217; ownership.</p>
+
+<p>The purpose of this is purely so that we can see it in the Security roles matrix.</p>
+
+<p>It should appear under the &#8216;Custom&#8217; tab for a role like so:</p>
+
+<p><img src="https://dl.dropbox.com/u/47685018/Blog/2013/01-09/Security_Role.png" title="Custom entity permissions" alt="Custom entity permissions" /></p>
+
+<p>So to specify that this role can access the Upload File ribbon button we are setting the &#8216;Write&#8217; permission on it&#8217;s associated entity. Really we could use any of the permissions for this, but what&#8217;s important is that you adopt a convention and &#8216;Read&#8217;, &#8216;Write&#8217; or &#8216;Create&#8217; probably make more sense than the others.</p>
+
+<h2>Defining the Display Rule</h2>
+
+<p>To make use of this we will define a Display Rule on the Upload File button which will link it to our custom entity.</p>
+
+<p>Only users or teams with a security role that has a &#8216;Write&#8217; privilege on the RBN Upload File entity will be able to see the button.</p>
+
+<p>This configuration can easily be done using <a href="http://www.develop1.net/public/page/Ribbon-Workbench-for-Dynamics-CRM-2011.aspx">Ribbon Workbench</a>.</p>
+
+<p>We want to add the new button to the Contact form ribbon. For this we create a new Command definition as shown below to which we will add the Display Rule:</p>
+
+<p><img src="https://dl.dropbox.com/u/47685018/Blog/2013/01-09/Add%20Command.png" title="Add Display Rule" alt="Add Display Rule" /></p>
+
+<p>The display rule will consist of a single &#8216;Step&#8217; of type &#8216;Entity Privilege Rule&#8217; as shown below.</p>
+
+<p><img src="https://dl.dropbox.com/u/47685018/Blog/2013/01-09/Rule%20Type.png" title="Entity Privilege Rule" alt="Entity Privilege Rule" /></p>
+
+<p>This rule defines that this ribbon button will only be displayed to users with &#8216;Write&#8217; privileges on the RBN Upload File entity.</p>
+
+<p><img src="https://dl.dropbox.com/u/47685018/Blog/2013/01-09/Entity%20Privilege%20Rule.png" alt="Rule Definitions" /></p>
+
+<p>And that&#8217;s it! We now have a ribbon button which can be hidden or displayed via the user&#8217;s security role.</p>
+
+<h2>Other Options</h2>
+
+<p>Annoyingly the &#8216;Entity Privilege Rule&#8217; is not an option if you&#8217;re considering enabling/disabling the button using this security role controlled method.</p>
+
+<p>The best option here is probably to use the &#8216;Custom JavaScript Rule&#8217; and pass it the custom entity name as a parameter.</p>
 </div>
 
 
@@ -139,12 +184,12 @@ It was a while coming really. I&#8217;ve been a bit desirous of <a href="http://
   
 
 
-<time datetime="2012-10-25T16:24:00+01:00" pubdate data-updated="true">Oct 25<span>th</span>, 2012</time>
+<time datetime="2013-01-07T14:46:00+00:00" pubdate data-updated="true">Jan 7<span>th</span>, 2013</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/moving/'>Moving</a>, <a class='category' href='/blog/categories/obligatory-posts/'>Obligatory Posts</a>
+    <a class='category' href='/blog/categories/dynamics-2011/'>Dynamics 2011</a>, <a class='category' href='/blog/categories/security/'>Security</a>
   
 </span>
 
@@ -153,7 +198,7 @@ It was a while coming really. I&#8217;ve been a bit desirous of <a href="http://
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.esc-plan.com/blog/2012/10/25/moving/" data-via="Tam_III" data-counturl="http://www.esc-plan.com/blog/2012/10/25/moving/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.esc-plan.com/blog/2013/01/07/controlling-access-to-dynamics-crm-ribbon-buttons/" data-via="Tam_III" data-counturl="http://www.esc-plan.com/blog/2013/01/07/controlling-access-to-dynamics-crm-ribbon-buttons/" >Tweet</a>
   
   
   
@@ -164,8 +209,8 @@ It was a while coming really. I&#8217;ve been a bit desirous of <a href="http://
     
     <p class="meta">
       
+        <a class="basic-alignment left" href="/blog/2012/10/31/defining-crm-entities/" title="Previous Post: Defining Dynamics CRM entities">&laquo; Defining Dynamics CRM entities</a>
       
-        <a class="basic-alignment right" href="/blog/2012/10/31/defining-crm-entities/" title="Next Post: Defining Dynamics CRM entities">Defining Dynamics CRM entities &raquo;</a>
       
     </p>
   </footer>
