@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Dynamics 2011 | X1B Plan]]></title>
-  <link href="http://www.esc-plan.com/blog/categories/dynamics-2011/atom.xml" rel="self"/>
-  <link href="http://www.esc-plan.com/"/>
-  <updated>2013-02-13T12:15:54+00:00</updated>
-  <id>http://www.esc-plan.com/</id>
+  <link href="http://esc-plan.com/blog/categories/dynamics-2011/atom.xml" rel="self"/>
+  <link href="http://esc-plan.com/"/>
+  <updated>2013-02-13T12:25:59+00:00</updated>
+  <id>http://esc-plan.com/</id>
   <author>
     <name><![CDATA[Tom Swann]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Controlling Access to Dynamics CRM ribbon buttons]]></title>
-    <link href="http://www.esc-plan.com/blog/2013/01/07/controlling-access-to-dynamics-crm-ribbon-buttons/"/>
+    <link href="http://esc-plan.com/blog/2013/01/07/controlling-access-to-dynamics-crm-ribbon-buttons/"/>
     <updated>2013-01-07T14:46:00+00:00</updated>
-    <id>http://www.esc-plan.com/blog/2013/01/07/controlling-access-to-dynamics-crm-ribbon-buttons</id>
+    <id>http://esc-plan.com/blog/2013/01/07/controlling-access-to-dynamics-crm-ribbon-buttons</id>
     <content type="html"><![CDATA[<p>At the moment I'm working on a project which is an interesting combination of core Dynamics CRM functionality and a set of custom processes written using ASP.NET MVC 4 and Web API.</p>
 
 <p>Each custom process is something like an [OOTB CRM dialog] - a sequence of screens which the user can progress backwards and forwards through using Next/Previous navigation. At the end of the flow the dialog is completed and a series of CRM records is saved off/workflow invoked or whatever.</p>
@@ -83,9 +83,9 @@
   
   <entry>
     <title type="html"><![CDATA[Defining Dynamics CRM entities]]></title>
-    <link href="http://www.esc-plan.com/blog/2012/10/31/defining-crm-entities/"/>
+    <link href="http://esc-plan.com/blog/2012/10/31/defining-crm-entities/"/>
     <updated>2012-10-31T16:29:00+00:00</updated>
-    <id>http://www.esc-plan.com/blog/2012/10/31/defining-crm-entities</id>
+    <id>http://esc-plan.com/blog/2012/10/31/defining-crm-entities</id>
     <content type="html"><![CDATA[<p>Over the last few weeks I have been tasked with configuring a sizable Dynamics CRM solution. Having been through a lengthy period of analysis it's somewhat nice to be building again. So, I thought it would be useful to reflect on some of the work that's led up to this point.</p>
 
 <p>Particularly as regards defining the entities themselves. This is the guts of any CRM project, and I'm coming to some conclusions around what works and what doesn't work so well (and how I'd ideally like to do it in future).</p>
