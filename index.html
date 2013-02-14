@@ -9,7 +9,7 @@
   <meta name="author" content="Tom Swann">
 
   
-  <meta name="description" content="At the moment I&#8217;m working on a project which is an interesting combination of core Dynamics CRM functionality and a set of custom processes &hellip;">
+  <meta name="description" content="In this post I&#8217;m going to take a look at the dark art of writing unit tests for Dynamics CRM 2011 plugin classes. OK, so it&#8217;s not really &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -76,6 +76,55 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/02/13/unit-testing-dynamics-crm-plugins/">Unit Testing Dynamics CRM Plugins</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-02-13T12:35:00+00:00" pubdate data-updated="true">Feb 13<span>th</span>, 2013</time>
+        
+         | <a href="/blog/2013/02/13/unit-testing-dynamics-crm-plugins/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>In this post I&#8217;m going to take a look at the dark art of writing unit tests for Dynamics CRM 2011 plugin classes.</p>
+
+<p>OK, so it&#8217;s not really all that dark, but it can be somewhat tricky if you&#8217;re not familiar with how the plugin execution pipeline works and what kind of inputs an executing plugin expects to receive.</p>
+
+<p>I have seen approaches to this which involve serializing the plugin context or using <a href="http://research.microsoft.com/en-us/projects/moles/">Moles</a> (not an option for everyone now that this has been deprecated by the pricey <a href="http://msdn.microsoft.com/en-us/library/hh549175.aspx">Fakes</a> framework).</p>
+
+<p>My approach is quite simple and make use of <a href="http://code.google.com/p/moq/">Moq</a>. Rhino Mocks, NSubstitute or other feature-equivalent mocking frameworks should work just as well, so go with your preference.</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2013/02/13/unit-testing-dynamics-crm-plugins/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -246,6 +295,10 @@ It was a while coming really. I&#8217;ve been a bit desirous of <a href="http://
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/02/13/unit-testing-dynamics-crm-plugins/">Unit Testing Dynamics CRM Plugins</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2013/01/07/controlling-access-to-dynamics-crm-ribbon-buttons/">Controlling Access to Dynamics CRM ribbon buttons</a>
