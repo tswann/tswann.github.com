@@ -4,7 +4,7 @@
   <title><![CDATA[Category: TDD | X1B Plan]]></title>
   <link href="http://esc-plan.com/blog/categories/tdd/atom.xml" rel="self"/>
   <link href="http://esc-plan.com/"/>
-  <updated>2013-02-14T17:27:00+00:00</updated>
+  <updated>2013-02-17T17:22:42+00:00</updated>
   <id>http://esc-plan.com/</id>
   <author>
     <name><![CDATA[Tom Swann]]></name>
@@ -67,20 +67,20 @@
 
 <p>As mentioned, plugins are stateless - all of their dependencies are supplied to the plugin Execute() method by the plugin execution context object which is passed at runtime.</p>
 
-<p>A few things we will need to Mock include:</p>
+<p>A few of the things that we will need to Mock include:</p>
 
 <ul>
 <li>The Contact object which is causing the plugin to fire</li>
-<li><p>The parameters which identify what action we want to trigger for that contact, namely:</p>
+<li><p>The parameters which identify the action we want to trigger for that contact, namely:</p>
 
 <ol>
 <li>The PrimaryEntityName - 'contact' in this scenario.</li>
 <li>The 'Message' which identifies the data operation. In our case this is 'Delete'.</li>
 <li>The 'Stage' at which it should execute. We have supplied 10, which means 'Pre-Validation'. Our base test class contains some useful constants for these values.</li>
-<li>The Guid of the calling user. Not used in our example, but could be useful if you have logic which is conditional on the use of a particular user account.</li>
+<li>The Guid of the calling user. Not used in our example, but could be useful if your code contains logic which is conditional on the use of a particular user account.</li>
 </ol>
 </li>
-<li><p>The methods of the IOrganisationService which our code requires. This is a generally going to be a biggie. Out example plugin calls out to RetrieveMultiple, a method which takes a QueryExpression to execute against the CRM server and return a list of entities. We must mock this with an in-memory collection. Typically this is the approach you will take for all such external CRM server calls.</p></li>
+<li><p>The methods of the IOrganisationService which our code requires. This is generally going to be a biggie. Our example plugin calls out to RetrieveMultiple, a method which takes a QueryExpression to execute against the CRM server and return a list of entities. We must mock this with an in-memory collection. Typically this is the approach you will take for all such external CRM server calls.</p></li>
 </ul>
 
 
@@ -94,21 +94,21 @@
 
 <p>The Setup method above sets some specific values for your suite of tests - the entity type, user and validation stage.</p>
 
-<p>Below is an example test which sets up the scenario where our validation check fails - the call to RetrieveMultiple will successfully return a matching open Task associated with our Contact:</p>
+<p>Below is an example test which sets up the scenario where the validation check fails - the call to RetrieveMultiple will successfully return a matching open Task associated with the Contact:</p>
 
 <p><div><script src='https://gist.github.com/4954348.js?file='></script>
 <noscript><pre><code></code></pre></noscript></div>
 </p>
 
-<p>As you can see there's not much it - we just setup or OrganisationService mock object to return a dummy task whenever it gets called within our plugin code under test.</p>
+<p>As you can see there's not much to it - we just set up the OrganisationService mock object to return a dummy task whenever it gets called within our plugin code under test.</p>
 
 <h2>Write ALL THE TESTS</h2>
 
-<p>I think that goes some way to illustrating that Dynamics plugins can do the TDD thing just like anything else - all you need some great tools and <a href="http://code.google.com/p/moq/">Moq</a> is certainly one such.</p>
+<p>I think that goes some way to illustrating that Dynamics plugins can do the TDD thing just like anything else - all you need are some great tools and <a href="http://code.google.com/p/moq/">Moq</a> is certainly one such.</p>
 
 <p>If you're interested, the full source code for this example can be downloaded from github: <a href="https://github.com/tswann/x1bplan.plugintesting.git">https://github.com/tswann/x1bplan.plugintesting.git</a>.</p>
 
-<p>I'm deliberately using a simple example based on the OOTB Contact entity, so it should work when deployed to any fresh organisation.</p>
+<p>I've used a simple example based on the OOTB Contact entity, so it should work when deployed to any freshly created CRM organisation.</p>
 
 <p>Until next time!</p>
 
