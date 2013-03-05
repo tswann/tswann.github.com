@@ -4,7 +4,7 @@
   <title><![CDATA[X1B Plan]]></title>
   <link href="http://esc-plan.com/atom.xml" rel="self"/>
   <link href="http://esc-plan.com/"/>
-  <updated>2013-02-17T17:22:42+00:00</updated>
+  <updated>2013-03-05T22:37:11+01:00</updated>
   <id>http://esc-plan.com/</id>
   <author>
     <name><![CDATA[Tom Swann]]></name>
@@ -14,9 +14,89 @@
 
   
   <entry>
+    <title type="html"><![CDATA[NoSQL for the .NET Guy: RavenDB]]></title>
+    <link href="http://esc-plan.com/blog/2013/03/04/raven-db-part1/"/>
+    <updated>2013-03-04T21:16:00+01:00</updated>
+    <id>http://esc-plan.com/blog/2013/03/04/raven-db-part1</id>
+    <content type="html"><![CDATA[<p>This is part one of an ongoing series of posts in which I will be taking a delve into at a very nifty document-oriented database: <a href="http://ravendb.net">RavenDB</a>.</p>
+
+<!-- more -->
+
+
+<h2>Too Many Sequels?</h2>
+
+<p>DavenDB belongs to the family of databases described (a bit misleadingly) as NoSQL.</p>
+
+<p>What that means to most people is that it&#8217;s a database which isn&#8217;t your more usual relational variety, such as SQL Server, MySQL or Oracle. The query language, or lack thereof is not really at the core of what these data stores are.</p>
+
+<p>It&#8217;s the lack of the enforced referential integrity in the database itself that primarily distinguishes them from an RDBMS. A high degree of normalisation is usually the goal of traditional databases, whereas the NoSQL variety is distinguished by the opposite - redundancy and read-optimisation.</p>
+
+<p>As with all things under the sun they&#8217;re very good for some things and terrible at others.</p>
+
+<p>Anyway, I&#8217;m not trying to (or capable of) writing a novel on the history of NoSQl here.</p>
+
+<p>My interest in RavenDB is a tad less academic: I&#8217;ve found it really fun to hack around with!</p>
+
+<p>LET&#8217;S DO THIS THING.</p>
+
+<p>Some Features:</p>
+
+<ul>
+<li>A JSON based document-oriented database</li>
+<li>Server and client written in .NET Framework v4</li>
+<li>Indexes/queries written using LINQ</li>
+<li>REST interface</li>
+<li>Swanky Web UI management studio</li>
+<li>Runs as a Windows Service, hosted in IIS, embedded or standalone application</li>
+</ul>
+
+
+<h2>Try Out RavenDB</h2>
+
+<p>Trying it out for yourself is a very simple thing - here&#8217;s how you can install it and have it up and running in short order:</p>
+
+<ol>
+<li>Download the <a href="http://hibernatingrhinos.com/builds/ravendb-stable">latest stable build</a></li>
+<li>Extract the zip to a desirable location</li>
+<li>In the root of the extracted directory, run Start.cmd</li>
+</ol>
+
+
+<p>This is the most straightforward way to run the software, launching the server in a command window. You should also now find your browser pointing at localhost:8080/raven/studio.html</p>
+
+<p>As this is your first time in you will receive a prompt to create a test database - give it a cool name:</p>
+
+<p><img src="https://dl.dropbox.com/u/47685018/Blog/2013/03-04/new_db.png" title="Texas Forever" alt="Texas Forever" /></p>
+
+<p>If you double-click your new database to open it up, you can pre-populate it with some test data.</p>
+
+<p>Navigate to Tasks -> Create Sample Data.</p>
+
+<p>If you now click on &#8216;Collections&#8217; you will see two items: Albums and Genres and a long list of sample documents.</p>
+
+<p>Open a few of these up and take a look at JSON format in which the data is stored:</p>
+
+<p><img src="https://dl.dropbox.com/u/47685018/Blog/2013/03-04/document.png" title="Greatest Hits Indeed" alt="Great Hits Indeed" /></p>
+
+<p>Note that you can still have all the Id&#8217;s you could ever want - here the Genre refers to another document within the database: genres/1. Remember that the database isn&#8217;t enforcing the integrity of this data - that is left entirely up to us.</p>
+
+<p>Note the format of the name of this resource:</p>
+
+<blockquote><p>albums/388.</p></blockquote>
+
+
+<p>{resource}/{id} - That has the look of REST about it, right?</p>
+
+<p>In the next post I&#8217;ll take a dig into the HTTP interface that RavenDB provides by knocking up a simple .NET client application. We&#8217;ll also look at the use of LINQ to write indexes/queries and have a look at Map/Reduce (if you ever did any HPC module at uni you&#8217;ll be familiar with the concepts of processing big data sets across multiple nodes; I swear to god it&#8217;s more fun than Fortan MPI though).</p>
+
+<p>I&#8217;ll also run the RavenDB server as a website hosted within IIS, so that we won&#8217;t have to leave a command window open the whole time.</p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[Unit Testing Dynamics CRM Plugins]]></title>
     <link href="http://esc-plan.com/blog/2013/02/13/unit-testing-dynamics-crm-plugins/"/>
-    <updated>2013-02-13T12:35:00+00:00</updated>
+    <updated>2013-02-13T12:35:00+01:00</updated>
     <id>http://esc-plan.com/blog/2013/02/13/unit-testing-dynamics-crm-plugins</id>
     <content type="html"><![CDATA[<p>In this post I&#8217;m going to take a look at the dark art of writing unit tests for Dynamics CRM 2011 plugin classes.</p>
 
@@ -119,7 +199,7 @@
   <entry>
     <title type="html"><![CDATA[Controlling Access to Dynamics CRM ribbon buttons]]></title>
     <link href="http://esc-plan.com/blog/2013/01/07/controlling-access-to-dynamics-crm-ribbon-buttons/"/>
-    <updated>2013-01-07T14:46:00+00:00</updated>
+    <updated>2013-01-07T14:46:00+01:00</updated>
     <id>http://esc-plan.com/blog/2013/01/07/controlling-access-to-dynamics-crm-ribbon-buttons</id>
     <content type="html"><![CDATA[<p>At the moment I&#8217;m working on a project which is an interesting combination of core Dynamics CRM functionality and a set of custom processes written using ASP.NET MVC 4 and Web API.</p>
 
@@ -187,7 +267,7 @@
   <entry>
     <title type="html"><![CDATA[Defining Dynamics CRM entities]]></title>
     <link href="http://esc-plan.com/blog/2012/10/31/defining-crm-entities/"/>
-    <updated>2012-10-31T16:29:00+00:00</updated>
+    <updated>2012-10-31T16:29:00+01:00</updated>
     <id>http://esc-plan.com/blog/2012/10/31/defining-crm-entities</id>
     <content type="html"><![CDATA[<p>Over the last few weeks I have been tasked with configuring a sizable Dynamics CRM solution. Having been through a lengthy period of analysis it&#8217;s somewhat nice to be building again. So, I thought it would be useful to reflect on some of the work that&#8217;s led up to this point.</p>
 
@@ -310,7 +390,7 @@ You must define these separately and up front as it&#8217;s the easiest way to a
   <entry>
     <title type="html"><![CDATA[Moving]]></title>
     <link href="http://esc-plan.com/blog/2012/10/25/moving/"/>
-    <updated>2012-10-25T16:24:00+01:00</updated>
+    <updated>2012-10-25T16:24:00+02:00</updated>
     <id>http://esc-plan.com/blog/2012/10/25/moving</id>
     <content type="html"><![CDATA[<h2>Just Keep Moving</h2>
 

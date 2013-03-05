@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Moving - X1B Plan</title>
+  <title>NoSQL for the .NET Guy: RavenDB - X1B Plan</title>
   <meta name="author" content="Tom Swann">
 
   
-  <meta name="description" content="Just Keep Moving I&#8217;ve finally got round to re-locating my blog from posterous to it&#8217;s shiny new home on Github Pages. It was a while &hellip;">
+  <meta name="description" content="This is part one of an ongoing series of posts in which I will be taking a delve into at a very nifty document-oriented database: RavenDB. Too Many &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://esc-plan.com/blog/2012/10/25/moving/">
+  <link rel="canonical" href="http://esc-plan.com/blog/2013/03/04/raven-db-part1/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -79,7 +79,7 @@
   
   <header>
     
-      <h1 class="entry-title">Moving</h1>
+      <h1 class="entry-title">NoSQL for the .NET Guy: RavenDB</h1>
     
     
       <p class="meta">
@@ -95,7 +95,7 @@
   
 
 
-<time datetime="2012-10-25T16:24:00+02:00" pubdate data-updated="true">Oct 25<span>th</span>, 2012</time>
+<time datetime="2013-03-04T21:16:00+01:00" pubdate data-updated="true">Mar 4<span>th</span>, 2013</time>
         
          | <a href="#disqus_thread">Comments</a>
         
@@ -104,21 +104,78 @@
   </header>
 
 
-<div class="entry-content"><h2>Just Keep Moving</h2>
+<div class="entry-content"><p>This is part one of an ongoing series of posts in which I will be taking a delve into at a very nifty document-oriented database: <a href="http://ravendb.net">RavenDB</a>.</p>
 
-<p>I&#8217;ve finally got round to re-locating my blog from posterous to it&#8217;s shiny new home on <a href="http://pages.github.com">Github Pages</a>.</p>
+<!-- more -->
 
-<p><span class='pullquote-right' data-pullquote='just needed to give myself the requisite shove'>
-It was a while coming really. I&#8217;ve been a bit desirous of <a href="http://yobriefca.se/">Jame&#8217;s</a> setup using <a href="http://octopress.org/">Octopress</a> for some while now and just needed to give myself the requisite shove to sort it out.</p>
 
-<p>Now all it needs is some shiny content! I&#8217;ll spend some time migrating the old stuff over, then it&#8217;ll be time to plough ahead with some exciting new ramblings!
-</span></p>
+<h2>Too Many Sequels?</h2>
 
-<p>I might have something to say on the <a href="http://www.raspberrypi.org/">Raspberry Pi</a> shortly as my order <em>finally</em> shipped after 3 months of tortured waiting.</p>
+<p>DavenDB belongs to the family of databases described (a bit misleadingly) as NoSQL.</p>
 
-<p>The <a href="http://www.thedailybrick.co.uk/lego-sets/custom/lego-custom-raspberry-pi-case.html">Lego case</a> is obviously being assembled as we speak&#8230;</p>
+<p>What that means to most people is that it&#8217;s a database which isn&#8217;t your more usual relational variety, such as SQL Server, MySQL or Oracle. The query language, or lack thereof is not really at the core of what these data stores are.</p>
 
-<p><strong><em>EDIT</em></strong> Hmm. On second thoughts - lifes too short by far. You can find the old stuff at <a href="http://tswann.posterous.com">tswann.posterous.com</a>. Enjoy!</p>
+<p>It&#8217;s the lack of the enforced referential integrity in the database itself that primarily distinguishes them from an RDBMS. A high degree of normalisation is usually the goal of traditional databases, whereas the NoSQL variety is distinguished by the opposite - redundancy and read-optimisation.</p>
+
+<p>As with all things under the sun they&#8217;re very good for some things and terrible at others.</p>
+
+<p>Anyway, I&#8217;m not trying to (or capable of) writing a novel on the history of NoSQl here.</p>
+
+<p>My interest in RavenDB is a tad less academic: I&#8217;ve found it really fun to hack around with!</p>
+
+<p>LET&#8217;S DO THIS THING.</p>
+
+<p>Some Features:</p>
+
+<ul>
+<li>A JSON based document-oriented database</li>
+<li>Server and client written in .NET Framework v4</li>
+<li>Indexes/queries written using LINQ</li>
+<li>REST interface</li>
+<li>Swanky Web UI management studio</li>
+<li>Runs as a Windows Service, hosted in IIS, embedded or standalone application</li>
+</ul>
+
+
+<h2>Try Out RavenDB</h2>
+
+<p>Trying it out for yourself is a very simple thing - here&#8217;s how you can install it and have it up and running in short order:</p>
+
+<ol>
+<li>Download the <a href="http://hibernatingrhinos.com/builds/ravendb-stable">latest stable build</a></li>
+<li>Extract the zip to a desirable location</li>
+<li>In the root of the extracted directory, run Start.cmd</li>
+</ol>
+
+
+<p>This is the most straightforward way to run the software, launching the server in a command window. You should also now find your browser pointing at localhost:8080/raven/studio.html</p>
+
+<p>As this is your first time in you will receive a prompt to create a test database - give it a cool name:</p>
+
+<p><img src="https://dl.dropbox.com/u/47685018/Blog/2013/03-04/new_db.png" title="Texas Forever" alt="Texas Forever" /></p>
+
+<p>If you double-click your new database to open it up, you can pre-populate it with some test data.</p>
+
+<p>Navigate to Tasks -> Create Sample Data.</p>
+
+<p>If you now click on &#8216;Collections&#8217; you will see two items: Albums and Genres and a long list of sample documents.</p>
+
+<p>Open a few of these up and take a look at JSON format in which the data is stored:</p>
+
+<p><img src="https://dl.dropbox.com/u/47685018/Blog/2013/03-04/document.png" title="Greatest Hits Indeed" alt="Great Hits Indeed" /></p>
+
+<p>Note that you can still have all the Id&#8217;s you could ever want - here the Genre refers to another document within the database: genres/1. Remember that the database isn&#8217;t enforcing the integrity of this data - that is left entirely up to us.</p>
+
+<p>Note the format of the name of this resource:</p>
+
+<blockquote><p>albums/388.</p></blockquote>
+
+
+<p>{resource}/{id} - That has the look of REST about it, right?</p>
+
+<p>In the next post I&#8217;ll take a dig into the HTTP interface that RavenDB provides by knocking up a simple .NET client application. We&#8217;ll also look at the use of LINQ to write indexes/queries and have a look at Map/Reduce (if you ever did any HPC module at uni you&#8217;ll be familiar with the concepts of processing big data sets across multiple nodes; I swear to god it&#8217;s more fun than Fortan MPI though).</p>
+
+<p>I&#8217;ll also run the RavenDB server as a website hosted within IIS, so that we won&#8217;t have to leave a command window open the whole time.</p>
 </div>
 
 
@@ -141,12 +198,12 @@ It was a while coming really. I&#8217;ve been a bit desirous of <a href="http://
   
 
 
-<time datetime="2012-10-25T16:24:00+02:00" pubdate data-updated="true">Oct 25<span>th</span>, 2012</time>
+<time datetime="2013-03-04T21:16:00+01:00" pubdate data-updated="true">Mar 4<span>th</span>, 2013</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/moving/'>Moving</a>, <a class='category' href='/blog/categories/obligatory-posts/'>Obligatory Posts</a>
+    <a class='category' href='/blog/categories/-net/'>.NET</a>, <a class='category' href='/blog/categories/nosql/'>NoSQL</a>, <a class='category' href='/blog/categories/ravendb/'>RavenDB</a>
   
 </span>
 
@@ -155,7 +212,7 @@ It was a while coming really. I&#8217;ve been a bit desirous of <a href="http://
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://esc-plan.com/blog/2012/10/25/moving/" data-via="Tam_III" data-counturl="http://esc-plan.com/blog/2012/10/25/moving/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://esc-plan.com/blog/2013/03/04/raven-db-part1/" data-via="Tam_III" data-counturl="http://esc-plan.com/blog/2013/03/04/raven-db-part1/" >Tweet</a>
   
   
   
@@ -166,8 +223,8 @@ It was a while coming really. I&#8217;ve been a bit desirous of <a href="http://
     
     <p class="meta">
       
+        <a class="basic-alignment left" href="/blog/2013/02/13/unit-testing-dynamics-crm-plugins/" title="Previous Post: Unit Testing Dynamics CRM Plugins">&laquo; Unit Testing Dynamics CRM Plugins</a>
       
-        <a class="basic-alignment right" href="/blog/2012/10/31/defining-crm-entities/" title="Next Post: Defining Dynamics CRM entities">Defining Dynamics CRM entities &raquo;</a>
       
     </p>
   </footer>
@@ -279,8 +336,8 @@ It was a while coming really. I&#8217;ve been a bit desirous of <a href="http://
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://esc-plan.com/blog/2012/10/25/moving/';
-        var disqus_url = 'http://esc-plan.com/blog/2012/10/25/moving/';
+        var disqus_identifier = 'http://esc-plan.com/blog/2013/03/04/raven-db-part1/';
+        var disqus_url = 'http://esc-plan.com/blog/2013/03/04/raven-db-part1/';
         var disqus_script = 'embed.js';
       
     (function () {
