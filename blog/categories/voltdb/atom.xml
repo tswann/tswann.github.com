@@ -4,7 +4,7 @@
   <title><![CDATA[Category: VoltDB | X1B Plan]]></title>
   <link href="http://esc-plan.com/blog/categories/voltdb/atom.xml" rel="self"/>
   <link href="http://esc-plan.com/"/>
-  <updated>2013-03-22T19:01:39+00:00</updated>
+  <updated>2013-03-22T19:19:38+00:00</updated>
   <id>http://esc-plan.com/</id>
   <author>
     <name><![CDATA[Tom Swann]]></name>
@@ -115,7 +115,7 @@ Again the benchmarking tools give live feedback on the number of GET/PUT operati
 
 <h2>Expect More of This Sort of Thing</h2>
 
-<p>There's some really cool stuff happening out there are the moment in the NewSQL space. Big Data is something of the next big thing, but there are other interesting applications besides that. There's certainly a lot of be admired in the philosophy of allowing users to retain the big investment they've already made in SQL skills and relational design, yet not denying them the new and shiny NoSQL, web-scale world along with it.</p>
+<p>There's some really cool stuff happening out there are the moment in the NewSQL space. Big Data is very much the Big Thing at the moment, and whilst there's not an exact overlap between the two, NewSQL is very much in it's orbit. There's certainly a lot of be admired in the philosophy of allowing users to retain the big investment they've already made in SQL skills and relational design, yet not denying them the new and shiny NoSQL, web-scale world along with it.</p>
 
 <p>The Volt demo is really nice - totally worth a dip if you're interested in this sort of thing.</p>
 
