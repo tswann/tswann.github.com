@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: NewSQL | X1B Plan]]></title>
+  <link href="http://esc-plan.com/blog/categories/newsql/atom.xml" rel="self"/>
+  <link href="http://esc-plan.com/"/>
+  <updated>2013-03-22T19:01:39+00:00</updated>
+  <id>http://esc-plan.com/</id>
+  <author>
+    <name><![CDATA[Tom Swann]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[What Is NewSQL?]]></title>
+    <link href="http://esc-plan.com/blog/2013/03/22/what-is-newsql/"/>
+    <updated>2013-03-22T10:18:00+00:00</updated>
+    <id>http://esc-plan.com/blog/2013/03/22/what-is-newsql</id>
+    <content type="html"><![CDATA[<p>NewSQL is a term used to describe a variety of database which is even more new-fangled than NoSQL (yes, it wasn't a typo).</p>
+
+<p>It's a very recent term (circa 2011) - and the group of distributed database techologies which it describes are similarly up-and-coming. I suppose the name is a rare case of calling a spade a spade in the tech world.</p>
+
+<p>NewSQL challenges some of the assumptions and received wisdom around database architecture. Primarily that you have to make a choice between "schemaless and available" versus "relational and consistent".</p>
+
+<p>The central claim which binds them all together is something approaching "You can have your cake and eat it." That is:</p>
+
+<ul>
+<li>A Relational data model</li>
+<li>ACID compliant</li>
+<li>SQL interface</li>
+<li>Capability for massive scale out</li>
+<li>Designed to cope with the <a href="http://www.datacenterknowledge.com/archives/2012/03/08/three-vs-of-big-data-volume-velocity-variety/">Three Vs</a></li>
+</ul>
+
+
+<!-- more -->
+
+
+<p>Some examples of tech which currently falls under the elastically scalable RDBMS blanket:</p>
+
+<ul>
+<li><a href="http://static.googleusercontent.com/external_content/untrusted_dlcp/research.google.com/en//archive/spanner-osdi2012.pdf">Google Spanner</a></li>
+<li><a href="http://www.nuodb.com/">NuoDB</a></li>
+<li><a href="http://www.justonedb.com/">JustOne</a></li>
+<li><a href="https://voltdb.com/">VoltDB</a></li>
+</ul>
+
+
+<h2>A quick ReCAP</h2>
+
+<p>We know from CAP theorem that when designing a distributed system you have a choice to make between three qualities, of which you can pick only two:</p>
+
+<p><img src="https://dl.dropbox.com/u/47685018/Blog/2013/03-22/CAP.png" title="CAP" alt="CAP" /></p>
+
+<p>Item number one on the <a href="http://en.wikipedia.org/wiki/Fallacies_of_Distributed_Computing">8 fallacies of distributed computing</a> is thus: <em>the network is reliable</em>.</p>
+
+<p>When you combine that thought with CAP theorem it becomes apparent that partition tolerance is the obvious thing you <em>need</em> to take into account when designing a distributed system. The network is inherently an untrustworthy knave.</p>
+
+<p>In layman's terms, it goes something like this:</p>
+
+<p>Say I have two machines on which I have a replicated set of data connected by a cable. If I cut that cable with a pair of scissors - I've just partitioned my network. How will it cope with this?</p>
+
+<p>Clients can write and request data on either machine, so how will it handle those requests? We can guarantee availability and respond with data which is potentially out of date. If favouring consistency, then we have to respond with an error (neither machine can know if it's the most up-to-date since we chopped the link between them).</p>
+
+<p>OK this is over-simplified, but it's the basic core of what CAP theory states.</p>
+
+<p>So how can NewSQL databases promise it all? How can you have ACID behaviour coupled with the high-availability of a NoSQL-like?</p>
+
+<p>Well to a certain degree it seems some partition tolerance must be sacrificed in order to achieve this best of both words. Perhaps you're not going to get the potent reliability of a <a href="http://hadoop.apache.org/">Hadoop</a>, but you'd first need to ask 'Do I need it?'. The NewSQL architectures are designed for high reliability, in practice that may well be high enough for your own needs.</p>
+
+<h2>VoltDB</h2>
+
+<p>VoltDB is somewhat distinct from the other contenders in this area by being an in-memory database.</p>
+
+<p>I thought it looked like an interesting starting point at which to enter the NewSQL fray - and luckily they have a very handy VMWare dev setup available as a free download on their website. It comes in at about 1.4GB:</p>
+
+<p>Head to <a href="http://voltdb.com/community/downloads.php">http://voltdb.com/community/downloads.php</a> and you can find the VMWare distribution under the Community Edition.</p>
+
+<p>This is a well put together demo.</p>
+
+<p><img src="https://dl.dropbox.com/u/47685018/Blog/2013/03-22/Volt%20Dashboard.jpg" title="Volt Demo Dashboard" alt="Volt Demo Dashboard" /></p>
+
+<p>The VM is running Ubuntu x64 and on loading it up, hit the 'Click here to Start' icon and you're launched into the dashboard above from where all the various samples and walkthroughs are easily accessible. It's pretty slick.</p>
+
+<h2>What's To See?</h2>
+
+<p>There are two demo applications which you can run, both of which illustrate different facets of the VoltDB functionality:</p>
+
+<ol>
+<li><p><strong>Voter</strong>
+This sample app simulates two things:</p>
+
+<ul>
+<li>A VoltDB database process</li>
+<li>A simulated call centre client capturing phone calls for an imaginary American Idol</li>
+</ul>
+
+
+<p>Check out the dashboard which is updated with the votes in real-time:</p>
+
+<p><img src="https://dl.dropbox.com/u/47685018/Blog/2013/03-22/Voter.jpg" alt="Voter" /></p>
+
+<p>A really cool demo to watch in action!</p>
+
+<p>It also demonstrates how to use Volt Studio performance monitor to see a breakdown of the overall throughput in terms of how many votes the app is processing and the latency for processing each one.</p></li>
+<li><p><strong>KV Store</strong>
+For something completely different, this example shows Volt being used as a Key/Value store with a REST interface.
+Again the benchmarking tools give live feedback on the number of GET/PUT operations per second.</p></li>
+</ol>
+
+
+<p>Both demos also provide some examples of how you can use standard SQL select statements to get back information from the data store.</p>
+
+<h2>Expect More of This Sort of Thing</h2>
+
+<p>There's some really cool stuff happening out there are the moment in the NewSQL space. Big Data is something of the next big thing, but there are other interesting applications besides that. There's certainly a lot of be admired in the philosophy of allowing users to retain the big investment they've already made in SQL skills and relational design, yet not denying them the new and shiny NoSQL, web-scale world along with it.</p>
+
+<p>The Volt demo is really nice - totally worth a dip if you're interested in this sort of thing.</p>
+
+<p>I'll get back round to RavenDB again in my next post - part 2 will be accompanying <a href="http://esc-plan.com/blog/2013/03/04/raven-db-part1/">the introduction</a> shortly.</p>
+]]></content>
+  </entry>
+  
+</feed>

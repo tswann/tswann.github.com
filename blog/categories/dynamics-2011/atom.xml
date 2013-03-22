@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Dynamics 2011 | X1B Plan]]></title>
   <link href="http://esc-plan.com/blog/categories/dynamics-2011/atom.xml" rel="self"/>
   <link href="http://esc-plan.com/"/>
-  <updated>2013-03-05T22:39:38+01:00</updated>
+  <updated>2013-03-22T19:01:39+00:00</updated>
   <id>http://esc-plan.com/</id>
   <author>
     <name><![CDATA[Tom Swann]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Unit Testing Dynamics CRM Plugins]]></title>
     <link href="http://esc-plan.com/blog/2013/02/13/unit-testing-dynamics-crm-plugins/"/>
-    <updated>2013-02-13T12:35:00+01:00</updated>
+    <updated>2013-02-13T12:35:00+00:00</updated>
     <id>http://esc-plan.com/blog/2013/02/13/unit-testing-dynamics-crm-plugins</id>
     <content type="html"><![CDATA[<p>In this post I'm going to take a look at the dark art of writing unit tests for Dynamics CRM 2011 plugin classes.</p>
 
@@ -119,7 +119,7 @@
   <entry>
     <title type="html"><![CDATA[Controlling Access to Dynamics CRM ribbon buttons]]></title>
     <link href="http://esc-plan.com/blog/2013/01/07/controlling-access-to-dynamics-crm-ribbon-buttons/"/>
-    <updated>2013-01-07T14:46:00+01:00</updated>
+    <updated>2013-01-07T14:46:00+00:00</updated>
     <id>http://esc-plan.com/blog/2013/01/07/controlling-access-to-dynamics-crm-ribbon-buttons</id>
     <content type="html"><![CDATA[<p>At the moment I'm working on a project which is an interesting combination of core Dynamics CRM functionality and a set of custom processes written using ASP.NET MVC 4 and Web API.</p>
 
@@ -187,7 +187,7 @@
   <entry>
     <title type="html"><![CDATA[Defining Dynamics CRM entities]]></title>
     <link href="http://esc-plan.com/blog/2012/10/31/defining-crm-entities/"/>
-    <updated>2012-10-31T16:29:00+01:00</updated>
+    <updated>2012-10-31T16:29:00+00:00</updated>
     <id>http://esc-plan.com/blog/2012/10/31/defining-crm-entities</id>
     <content type="html"><![CDATA[<p>Over the last few weeks I have been tasked with configuring a sizable Dynamics CRM solution. Having been through a lengthy period of analysis it's somewhat nice to be building again. So, I thought it would be useful to reflect on some of the work that's led up to this point.</p>
 
