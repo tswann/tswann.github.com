@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Controlling Access to Dynamics CRM ribbon buttons - X1B Plan</title>
+  <title>BirdTrack and the power of Citizen Science - X1B Plan</title>
   <meta name="author" content="Tom Swann">
 
   
-  <meta name="description" content="At the moment I&#8217;m working on a project which is an interesting combination of core Dynamics CRM functionality and a set of custom processes &hellip;">
+  <meta name="description" content="I&#8217;ve been on a bit of a hiatus as regards the blog over the last month. Becoming a father, and simultaneously a zombified version of my former &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://esc-plan.com/blog/2013/01/07/controlling-access-to-dynamics-crm-ribbon-buttons/">
+  <link rel="canonical" href="http://esc-plan.com/blog/2013/05/31/birdtrack-and-the-power-of-citizen-science/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -79,7 +79,7 @@
   
   <header>
     
-      <h1 class="entry-title">Controlling Access to Dynamics CRM Ribbon Buttons</h1>
+      <h1 class="entry-title">BirdTrack and the Power of Citizen Science</h1>
     
     
       <p class="meta">
@@ -95,7 +95,7 @@
   
 
 
-<time datetime="2013-01-07T14:46:00+00:00" pubdate data-updated="true">Jan 7<span>th</span>, 2013</time>
+<time datetime="2013-05-31T13:35:00+01:00" pubdate data-updated="true">May 31<span>st</span>, 2013</time>
         
          | <a href="#disqus_thread">Comments</a>
         
@@ -104,66 +104,63 @@
   </header>
 
 
-<div class="entry-content"><p>At the moment I&#8217;m working on a project which is an interesting combination of core Dynamics CRM functionality and a set of custom processes written using ASP.NET MVC 4 and Web API.</p>
+<div class="entry-content"><p>I&#8217;ve been on a bit of a hiatus as regards the blog over the last month. Becoming a father, and simultaneously a zombified version of my former self are the prime cause.</p>
 
-<p>Each custom process is something like an [OOTB CRM dialog] - a sequence of screens which the user can progress backwards and forwards through using Next/Previous navigation. At the end of the flow the dialog is completed and a series of CRM records is saved off/workflow invoked or whatever.</p>
+<p>Occasionally the volume of coffee hits just the correct tipping point such that I can string two thoughts together and hold them for just long enough that typing can happen. Now is that time.</p>
 
-<p>While there is much the OOTB CRM dialogs can achieve, they weren&#8217;t a fit for the level of control we required - i.e. a more complex UI and with a slicker user experience and integration with various external systems.</p>
-
-<p>Each process is launched from a custom CRM ribbon button.</p>
-
-<p>In this blog, I&#8217;ll take a look at the access control scheme we chose to restrict access to these processes for particular users.</p>
+<p>I&#8217;ve been thinking a lot about <a href="http://blx1.bto.org/birdtrack">BirdTrack</a> lately - a website and app from the <a href="http://www.bto.org/">BTO</a> which allow members of the public to submit their sightings of birds. It&#8217;s a fine case of technology, a desperate need and a willing public all combining to achieve great things. To borrow some parlance from the mighty <a href="http://www.rockpapershotgun.com/">RPS</a>, this post is <strong>Wot I Think</strong>.</p>
 
 <!-- more -->
 
 
-<h2>Using Security Roles</h2>
+<blockquote><p>Before it is too late, I have tried to recapture the extraordinary beauty of this bird and to convey the wonder of the land he lived in, a land to me as profuse and glorious as Africa. It is a dying world, like Mars, but glowing still.</p>
 
-<p>We would like to be able to specify which users have access to certain ribbon buttons using the Dynamics CRM built-in security roles mechanism.</p>
+<ul>
+<li>J A Baker, <em>The Peregrine</em></li>
+</ul>
+</blockquote>
 
-<p>To achieve this, you will need to create a custom entity for each ribbon button you want to hide or display.</p>
+<h2>The Problem</h2>
 
-<p>For example, for a custom &#8216;Upload File&#8217; button on your Contact ribbon - create a &#8216;new_rbnUploadFile&#8217; entity. (new_ being whatever your organisation prefix actually happens to be).</p>
+<p>Written in 1967, John Bakers masterpiece of nature writing &#8216;The Peregrine&#8217;, is a deeply personal and lyrical account of his years spent tracking and studying the falcons across the farmland and estuaries of his native Essex.</p>
 
-<p>It&#8217;s a good idea to include RBN in the name to help distinguish entities which are being used for this purpose from any other business oriented custom entities in the schema.</p>
+<p>At that time the Peregrine falcon was undergoing a catastrophic decline in the United Kingdom (and elsewhere), owing largely to use of the <a href="http://www.nobelprize.org/nobel_prizes/medicine/laureates/1948/">pesticide DDT</a> a substance which is particularly harmful for those birds at the top of the food chain in whom it accumulates.</p>
 
-<p>You don&#8217;t need to add anything to this entity definition beyond creating it - it should have the bare minimum of options enabled and &#8216;Organisation&#8217; ownership.</p>
+<p>A concentrated conservation effort and bans on harmful pesticides brought the Peregrine back from the brink of extinction in the UK - the fate which Baker had so feared for the bird.</p>
 
-<p>The purpose of this is purely so that we can see it in the Security roles matrix.</p>
+<p>For every Pheonix there are others which have not been so lucky. The <a href="http://www.rspb.org.uk/ourwork/science/stateofnature/index.aspx">State of Nature report</a> which was published earlier this month carried the grave headline that 60% of native animal species assessed had suffered a decline in the past 50 years. 31% have suffered a &#8216;strong&#8217; decline.</p>
 
-<p>It should appear under the &#8216;Custom&#8217; tab for a role like so:</p>
+<p>I was fortunate enough to grow up in an area of mid-Antrim where there was a great profusion of some of our most iconic species.</p>
 
-<p><img src="https://dl.dropbox.com/u/47685018/Blog/2013/01-09/Security_Role.png" title="Custom entity permissions" alt="Custom entity permissions" /></p>
+<p>I say <em>was</em> rather pointedly. In my lifetime the Curlew, Lapwing and Hen Harrier have all slowly followed the Corncrake (a bird of my parents&#8217; generation) on the road to local extinction. They are not there yet - but if there is not a collective will to prevent it, then it will be inevitable.</p>
 
-<p>So to specify that this role can access the Upload File ribbon button we are setting the &#8216;Write&#8217; permission on it&#8217;s associated entity. Really we could use any of the permissions for this, but what&#8217;s important is that you adopt a convention and &#8216;Read&#8217; or &#8216;Write&#8217;probably make more sense than the others (you don&#8217;t want anyone creating instances of these entities).</p>
+<h2>BirdTrack</h2>
 
-<h2>Defining the Display Rule</h2>
+<p>In light of such a grim assessment, what can ordinary people - people who are not professionally involved in conservation efforts I suppose - contribute to help prevent species from declining?</p>
 
-<p>To make use of this we will define a Display Rule on the Upload File button which will link it to our custom entity.</p>
+<p>It&#8217;s often said that there are two ways to vote - with your money or with your time. We technologists should be well familiar with this idea. The shiniest tech always gets carried along on a wave of popular enthusiasm.</p>
 
-<p>Only users or teams with a security role that has a &#8216;Write&#8217; privilege on the RBN Upload File entity will be able to see the button.</p>
+<p>&#8220;Citizen Science&#8221; taps in to this tendency of clever and enthusiastic people to vote with their time and effort.</p>
 
-<p>This configuration can easily be done using <a href="http://www.develop1.net/public/page/Ribbon-Workbench-for-Dynamics-CRM-2011.aspx">Ribbon Workbench</a>.</p>
+<p>I first came to BirdTrack some years ago whilst randomly browsing the BTOs site. A web app that allowed the public to sign up and submit their own detailed bird observations. I found this to be an incredibly simple idea - why had no one thought of this sooner!</p>
 
-<p>We want to add the new button to the Contact form ribbon. For this we create a new Command definition as shown below to which we will add the Display Rule:</p>
+<p>After years of operation the site has become an absolute trove of interesting and important data. Yearly trends in the reporting rates of individual species; earliest recordings of spring migrants; maps of regional distribution&#8230; there is all this and more. When I log on to the Android app I am presented with a map showing sightings that others have recorded in the vicinity of wherever I am. It truly is a fantastic tool for anyone interested in birds - if they&#8217;d had this back in my formative years I would have been all over it!</p>
 
-<p><img src="https://dl.dropbox.com/u/47685018/Blog/2013/01-09/Add%20Command.png" title="Add Display Rule" alt="Add Display Rule" /></p>
+<p>As well as tapping into the natural tendency in birders to meticulously list everything they see, it also throws in a few modern &#8216;gamification&#8217; twists as well. There are leader boards for total species in a year, total lists submitted in a month&#8230; the dedication of some people is truly staggering.</p>
 
-<p>The display rule will consist of a single &#8216;Step&#8217; of type &#8216;Entity Privilege Rule&#8217; as shown below.</p>
+<h2>Why This Is Important</h2>
 
-<p><img src="https://dl.dropbox.com/u/47685018/Blog/2013/01-09/Rule%20Type.png" title="Entity Privilege Rule" alt="Entity Privilege Rule" /></p>
+<p>Jennifer Pahlka delivered an excellent talk available on <a href="http://www.ted.com/talks/jennifer_pahlka_coding_a_better_government.html">TED</a> called <em>&#8216;Coding A Better Government&#8217;</em>. It&#8217;s a popular one among tech evangelists who like to believe that many problems of governmental bureaucracy can be overcome by using technology to empower citizens.</p>
 
-<p>This rule defines that this ribbon button will only be displayed to users with &#8216;Write&#8217; privileges on the RBN Upload File entity.</p>
+<p>It&#8217;s an apt lesson that conservation can learn from as well. BirdTrack is a shining example of how much can be achieved when you put a powerful tool in people&#8217;s hands.</p>
 
-<p><img src="https://dl.dropbox.com/u/47685018/Blog/2013/01-09/Entity%20Privilege%20Rule.png" alt="Rule Definitions" /></p>
+<p>If you are interested in contributing, you can sign up at <a href="http://blx1.bto.org/birdtrack">http://blx1.bto.org/birdtrack</a>. There are also a variety of other surveys being run on the BTO website at any given time.</p>
 
-<p>And that&#8217;s it! We now have a ribbon button which can be hidden or displayed via the user&#8217;s security role.</p>
+<p>The <a href="http://www.bto.org/shop/bird-atlas">2007 - 2011 Bird Atlas</a> is also available for pre-order - a project which is owes it&#8217;s existence in large part to the efforts of volunteers through BirdTrack and the BTOs other national surveys.</p>
 
-<h2>Other Options</h2>
+<p><img src="https://dl.dropboxusercontent.com/u/47685018/Blog/2013/06-01/theperegrine.jpg" alt="The Peregrine" /></p>
 
-<p>Annoyingly the &#8216;Entity Privilege Rule&#8217; is not an option if you&#8217;re considering enabling/disabling the button using this security role controlled method.</p>
-
-<p>The best option here is probably to use the &#8216;Custom JavaScript Rule&#8217; and pass it the custom entity name as a parameter.</p>
+<p>Glowing still.</p>
 </div>
 
 
@@ -186,21 +183,15 @@
   
 
 
-<time datetime="2013-01-07T14:46:00+00:00" pubdate data-updated="true">Jan 7<span>th</span>, 2013</time>
+<time datetime="2013-05-31T13:35:00+01:00" pubdate data-updated="true">May 31<span>st</span>, 2013</time>
       
-
-<span class="categories">
-  
-    <a class='category' href='/blog/categories/dynamics-2011/'>Dynamics 2011</a>, <a class='category' href='/blog/categories/security/'>Security</a>
-  
-</span>
 
 
     </p>
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://esc-plan.com/blog/2013/01/07/controlling-access-to-dynamics-crm-ribbon-buttons/" data-via="Tam_III" data-counturl="http://esc-plan.com/blog/2013/01/07/controlling-access-to-dynamics-crm-ribbon-buttons/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://esc-plan.com/blog/2013/05/31/birdtrack-and-the-power-of-citizen-science/" data-via="Tam_III" data-counturl="http://esc-plan.com/blog/2013/05/31/birdtrack-and-the-power-of-citizen-science/" >Tweet</a>
   
   
   
@@ -211,10 +202,8 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2012/10/31/defining-crm-entities/" title="Previous Post: Defining Dynamics CRM entities">&laquo; Defining Dynamics CRM entities</a>
+        <a class="basic-alignment left" href="/blog/2013/03/22/what-is-newsql/" title="Previous Post: What Is NewSQL?">&laquo; What Is NewSQL?</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2013/02/13/unit-testing-dynamics-crm-plugins/" title="Next Post: Unit Testing Dynamics CRM Plugins">Unit Testing Dynamics CRM Plugins &raquo;</a>
       
     </p>
   </footer>
@@ -326,8 +315,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://esc-plan.com/blog/2013/01/07/controlling-access-to-dynamics-crm-ribbon-buttons/';
-        var disqus_url = 'http://esc-plan.com/blog/2013/01/07/controlling-access-to-dynamics-crm-ribbon-buttons/';
+        var disqus_identifier = 'http://esc-plan.com/blog/2013/05/31/birdtrack-and-the-power-of-citizen-science/';
+        var disqus_url = 'http://esc-plan.com/blog/2013/05/31/birdtrack-and-the-power-of-citizen-science/';
         var disqus_script = 'embed.js';
       
     (function () {
