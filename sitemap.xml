@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
@@ -38,4 +39,56 @@
         <loc>http://esc-plan.com/</loc>
         <lastmod>2013-06-01T21:21:09+01:00</lastmod>
     </url>
+=======
+<?xml version='1.0' encoding='UTF-8'?>
+<urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
+    <url>
+        <loc>http://tswann.github.io/blog/2012/10/25/moving/</loc>
+        <lastmod>2013-10-26T21:03:40+01:00</lastmod>
+    </url>
+    <url>
+        <loc>http://tswann.github.io/blog/2012/10/31/defining-crm-entities/</loc>
+        <lastmod>2013-10-26T21:03:40+01:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://tswann.github.io/blog/2013/01/07/controlling-access-to-dynamics-crm-ribbon-buttons/
+        </loc>
+        <lastmod>2013-10-26T21:03:40+01:00</lastmod>
+    </url>
+    <url>
+        <loc>http://tswann.github.io/blog/2013/02/13/unit-testing-dynamics-crm-plugins/</loc>
+        <lastmod>2013-10-26T21:03:40+01:00</lastmod>
+    </url>
+    <url>
+        <loc>http://tswann.github.io/blog/2013/03/04/raven-db-part1/</loc>
+        <lastmod>2013-10-26T21:03:40+01:00</lastmod>
+    </url>
+    <url>
+        <loc>http://tswann.github.io/blog/2013/03/22/what-is-newsql/</loc>
+        <lastmod>2013-10-26T21:03:40+01:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://tswann.github.io/blog/2013/05/31/birdtrack-and-the-power-of-citizen-science/
+        </loc>
+        <lastmod>2013-10-26T21:03:40+01:00</lastmod>
+    </url>
+    <url>
+        <loc>http://tswann.github.io/blog/2013/10/23/dynamics-crm-performance-tuning/</loc>
+        <lastmod>2013-10-26T21:03:40+01:00</lastmod>
+    </url>
+    <url>
+        <loc>http://tswann.github.io/blog/archives/</loc>
+        <lastmod>2013-10-26T21:03:40+01:00</lastmod>
+    </url>
+    <url>
+        <loc>http://tswann.github.io/</loc>
+        <lastmod>2013-10-26T21:03:40+01:00</lastmod>
+    </url>
+    <url>
+        <loc>http://tswann.github.io/robots.txt</loc>
+        <lastmod>2013-10-26T21:03:40+01:00</lastmod>
+    </url>
+>>>>>>> abe52b17653a3c0fba254e60aff01dc46b595de8
 </urlset>
