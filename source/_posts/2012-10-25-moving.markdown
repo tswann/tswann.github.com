@@ -1,0 +1,23 @@
+---
+layout: post
+title: "Moving"
+date: 2012-10-25 16:24
+comments: true
+categories: [Moving, Obligatory Posts]
+---
+Just Keep Moving
+----------------
+
+I've finally got round to re-locating my blog from posterous to it's shiny new home on [Github Pages](http://pages.github.com).
+
+{% pullquote %}
+It was a while coming really. I've been a bit desirous of [Jame's](http://yobriefca.se/) setup using [Octopress](http://octopress.org/) for some while now and {"just needed to give myself the requisite shove"} to sort it out.
+
+Now all it needs is some shiny content! I'll spend some time migrating the old stuff over, then it'll be time to plough ahead with some exciting new ramblings!
+{% endpullquote %}
+
+I might have something to say on the [Raspberry Pi](http://www.raspberrypi.org/) shortly as my order _finally_ shipped after 3 months of tortured waiting.
+
+The [Lego case](http://www.thedailybrick.co.uk/lego-sets/custom/lego-custom-raspberry-pi-case.html) is obviously being assembled as we speak...
+
+__*EDIT*__ Hmm. On second thoughts - lifes too short by far. You can find the old stuff at [tswann.posterous.com](http://tswann.posterous.com). Enjoy!
