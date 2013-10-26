@@ -1,0 +1,588 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[X1B Plan]]></title>
+  <link href="http://esc-plan.com/atom.xml" rel="self"/>
+  <link href="http://esc-plan.com/"/>
+  <updated>2013-06-01T21:21:31+01:00</updated>
+  <id>http://esc-plan.com/</id>
+  <author>
+    <name><![CDATA[Tom Swann]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[BirdTrack and the power of Citizen Science]]></title>
+    <link href="http://esc-plan.com/blog/2013/05/31/birdtrack-and-the-power-of-citizen-science/"/>
+    <updated>2013-05-31T13:35:00+01:00</updated>
+    <id>http://esc-plan.com/blog/2013/05/31/birdtrack-and-the-power-of-citizen-science</id>
+    <content type="html"><![CDATA[<p>I&#8217;ve been on a bit of a hiatus as regards the blog over the last month. Becoming a father, and simultaneously a zombified version of my former self are the prime cause.</p>
+
+<p>Occasionally the volume of coffee hits just the correct tipping point such that I can string two thoughts together and hold them for just long enough that typing can happen. Now is that time.</p>
+
+<p>I&#8217;ve been thinking a lot about <a href="http://blx1.bto.org/birdtrack">BirdTrack</a> lately - a website and app from the <a href="http://www.bto.org/">BTO</a> which allow members of the public to submit their sightings of birds. It&#8217;s a fine case of technology, a desperate need and a willing public all combining to achieve great things. To borrow some parlance from the mighty <a href="http://www.rockpapershotgun.com/">RPS</a>, this post is <strong>Wot I Think</strong>.</p>
+
+<!-- more -->
+
+
+<blockquote><p>Before it is too late, I have tried to recapture the extraordinary beauty of this bird and to convey the wonder of the land he lived in, a land to me as profuse and glorious as Africa. It is a dying world, like Mars, but glowing still.</p>
+
+<ul>
+<li>J A Baker, <em>The Peregrine</em></li>
+</ul>
+</blockquote>
+
+<h2>The Problem</h2>
+
+<p>Written in 1967, John Bakers masterpiece of nature writing &#8216;The Peregrine&#8217;, is a deeply personal and lyrical account of his years spent tracking and studying the falcons across the farmland and estuaries of his native Essex.</p>
+
+<p>At that time the Peregrine falcon was undergoing a catastrophic decline in the United Kingdom (and elsewhere), owing largely to use of the <a href="http://www.nobelprize.org/nobel_prizes/medicine/laureates/1948/">pesticide DDT</a> a substance which is particularly harmful for those birds at the top of the food chain in whom it accumulates.</p>
+
+<p>A concentrated conservation effort and bans on harmful pesticides brought the Peregrine back from the brink of extinction in the UK - the fate which Baker had so feared for the bird.</p>
+
+<p>For every Pheonix there are others which have not been so lucky. The <a href="http://www.rspb.org.uk/ourwork/science/stateofnature/index.aspx">State of Nature report</a> which was published earlier this month carried the grave headline that 60% of native animal species assessed had suffered a decline in the past 50 years. 31% have suffered a &#8216;strong&#8217; decline.</p>
+
+<p>I was fortunate enough to grow up in an area of mid-Antrim where there was a great profusion of some of our most iconic species.</p>
+
+<p>I say <em>was</em> rather pointedly. In my lifetime the Curlew, Lapwing and Hen Harrier have all slowly followed the Corncrake (a bird of my parents&#8217; generation) on the road to local extinction. They are not there yet - but if there is not a collective will to prevent it, then it will be inevitable.</p>
+
+<h2>BirdTrack</h2>
+
+<p>In light of such a grim assessment, what can ordinary people - people who are not professionally involved in conservation efforts I suppose - contribute to help prevent species from declining?</p>
+
+<p>It&#8217;s often said that there are two ways to vote - with your money or with your time. We technologists should be well familiar with this idea. The shiniest tech always gets carried along on a wave of popular enthusiasm.</p>
+
+<p>&#8220;Citizen Science&#8221; taps in to this tendency of clever and enthusiastic people to vote with their time and effort.</p>
+
+<p>I first came to BirdTrack some years ago whilst randomly browsing the BTOs site. A web app that allowed the public to sign up and submit their own detailed bird observations. I found this to be an incredibly simple idea - why had no one thought of this sooner!</p>
+
+<p>After years of operation the site has become an absolute trove of interesting and important data. Yearly trends in the reporting rates of individual species; earliest recordings of spring migrants; maps of regional distribution&#8230; there is all this and more. When I log on to the Android app I am presented with a map showing sightings that others have recorded in the vicinity of wherever I am. It truly is a fantastic tool for anyone interested in birds - if they&#8217;d had this back in my formative years I would have been all over it!</p>
+
+<p>As well as tapping into the natural tendency in birders to meticulously list everything they see, it also throws in a few modern &#8216;gamification&#8217; twists as well. There are leader boards for total species in a year, total lists submitted in a month&#8230; the dedication of some people is truly staggering.</p>
+
+<h2>Why This Is Important</h2>
+
+<p>Jennifer Pahlka delivered an excellent talk available on <a href="http://www.ted.com/talks/jennifer_pahlka_coding_a_better_government.html">TED</a> called <em>&#8216;Coding A Better Government&#8217;</em>. It&#8217;s a popular one among tech evangelists who like to believe that many problems of governmental bureaucracy can be overcome by using technology to empower citizens.</p>
+
+<p>It&#8217;s an apt lesson that conservation can learn from as well. BirdTrack is a shining example of how much can be achieved when you put a powerful tool in people&#8217;s hands.</p>
+
+<p>If you are interested in contributing, you can sign up at <a href="http://blx1.bto.org/birdtrack">http://blx1.bto.org/birdtrack</a>. There are also a variety of other surveys being run on the BTO website at any given time.</p>
+
+<p>The <a href="http://www.bto.org/shop/bird-atlas">2007 - 2011 Bird Atlas</a> is also available for pre-order - a project which owes it&#8217;s existence in large part to the efforts of volunteers through BirdTrack and the BTOs other national surveys.</p>
+
+<p><img src="https://dl.dropboxusercontent.com/u/47685018/Blog/2013/06-01/theperegrine.jpg" alt="The Peregrine" /></p>
+
+<p>Glowing still.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[What Is NewSQL?]]></title>
+    <link href="http://esc-plan.com/blog/2013/03/22/what-is-newsql/"/>
+    <updated>2013-03-22T10:18:00+00:00</updated>
+    <id>http://esc-plan.com/blog/2013/03/22/what-is-newsql</id>
+    <content type="html"><![CDATA[<p>NewSQL is a term used to describe a variety of database which is even more new-fangled than NoSQL (yes, it wasn&#8217;t a typo).</p>
+
+<p>It&#8217;s a very recent term (circa 2011) - and the group of distributed database techologies which it describes are similarly up-and-coming. I suppose the name is a rare case of calling a spade a spade in the tech world.</p>
+
+<p>NewSQL challenges some of the assumptions and received wisdom around database architecture. Primarily that you have to make a choice between &#8220;schemaless and available&#8221; versus &#8220;relational and consistent&#8221;.</p>
+
+<p>The central claim which binds them all together is something approaching &#8220;You can have your cake and eat it.&#8221; That is:</p>
+
+<ul>
+<li>A Relational data model</li>
+<li>ACID compliant</li>
+<li>SQL interface</li>
+<li>Capability for massive scale out</li>
+<li>Designed to cope with the <a href="http://www.datacenterknowledge.com/archives/2012/03/08/three-vs-of-big-data-volume-velocity-variety/">Three Vs</a></li>
+</ul>
+
+
+<!-- more -->
+
+
+<p>Some examples of tech which currently falls under the elastically scalable RDBMS blanket:</p>
+
+<ul>
+<li><a href="http://static.googleusercontent.com/external_content/untrusted_dlcp/research.google.com/en//archive/spanner-osdi2012.pdf">Google Spanner</a></li>
+<li><a href="http://www.nuodb.com/">NuoDB</a></li>
+<li><a href="http://www.justonedb.com/">JustOne</a></li>
+<li><a href="https://voltdb.com/">VoltDB</a></li>
+</ul>
+
+
+<h2>A quick ReCAP</h2>
+
+<p>We know from CAP theorem that when designing a distributed system you have a choice to make between three qualities, of which you can pick only two:</p>
+
+<p><img src="https://dl.dropbox.com/u/47685018/Blog/2013/03-22/CAP.png" title="CAP" alt="CAP" /></p>
+
+<p>Item number one on the <a href="http://en.wikipedia.org/wiki/Fallacies_of_Distributed_Computing">8 fallacies of distributed computing</a> is thus: <em>the network is reliable</em>.</p>
+
+<p>When you combine that thought with CAP theorem it becomes apparent that partition tolerance is the obvious thing you <em>need</em> to take into account when designing a distributed system. The network is inherently an untrustworthy knave.</p>
+
+<p>In layman&#8217;s terms, it goes something like this:</p>
+
+<p>Say I have two machines on which I have a replicated set of data connected by a cable. If I cut that cable with a pair of scissors - I&#8217;ve just partitioned my network. How will it cope with this?</p>
+
+<p>Clients can write and request data on either machine, so how will it handle those requests? We can guarantee availability and respond with data which is potentially out of date. If favouring consistency, then we have to respond with an error (neither machine can know if it&#8217;s the most up-to-date since we chopped the link between them).</p>
+
+<p>OK this is over-simplified, but it&#8217;s the basic core of what CAP theory states.</p>
+
+<p>So how can NewSQL databases promise it all? How can you have ACID behaviour coupled with the high-availability of a NoSQL-like?</p>
+
+<p>Well to a certain degree it seems some partition tolerance must be sacrificed in order to achieve this best of both words. Perhaps you&#8217;re not going to get the potent reliability of a <a href="http://hadoop.apache.org/">Hadoop</a>, but you&#8217;d first need to ask &#8216;Do I need it?&#8217;. The NewSQL architectures are designed for high reliability, in practice that may well be high enough for your own needs.</p>
+
+<h2>VoltDB</h2>
+
+<p>VoltDB is somewhat distinct from the other contenders in this area by being an in-memory database.</p>
+
+<p>I thought it looked like an interesting starting point at which to enter the NewSQL fray - and luckily they have a very handy VMWare dev setup available as a free download on their website. It comes in at about 1.4GB:</p>
+
+<p>Head to <a href="http://voltdb.com/community/downloads.php">http://voltdb.com/community/downloads.php</a> and you can find the VMWare distribution under the Community Edition.</p>
+
+<p>This is a well put together demo.</p>
+
+<p><img src="https://dl.dropbox.com/u/47685018/Blog/2013/03-22/Volt%20Dashboard.jpg" title="Volt Demo Dashboard" alt="Volt Demo Dashboard" /></p>
+
+<p>The VM is running Ubuntu x64 and on loading it up, hit the &#8216;Click here to Start&#8217; icon and you&#8217;re launched into the dashboard above from where all the various samples and walkthroughs are easily accessible. It&#8217;s pretty slick.</p>
+
+<h2>What&#8217;s To See?</h2>
+
+<p>There are two demo applications which you can run, both of which illustrate different facets of the VoltDB functionality:</p>
+
+<ol>
+<li><p><strong>Voter</strong>
+This sample app consists of two components:</p>
+
+<ul>
+<li>A VoltDB database process</li>
+<li>A simulated call centre client capturing phone calls for an imaginary American Idol</li>
+</ul>
+
+
+<p>Check out the dashboard which is updated with the votes in real-time:</p>
+
+<p><img src="https://dl.dropbox.com/u/47685018/Blog/2013/03-22/Voter.jpg" alt="Voter" /></p>
+
+<p>A really cool demo to watch in action!</p>
+
+<p>It also demonstrates how to use Volt Studio performance monitor to see a breakdown of the overall throughput in terms of how many votes the app is processing and the latency for processing each one.</p></li>
+<li><p><strong>KV Store</strong>
+For something completely different, this example shows Volt being used as a Key/Value store with a REST interface.
+Again the benchmarking tools give live feedback on the number of GET/PUT operations per second.</p></li>
+</ol>
+
+
+<p>Both demos also provide some examples of how you can use standard SQL select statements to get back information from the data store.</p>
+
+<h2>Expect More of This Sort of Thing</h2>
+
+<p>There&#8217;s some really cool stuff happening out there are the moment in the NewSQL space. Big Data is very much the Big Thing at the moment, and whilst there&#8217;s not an exact overlap between the two, NewSQL is very much in it&#8217;s orbit. There&#8217;s certainly a lot of be admired in the philosophy of allowing users to retain the big investment they&#8217;ve already made in SQL skills and relational design, yet not denying them the new and shiny NoSQL, web-scale world along with it.</p>
+
+<p>The Volt demo is really nice - totally worth a dip if you&#8217;re interested in this sort of thing.</p>
+
+<p>I&#8217;ll get back round to RavenDB again in my next post - part 2 will be accompanying <a href="http://esc-plan.com/blog/2013/03/04/raven-db-part1/">the introduction</a> shortly.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[NoSQL for the .NET Guy: RavenDB]]></title>
+    <link href="http://esc-plan.com/blog/2013/03/04/raven-db-part1/"/>
+    <updated>2013-03-04T21:16:00+00:00</updated>
+    <id>http://esc-plan.com/blog/2013/03/04/raven-db-part1</id>
+    <content type="html"><![CDATA[<p>This is part one of an ongoing series of posts in which I will be taking a delve into at a very nifty document-oriented database: <a href="http://ravendb.net">RavenDB</a>.</p>
+
+<!-- more -->
+
+
+<h2>Too Many Sequels?</h2>
+
+<p>DavenDB belongs to the family of databases described (a bit misleadingly) as NoSQL.</p>
+
+<p>What that means to most people is that it&#8217;s a database which isn&#8217;t your more usual relational variety, such as SQL Server, MySQL or Oracle. The query language, or lack thereof is not really at the core of what these data stores are.</p>
+
+<p>It&#8217;s the lack of the enforced referential integrity in the database itself that primarily distinguishes them from an RDBMS. A high degree of normalisation is usually the goal of traditional databases, whereas the NoSQL variety is distinguished by the opposite - redundancy and read-optimisation.</p>
+
+<p>As with all things under the sun they&#8217;re very good for some things and terrible at others.</p>
+
+<p>Anyway, I&#8217;m not trying to (or capable of) writing a novel on the history of NoSQl here.</p>
+
+<p>My interest in RavenDB is a tad less academic: I&#8217;ve found it really fun to hack around with!</p>
+
+<p>LET&#8217;S DO THIS THING.</p>
+
+<p>Some Features:</p>
+
+<ul>
+<li>A JSON based document-oriented database</li>
+<li>Server and client written in .NET Framework v4</li>
+<li>Indexes/queries written using LINQ</li>
+<li>REST interface</li>
+<li>Swanky Web UI management studio</li>
+<li>Runs as a Windows Service, hosted in IIS, embedded or standalone application</li>
+</ul>
+
+
+<h2>Try Out RavenDB</h2>
+
+<p>Trying it out for yourself is a very simple thing - here&#8217;s how you can install it and have it up and running in short order:</p>
+
+<ol>
+<li>Download the <a href="http://hibernatingrhinos.com/builds/ravendb-stable">latest stable build</a></li>
+<li>Extract the zip to a desirable location</li>
+<li>In the root of the extracted directory, run Start.cmd</li>
+</ol>
+
+
+<p>This is the most straightforward way to run the software, launching the server in a command window. You should also now find your browser pointing at localhost:8080/raven/studio.html</p>
+
+<p>As this is your first time in you will receive a prompt to create a test database - give it a cool name:</p>
+
+<p><img src="https://dl.dropbox.com/u/47685018/Blog/2013/03-04/new_db.png" title="Texas Forever" alt="Texas Forever" /></p>
+
+<p>If you double-click your new database to open it up, you can pre-populate it with some test data.</p>
+
+<p>Navigate to Tasks -> Create Sample Data.</p>
+
+<p>If you now click on &#8216;Collections&#8217; you will see two items: Albums and Genres and a long list of sample documents.</p>
+
+<p>Open a few of these up and take a look at JSON format in which the data is stored:</p>
+
+<p><img src="https://dl.dropbox.com/u/47685018/Blog/2013/03-04/document.png" title="Greatest Hits Indeed" alt="Great Hits Indeed" /></p>
+
+<p>Note that you can still have all the Id&#8217;s you could ever want - here the Genre refers to another document within the database: genres/1. Remember that the database isn&#8217;t enforcing the integrity of this data - that is left entirely up to us.</p>
+
+<p>Note the format of the name of this resource:</p>
+
+<blockquote><p>albums/388.</p></blockquote>
+
+
+<p>{resource}/{id} - That has the look of REST about it, right?</p>
+
+<p>In the next post I&#8217;ll take a dig into the HTTP interface that RavenDB provides by knocking up a simple .NET client application. We&#8217;ll also look at the use of LINQ to write indexes/queries and have a look at Map/Reduce (if you ever did any HPC module at uni you&#8217;ll be familiar with the concepts of crunching big data sets across a cluster of nodes; I swear to god that it&#8217;s more fun than Fortan MPI though).</p>
+
+<p>I&#8217;ll also run the RavenDB server as a website hosted within IIS, so that we won&#8217;t have to leave a command window open the whole time.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Unit Testing Dynamics CRM Plugins]]></title>
+    <link href="http://esc-plan.com/blog/2013/02/13/unit-testing-dynamics-crm-plugins/"/>
+    <updated>2013-02-13T12:35:00+00:00</updated>
+    <id>http://esc-plan.com/blog/2013/02/13/unit-testing-dynamics-crm-plugins</id>
+    <content type="html"><![CDATA[<p>In this post I&#8217;m going to take a look at the dark art of writing unit tests for Dynamics CRM 2011 plugin classes.</p>
+
+<p>OK, so it&#8217;s not really all that dark, but it can be somewhat tricky if you&#8217;re not familiar with how the plugin execution pipeline works and what kind of inputs an executing plugin expects to receive.</p>
+
+<p>I have seen approaches to this which involve serializing the plugin context or using <a href="http://research.microsoft.com/en-us/projects/moles/">Moles</a> (not an option for everyone now that this has been deprecated by the pricey <a href="http://msdn.microsoft.com/en-us/library/hh549175.aspx">Fakes</a> framework).</p>
+
+<p>My approach is quite simple and make use of <a href="http://code.google.com/p/moq/">Moq</a>. Rhino Mocks, NSubstitute or other feature-equivalent mocking frameworks should work just as well, so go with your preference.</p>
+
+<!-- more -->
+
+
+<h2>Mocking Dynamics</h2>
+
+<p><img src="https://dl.dropbox.com/u/47685018/Blog/2013/02-14/mocked.png" title="Yes, I've been waiting to use this" alt="Mocking Dynamics CRM" /></p>
+
+<p>Plugins by their nature are stateless and you must invoke a fair bit of mocking voodoo to set up the external pipeline execution context in which they run.</p>
+
+<p>I use a base class for all my plugin tests which contains the following core:</p>
+
+<div><script src='https://gist.github.com/4954043.js?file='></script>
+<noscript><pre><code></code></pre></noscript></div>
+
+
+<p>This allows us to hide away some of the usual mock object setup code - the objects which will be common to every plugin - the IServiceProvider, IPluginExecutionContext and IOrganisationService.</p>
+
+<p>In our individual plugin classes we can then mock the typical input parameters to the plugin context.</p>
+
+<h2>An Example</h2>
+
+<p>Let&#8217;s say we have some imaginary business pals. What they would like is for a bit of validation to be triggered whenever someone attempts to delete a Contact record from the CRM database.</p>
+
+<p>If the Contact has any open Task activities outstanding, we would like the system to display an error message and prevent the user from doing so.</p>
+
+<p>We could of course have a piece of custom JavaScript to do this, but we want the logic to be triggered <em>any time</em> a delete occurs, be it via the front end or the API.</p>
+
+<p>The following plugin code will do just that:</p>
+
+<div><script src='https://gist.github.com/4954084.js?file='></script>
+<noscript><pre><code></code></pre></noscript></div>
+
+
+<p>For the sake of brevity I have cut all the boiler plate gunk that the  <a href="http://msdn.microsoft.com/en-gb/library/hh547459.aspx">Visual Studio CRM Dev  Toolkit</a> generates when you create a new plugin, leaving only the custom business logic that I actually added myself.</p>
+
+<p>So how about writing an automated unit test for this code?</p>
+
+<p>The purpose of providing mock objects for your unit tests is to isolate them - removing any dependence on external resources.</p>
+
+<p>As mentioned, plugins are stateless - all of their dependencies are supplied to the plugin Execute() method by the plugin execution context object which is passed at runtime.</p>
+
+<p>A few of the things that we will need to Mock include:</p>
+
+<ul>
+<li>The Contact object which is causing the plugin to fire</li>
+<li><p>The parameters which identify the action we want to trigger for that contact, namely:</p>
+
+<ol>
+<li>The PrimaryEntityName - &#8216;contact&#8217; in this scenario.</li>
+<li>The &#8216;Message&#8217; which identifies the data operation. In our case this is &#8216;Delete&#8217;.</li>
+<li>The &#8216;Stage&#8217; at which it should execute. We have supplied 10, which means &#8216;Pre-Validation&#8217;. Our base test class contains some useful constants for these values.</li>
+<li>The Guid of the calling user. Not used in our example, but could be useful if your code contains logic which is conditional on the use of a particular user account.</li>
+</ol>
+</li>
+<li><p>The methods of the IOrganisationService which our code requires. This is generally going to be a biggie. Our example plugin calls out to RetrieveMultiple, a method which takes a QueryExpression to execute against the CRM server and return a list of entities. We must mock this with an in-memory collection. Typically this is the approach you will take for all such external CRM server calls.</p></li>
+</ul>
+
+
+<h2>Writing a Test</h2>
+
+<p>So, how do we go about this? Thankfully Moq makes it pretty easy to create a lot of dependencies quickly and fluently.</p>
+
+<div><script src='https://gist.github.com/4954297.js?file='></script>
+<noscript><pre><code></code></pre></noscript></div>
+
+
+<p>The Setup method above sets some specific values for your suite of tests - the entity type, user and validation stage.</p>
+
+<p>Below is an example test which sets up the scenario where the validation check fails - the call to RetrieveMultiple will successfully return a matching open Task associated with the Contact:</p>
+
+<div><script src='https://gist.github.com/4954348.js?file='></script>
+<noscript><pre><code></code></pre></noscript></div>
+
+
+<p>As you can see there&#8217;s not much to it - we just set up the OrganisationService mock object to return a dummy task whenever it gets called within our plugin code under test.</p>
+
+<h2>Write ALL THE TESTS</h2>
+
+<p>I think that goes some way to illustrating that Dynamics plugins can do the TDD thing just like anything else - all you need are some great tools and <a href="http://code.google.com/p/moq/">Moq</a> is certainly one such.</p>
+
+<p>If you&#8217;re interested, the full source code for this example can be downloaded from github: <a href="https://github.com/tswann/x1bplan.plugintesting.git">https://github.com/tswann/x1bplan.plugintesting.git</a>.</p>
+
+<p>I&#8217;ve used a simple example based on the OOTB Contact entity, so it should work when deployed to any freshly created CRM organisation.</p>
+
+<p>Until next time!</p>
+
+<p><img src="https://dl.dropbox.com/u/47685018/Blog/2013/02-14/thesun.jpg" title="I love this game" alt="Praise the Sun" /></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Controlling Access to Dynamics CRM ribbon buttons]]></title>
+    <link href="http://esc-plan.com/blog/2013/01/07/controlling-access-to-dynamics-crm-ribbon-buttons/"/>
+    <updated>2013-01-07T14:46:00+00:00</updated>
+    <id>http://esc-plan.com/blog/2013/01/07/controlling-access-to-dynamics-crm-ribbon-buttons</id>
+    <content type="html"><![CDATA[<p>At the moment I&#8217;m working on a project which is an interesting combination of core Dynamics CRM functionality and a set of custom processes written using ASP.NET MVC 4 and Web API.</p>
+
+<p>Each custom process is something like an [OOTB CRM dialog] - a sequence of screens which the user can progress backwards and forwards through using Next/Previous navigation. At the end of the flow the dialog is completed and a series of CRM records is saved off/workflow invoked or whatever.</p>
+
+<p>While there is much the OOTB CRM dialogs can achieve, they weren&#8217;t a fit for the level of control we required - i.e. a more complex UI and with a slicker user experience and integration with various external systems.</p>
+
+<p>Each process is launched from a custom CRM ribbon button.</p>
+
+<p>In this blog, I&#8217;ll take a look at the access control scheme we chose to restrict access to these processes for particular users.</p>
+
+<!-- more -->
+
+
+<h2>Using Security Roles</h2>
+
+<p>We would like to be able to specify which users have access to certain ribbon buttons using the Dynamics CRM built-in security roles mechanism.</p>
+
+<p>To achieve this, you will need to create a custom entity for each ribbon button you want to hide or display.</p>
+
+<p>For example, for a custom &#8216;Upload File&#8217; button on your Contact ribbon - create a &#8216;new_rbnUploadFile&#8217; entity. (new_ being whatever your organisation prefix actually happens to be).</p>
+
+<p>It&#8217;s a good idea to include RBN in the name to help distinguish entities which are being used for this purpose from any other business oriented custom entities in the schema.</p>
+
+<p>You don&#8217;t need to add anything to this entity definition beyond creating it - it should have the bare minimum of options enabled and &#8216;Organisation&#8217; ownership.</p>
+
+<p>The purpose of this is purely so that we can see it in the Security roles matrix.</p>
+
+<p>It should appear under the &#8216;Custom&#8217; tab for a role like so:</p>
+
+<p><img src="https://dl.dropbox.com/u/47685018/Blog/2013/01-09/Security_Role.png" title="Custom entity permissions" alt="Custom entity permissions" /></p>
+
+<p>So to specify that this role can access the Upload File ribbon button we are setting the &#8216;Write&#8217; permission on it&#8217;s associated entity. Really we could use any of the permissions for this, but what&#8217;s important is that you adopt a convention and &#8216;Read&#8217; or &#8216;Write&#8217;probably make more sense than the others (you don&#8217;t want anyone creating instances of these entities).</p>
+
+<h2>Defining the Display Rule</h2>
+
+<p>To make use of this we will define a Display Rule on the Upload File button which will link it to our custom entity.</p>
+
+<p>Only users or teams with a security role that has a &#8216;Write&#8217; privilege on the RBN Upload File entity will be able to see the button.</p>
+
+<p>This configuration can easily be done using <a href="http://www.develop1.net/public/page/Ribbon-Workbench-for-Dynamics-CRM-2011.aspx">Ribbon Workbench</a>.</p>
+
+<p>We want to add the new button to the Contact form ribbon. For this we create a new Command definition as shown below to which we will add the Display Rule:</p>
+
+<p><img src="https://dl.dropbox.com/u/47685018/Blog/2013/01-09/Add%20Command.png" title="Add Display Rule" alt="Add Display Rule" /></p>
+
+<p>The display rule will consist of a single &#8216;Step&#8217; of type &#8216;Entity Privilege Rule&#8217; as shown below.</p>
+
+<p><img src="https://dl.dropbox.com/u/47685018/Blog/2013/01-09/Rule%20Type.png" title="Entity Privilege Rule" alt="Entity Privilege Rule" /></p>
+
+<p>This rule defines that this ribbon button will only be displayed to users with &#8216;Write&#8217; privileges on the RBN Upload File entity.</p>
+
+<p><img src="https://dl.dropbox.com/u/47685018/Blog/2013/01-09/Entity%20Privilege%20Rule.png" alt="Rule Definitions" /></p>
+
+<p>And that&#8217;s it! We now have a ribbon button which can be hidden or displayed via the user&#8217;s security role.</p>
+
+<h2>Other Options</h2>
+
+<p>Annoyingly the &#8216;Entity Privilege Rule&#8217; is not an option if you&#8217;re considering enabling/disabling the button using this security role controlled method.</p>
+
+<p>The best option here is probably to use the &#8216;Custom JavaScript Rule&#8217; and pass it the custom entity name as a parameter.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Defining Dynamics CRM entities]]></title>
+    <link href="http://esc-plan.com/blog/2012/10/31/defining-crm-entities/"/>
+    <updated>2012-10-31T16:29:00+00:00</updated>
+    <id>http://esc-plan.com/blog/2012/10/31/defining-crm-entities</id>
+    <content type="html"><![CDATA[<p>Over the last few weeks I have been tasked with configuring a sizable Dynamics CRM solution. Having been through a lengthy period of analysis it&#8217;s somewhat nice to be building again. So, I thought it would be useful to reflect on some of the work that&#8217;s led up to this point.</p>
+
+<p>Particularly as regards defining the entities themselves. This is the guts of any CRM project, and I&#8217;m coming to some conclusions around what works and what doesn&#8217;t work so well (and how I&#8217;d ideally like to do it in future).</p>
+
+<p>We&#8217;ve used a combination of two things:</p>
+
+<ul>
+<li>A definition of the entity data. What does this entity actually represent?<br/>
+This is where we say: What fields? Which data types are they?
+What are my OptionSet values? So on and so forth.</li>
+<li>A wireframe defining the layout of the entity&#8217;s main form.</li>
+</ul>
+
+
+<!-- more -->
+
+
+<h2>The Long Slog</h2>
+
+<p>All in all our solution has ~60 custom entities as well as a variety of tweaks and additions to the OOTB standard stuff like Contacts and Accounts.</p>
+
+<p>Some of these have an awful lot of fields.</p>
+
+<p>When it comes to manually creating all of these via the Dynamics administrative GUI, well&#8230; it&#8217;s time to get the headphones in shall we say.</p>
+
+<p>Somewhat unsurprisingly, all of this must be documented in Word. Each entity has a table listing the required fields, the data type, minimum/maximum values any default values and so on.</p>
+
+<p>It&#8217;s a lot of information to capture, and no matter how nicely it&#8217;s formatted it&#8217;s always going to be a dry read for the customer (and the developer, let&#8217;s be honest).</p>
+
+<p><span class='pullquote-right' data-pullquote='Dynamics has quite a tight coupling between this concept of the entity&#8217;s &#8220;data type&#8221; and it&#8217;s appearance in the UI.'>
+Dynamics has quite a tight coupling between this concept of the entity&#8217;s &#8220;data type&#8221; and it&#8217;s appearance in the UI. Of course, when it comes to your documentation it need not be so.</p>
+
+<p>Our preference has been to have one definition for the data and a seperate, rather &#8216;cartoony&#8217; wireframe which exclusively depicts the layout.
+</span></p>
+
+<h2>Power Mockup</h2>
+
+<p><a href="http://www.powermockup.com/">Power Mockup</a>* is a nice wireframing tool which I&#8217;ve used to define a large number of the screens/forms in our solution where specific layout requirements are warranted. It provides a set of easy to use templates from within MS PowerPoint - the learning curve is fairly non-existent and it saves to a common format.</p>
+
+<p>The implication that not all entities require a tailored layout is important. If an entity only has a few fields and its function is purely as reference data item, well&#8230; it probably doesn&#8217;t warrant a screen design all of its own. A bit of common sense should prevail here.</p>
+
+<p>In these cases it&#8217;s sufficient to set a general principle that fields will appear on a form in the order that they appear in the entity&#8217;s data definition (from top to bottom, left to right).</p>
+
+<p>For everything else there&#8217;s a wireframe.</p>
+
+<p>The function of this is to purely show field layout. The data definition already defines the data types of fields, so why duplicate that information in the wireframe?</p>
+
+<p>* <em>Saying Power Mockup in a Ballymena accent may lead to peer ridicule.</em></p>
+
+<h2>Auto-Magic Entity Configurator</h2>
+
+<p>So if all of the data definitions have been captured and documented as part of our analysis, why should it be that we now have to go through this list and manually enter it all once again, this time through the Dynamics UI?</p>
+
+<p><span class='pullquote-right' data-pullquote='I&#8217;m sure there is a better solution to be had here.'>
+I&#8217;m sure there is a better solution to be had here. My feeling is that the <a href="http://msdn.microsoft.com/en-us/library/microsoft.xrm.sdk.messages.createentityrequest.aspx">Create Entity Request</a> class and similar classes used for field creation in the Xrm SDK could usefully automate the entity configuration process.
+</span></p>
+
+<div><script src='https://gist.github.com/3994712.js?file='></script>
+<noscript><pre><code>CreateEntityRequest createrequest = new CreateEntityRequest
+{
+
+    //Define the entity
+    Entity = new EntityMetadata
+    {
+        SchemaName = _customEntityName,
+        DisplayName = new Label(&quot;Bank Account&quot;, 1033),
+        DisplayCollectionName = new Label(&quot;Bank Accounts&quot;, 1033),
+        Description = new Label(&quot;An entity to store information about customer bank accounts&quot;, 1033),
+        OwnershipType = OwnershipTypes.UserOwned,
+        IsActivity = false,
+
+    },
+
+    // Define the primary attribute for the entity
+    PrimaryAttribute = new StringAttributeMetadata
+    {
+        SchemaName = &quot;new_accountname&quot;,
+        RequiredLevel = new AttributeRequiredLevelManagedProperty(AttributeRequiredLevel.None),
+        MaxLength = 100,
+        Format = StringFormat.Text,
+        DisplayName = new Label(&quot;Account Name&quot;, 1033),
+        Description = new Label(&quot;The primary attribute for the Bank Account entity.&quot;, 1033)
+    }
+
+};
+_serviceProxy.Execute(createrequest);
+Console.WriteLine(&quot;The bank account entity has been created.&quot;);</code></pre></noscript></div>
+
+
+<p>What you would need are two files (.csv or similar) which the Automagic Configurator (tm) can read in and parse. It would then call the Dynamics API to do the laborious creation part for you:</p>
+
+<ul>
+<li><p>One is a &#8216;header&#8217; file which defines the general entity information - Name, ownership level, primary attribute etc.
+You must define these separately and up front as it&#8217;s the easiest way to avoid order dependencies when creating Lookup fields in the next file&#8230;</p></li>
+<li><p>The second file contains the field definitions. This captures our data types, min/max values etc.</p></li>
+</ul>
+
+
+<p>Together these files would capture essentially what we&#8217;ve currently been documenting in Word, but would feed directly into the build phase cutting out a lot of grunt work. I always like to avoid grunt work. That&#8217;s what computers are for!</p>
+
+<p>As far as I&#8217;m aware such a tool doesn&#8217;t currently exist. For me it might be a case of, if it doesn&#8217;t come - build it!</p>
+
+<h2>And so</h2>
+
+<p>The alternative to the scenario described is obviously some form of Agile. That almost goes without saying. In this blog, I&#8217;m trying to think of a way to get round doing a whole lot of CRM configuration up front at the start of a build phase after a lengthly period of analysis.</p>
+
+<p>You can feasibly cut down on the overall time by doing your field creation and form definition at once from the Form designer (rather than creating all the fields and <strong>then</strong> firing up the form designer).</p>
+
+<p>The problem is that if you have a whole slew of custom processes for which the CRM configuration is a dependency (as part of a Portal for example) then many of your team are going to be twiddling their thumbs until the underlying entity model is in place (at least, in place to some extent). That means getting the field definitions done has to take priority over form layouts.</p>
+
+<h2>In other news</h2>
+
+<p>As previously mentioned my Raspberry Pi finally arrived last week. Unfortunately it arrived at my parent&#8217;s house deep in the darkest hills. So I still haven&#8217;t got to play with it yet. <a href="http://xbmc.org/about/">XBMC</a> looks like it could be the way to go for me though.</p>
+
+<p>I wonder how long I can keep making blog posts and working in a mention of <a href="http://en.wikipedia.org/wiki/Dark_Souls">Dark Souls</a>? Let&#8217;s find out!</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Moving]]></title>
+    <link href="http://esc-plan.com/blog/2012/10/25/moving/"/>
+    <updated>2012-10-25T16:24:00+01:00</updated>
+    <id>http://esc-plan.com/blog/2012/10/25/moving</id>
+    <content type="html"><![CDATA[<h2>Just Keep Moving</h2>
+
+<p>I&#8217;ve finally got round to re-locating my blog from posterous to it&#8217;s shiny new home on <a href="http://pages.github.com">Github Pages</a>.</p>
+
+<p><span class='pullquote-right' data-pullquote='just needed to give myself the requisite shove'>
+It was a while coming really. I&#8217;ve been a bit desirous of <a href="http://yobriefca.se/">Jame&#8217;s</a> setup using <a href="http://octopress.org/">Octopress</a> for some while now and just needed to give myself the requisite shove to sort it out.</p>
+
+<p>Now all it needs is some shiny content! I&#8217;ll spend some time migrating the old stuff over, then it&#8217;ll be time to plough ahead with some exciting new ramblings!
+</span></p>
+
+<p>I might have something to say on the <a href="http://www.raspberrypi.org/">Raspberry Pi</a> shortly as my order <em>finally</em> shipped after 3 months of tortured waiting.</p>
+
+<p>The <a href="http://www.thedailybrick.co.uk/lego-sets/custom/lego-custom-raspberry-pi-case.html">Lego case</a> is obviously being assembled as we speak&#8230;</p>
+
+<p><strong><em>EDIT</em></strong> Hmm. On second thoughts - lifes too short by far. You can find the old stuff at <a href="http://tswann.posterous.com">tswann.posterous.com</a>. Enjoy!</p>
+]]></content>
+  </entry>
+  
+</feed>
