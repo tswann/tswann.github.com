@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: NoSQL | X1B Plan]]></title>
+  <link href="http://tswann.github.io/blog/categories/nosql/atom.xml" rel="self"/>
+  <link href="http://tswann.github.io/"/>
+  <updated>2013-10-26T22:53:27+01:00</updated>
+  <id>http://tswann.github.io/</id>
+  <author>
+    <name><![CDATA[Tom Swann]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[NoSQL for the .NET Guy: RavenDB]]></title>
+    <link href="http://tswann.github.io/blog/2013/03/04/raven-db-part1/"/>
+    <updated>2013-03-04T21:16:00+00:00</updated>
+    <id>http://tswann.github.io/blog/2013/03/04/raven-db-part1</id>
+    <content type="html"><![CDATA[<p>This is part one of an ongoing series of posts in which I will be taking a delve into at a very nifty document-oriented database: <a href="http://ravendb.net">RavenDB</a>.</p>
+
+<!-- more -->
+
+
+<h2>Too Many Sequels?</h2>
+
+<p>DavenDB belongs to the family of databases described (a bit misleadingly) as NoSQL.</p>
+
+<p>What that means to most people is that it&rsquo;s a database which isn&rsquo;t your more usual relational variety, such as SQL Server, MySQL or Oracle. The query language, or lack thereof is not really at the core of what these data stores are.</p>
+
+<p>It&rsquo;s the lack of the enforced referential integrity in the database itself that primarily distinguishes them from an RDBMS. A high degree of normalisation is usually the goal of traditional databases, whereas the NoSQL variety is distinguished by the opposite &ndash; redundancy and read-optimisation.</p>
+
+<p>As with all things under the sun they&rsquo;re very good for some things and terrible at others.</p>
+
+<p>Anyway, I&rsquo;m not trying to (or capable of) writing a novel on the history of NoSQl here.</p>
+
+<p>My interest in RavenDB is a tad less academic: I&rsquo;ve found it really fun to hack around with!</p>
+
+<p>LET&rsquo;S DO THIS THING.</p>
+
+<p>Some Features:</p>
+
+<ul>
+<li>A JSON based document-oriented database</li>
+<li>Server and client written in .NET Framework v4</li>
+<li>Indexes/queries written using LINQ</li>
+<li>REST interface</li>
+<li>Swanky Web UI management studio</li>
+<li>Runs as a Windows Service, hosted in IIS, embedded or standalone application</li>
+</ul>
+
+
+<h2>Try Out RavenDB</h2>
+
+<p>Trying it out for yourself is a very simple thing &ndash; here&rsquo;s how you can install it and have it up and running in short order:</p>
+
+<ol>
+<li> Download the <a href="http://hibernatingrhinos.com/builds/ravendb-stable">latest stable build</a></li>
+<li> Extract the zip to a desirable location</li>
+<li> In the root of the extracted directory, run Start.cmd</li>
+</ol>
+
+
+<p>This is the most straightforward way to run the software, launching the server in a command window. You should also now find your browser pointing at localhost:8080/raven/studio.html</p>
+
+<p>As this is your first time in you will receive a prompt to create a test database &ndash; give it a cool name:</p>
+
+<p><img src="https://dl.dropbox.com/u/47685018/Blog/2013/03-04/new_db.png" title="Texas Forever" alt="Texas Forever" /></p>
+
+<p>If you double-click your new database to open it up, you can pre-populate it with some test data.</p>
+
+<p>Navigate to Tasks &ndash;> Create Sample Data.</p>
+
+<p>If you now click on &lsquo;Collections&rsquo; you will see two items: Albums and Genres and a long list of sample documents.</p>
+
+<p>Open a few of these up and take a look at JSON format in which the data is stored:</p>
+
+<p><img src="https://dl.dropbox.com/u/47685018/Blog/2013/03-04/document.png" title="Greatest Hits Indeed" alt="Great Hits Indeed" /></p>
+
+<p>Note that you can still have all the Id&rsquo;s you could ever want &ndash; here the Genre refers to another document within the database: genres/1. Remember that the database isn&rsquo;t enforcing the integrity of this data &ndash; that is left entirely up to us.</p>
+
+<p>Note the format of the name of this resource:</p>
+
+<p><blockquote><p>albums/388.</p></blockquote></p>
+
+<p>{resource}/{id} &ndash; That has the look of REST about it, right?</p>
+
+<p>In the next post I&rsquo;ll take a dig into the HTTP interface that RavenDB provides by knocking up a simple .NET client application. We&rsquo;ll also look at the use of LINQ to write indexes/queries and have a look at Map/Reduce (if you ever did any HPC module at uni you&rsquo;ll be familiar with the concepts of crunching big data sets across a cluster of nodes; I swear to god that it&rsquo;s more fun than Fortan MPI though).</p>
+
+<p>I&rsquo;ll also run the RavenDB server as a website hosted within IIS, so that we won&rsquo;t have to leave a command window open the whole time.</p>
+]]></content>
+  </entry>
+  
+</feed>

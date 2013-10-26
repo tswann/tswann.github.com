@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Requirements | X1B Plan]]></title>
+  <link href="http://tswann.github.io/blog/categories/requirements/atom.xml" rel="self"/>
+  <link href="http://tswann.github.io/"/>
+  <updated>2013-10-26T22:53:27+01:00</updated>
+  <id>http://tswann.github.io/</id>
+  <author>
+    <name><![CDATA[Tom Swann]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Defining Dynamics CRM entities]]></title>
+    <link href="http://tswann.github.io/blog/2012/10/31/defining-crm-entities/"/>
+    <updated>2012-10-31T16:29:00+00:00</updated>
+    <id>http://tswann.github.io/blog/2012/10/31/defining-crm-entities</id>
+    <content type="html"><![CDATA[<p>Over the last few weeks I have been tasked with configuring a sizable Dynamics CRM solution. Having been through a lengthy period of analysis it&rsquo;s somewhat nice to be building again. So, I thought it would be useful to reflect on some of the work that&rsquo;s led up to this point.</p>
+
+<p>Particularly as regards defining the entities themselves. This is the guts of any CRM project, and I&rsquo;m coming to some conclusions around what works and what doesn&rsquo;t work so well (and how I&rsquo;d ideally like to do it in future).</p>
+
+<p>We&rsquo;ve used a combination of two things:</p>
+
+<ul>
+<li>A definition of the entity data. What does this entity actually represent?<br/>
+This is where we say: What fields? Which data types are they?
+What are my OptionSet values? So on and so forth.</li>
+<li>A wireframe defining the layout of the entity&rsquo;s main form.</li>
+</ul>
+
+
+<!-- more -->
+
+
+<h2>The Long Slog</h2>
+
+<p>All in all our solution has ~60 custom entities as well as a variety of tweaks and additions to the OOTB standard stuff like Contacts and Accounts.</p>
+
+<p>Some of these have an awful lot of fields.</p>
+
+<p>When it comes to manually creating all of these via the Dynamics administrative GUI, well&hellip; it&rsquo;s time to get the headphones in shall we say.</p>
+
+<p>Somewhat unsurprisingly, all of this must be documented in Word. Each entity has a table listing the required fields, the data type, minimum/maximum values any default values and so on.</p>
+
+<p>It&rsquo;s a lot of information to capture, and no matter how nicely it&rsquo;s formatted it&rsquo;s always going to be a dry read for the customer (and the developer, let&rsquo;s be honest).</p>
+
+<p>Surround your pullquote like this {" text to be quoted "}</p>
+
+<h2>Power Mockup</h2>
+
+<p><a href="http://www.powermockup.com/">Power Mockup</a>* is a nice wireframing tool which I&rsquo;ve used to define a large number of the screens/forms in our solution where specific layout requirements are warranted. It provides a set of easy to use templates from within MS PowerPoint &ndash; the learning curve is fairly non-existent and it saves to a common format.</p>
+
+<p>The implication that not all entities require a tailored layout is important. If an entity only has a few fields and its function is purely as reference data item, well&hellip; it probably doesn&rsquo;t warrant a screen design all of its own. A bit of common sense should prevail here.</p>
+
+<p>In these cases it&rsquo;s sufficient to set a general principle that fields will appear on a form in the order that they appear in the entity&rsquo;s data definition (from top to bottom, left to right).</p>
+
+<p>For everything else there&rsquo;s a wireframe.</p>
+
+<p>The function of this is to purely show field layout. The data definition already defines the data types of fields, so why duplicate that information in the wireframe?</p>
+
+<p>* <em>Saying Power Mockup in a Ballymena accent may lead to peer ridicule.</em></p>
+
+<h2>Auto-Magic Entity Configurator</h2>
+
+<p>So if all of the data definitions have been captured and documented as part of our analysis, why should it be that we now have to go through this list and manually enter it all once again, this time through the Dynamics UI?</p>
+
+<p>Surround your pullquote like this {" text to be quoted "}</p>
+
+<p><div><script src='https://gist.github.com/3994712.js'></script>
+<noscript><pre><code>CreateEntityRequest createrequest = new CreateEntityRequest
+{
+
+    //Define the entity
+    Entity = new EntityMetadata
+    {
+        SchemaName = _customEntityName,
+        DisplayName = new Label(&quot;Bank Account&quot;, 1033),
+        DisplayCollectionName = new Label(&quot;Bank Accounts&quot;, 1033),
+        Description = new Label(&quot;An entity to store information about customer bank accounts&quot;, 1033),
+        OwnershipType = OwnershipTypes.UserOwned,
+        IsActivity = false,
+
+    },
+
+    // Define the primary attribute for the entity
+    PrimaryAttribute = new StringAttributeMetadata
+    {
+        SchemaName = &quot;new_accountname&quot;,
+        RequiredLevel = new AttributeRequiredLevelManagedProperty(AttributeRequiredLevel.None),
+        MaxLength = 100,
+        Format = StringFormat.Text,
+        DisplayName = new Label(&quot;Account Name&quot;, 1033),
+        Description = new Label(&quot;The primary attribute for the Bank Account entity.&quot;, 1033)
+    }
+
+};
+_serviceProxy.Execute(createrequest);
+Console.WriteLine(&quot;The bank account entity has been created.&quot;);</code></pre></noscript></div>
+</p>
+
+<p>What you would need are two files (.csv or similar) which the Automagic Configurator &trade; can read in and parse. It would then call the Dynamics API to do the laborious creation part for you:</p>
+
+<ul>
+<li><p>One is a &lsquo;header&rsquo; file which defines the general entity information &ndash; Name, ownership level, primary attribute etc.
+You must define these separately and up front as it&rsquo;s the easiest way to avoid order dependencies when creating Lookup fields in the next file&hellip;</p></li>
+<li><p>The second file contains the field definitions. This captures our data types, min/max values etc.</p></li>
+</ul>
+
+
+<p>Together these files would capture essentially what we&rsquo;ve currently been documenting in Word, but would feed directly into the build phase cutting out a lot of grunt work. I always like to avoid grunt work. That&rsquo;s what computers are for!</p>
+
+<p>As far as I&rsquo;m aware such a tool doesn&rsquo;t currently exist. For me it might be a case of, if it doesn&rsquo;t come &ndash; build it!</p>
+
+<h2>And so</h2>
+
+<p>The alternative to the scenario described is obviously some form of Agile. That almost goes without saying. In this blog, I&rsquo;m trying to think of a way to get round doing a whole lot of CRM configuration up front at the start of a build phase after a lengthly period of analysis.</p>
+
+<p>You can feasibly cut down on the overall time by doing your field creation and form definition at once from the Form designer (rather than creating all the fields and <strong>then</strong> firing up the form designer).</p>
+
+<p>The problem is that if you have a whole slew of custom processes for which the CRM configuration is a dependency (as part of a Portal for example) then many of your team are going to be twiddling their thumbs until the underlying entity model is in place (at least, in place to some extent). That means getting the field definitions done has to take priority over form layouts.</p>
+
+<h2>In other news</h2>
+
+<p>As previously mentioned my Raspberry Pi finally arrived last week. Unfortunately it arrived at my parent&rsquo;s house deep in the darkest hills. So I still haven&rsquo;t got to play with it yet. <a href="http://xbmc.org/about/">XBMC</a> looks like it could be the way to go for me though.</p>
+
+<p>I wonder how long I can keep making blog posts and working in a mention of <a href="http://en.wikipedia.org/wiki/Dark_Souls">Dark Souls</a>? Let&rsquo;s find out!</p>
+]]></content>
+  </entry>
+  
+</feed>

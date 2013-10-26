@@ -1,0 +1,474 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Dynamics 2011 | X1B Plan]]></title>
+  <link href="http://tswann.github.io/blog/categories/dynamics-2011/atom.xml" rel="self"/>
+  <link href="http://tswann.github.io/"/>
+  <updated>2013-10-26T22:53:27+01:00</updated>
+  <id>http://tswann.github.io/</id>
+  <author>
+    <name><![CDATA[Tom Swann]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Dynamics CRM 2011 Performance Tuning: Part One]]></title>
+    <link href="http://tswann.github.io/blog/2013/10/23/dynamics-crm-performance-tuning/"/>
+    <updated>2013-10-23T12:53:00+01:00</updated>
+    <id>http://tswann.github.io/blog/2013/10/23/dynamics-crm-performance-tuning</id>
+    <content type="html"><![CDATA[<p>In recent months I&rsquo;ve been dealing with some big sets of data as part of a Dynamics CRM 2011 project.</p>
+
+<p>This post is the first in a series that amounts to a bit of a brain dump on the topic of performance &ndash; some lessons learned and some useful techniques for tuning.</p>
+
+<p>I hope to get a somewhat more regular stream of content on here in the coming months. I&rsquo;ve got an eye on Dynamics 2013 and some other non-CRM related gubbins that I&rsquo;ve been pondering as well.</p>
+
+<!-- more -->
+
+
+<h2>Tuning Views</h2>
+
+<p><blockquote><p>Just a note on CRM version &ndash; this tuning was carried out against an on-premise installation running CRM 2011 Rollup 11. Subsequent rollups have included updates specifically to address application performance, so some of this could potentially be of limited relevance in more current versions. Some of it will I&rsquo;m sure still be generally applicable, and probably deep in the realm of common sense.</p></blockquote></p>
+
+<p>Good view design in Dynamics CRM is about really filtering out the noise and presenting users with the information which is most relevant to them.</p>
+
+<p>For big data sets (multiple millions of records) it&rsquo;s rare that you would want a view that didn&rsquo;t do some serious filtering on this, whether that be restricting the view to records belonging to the user, a given date range or a particular option set range.</p>
+
+<p>Views in Dynamics CRM are all paged out of the box; the default page size is 50 with an option to increase this to a maximum of 250 which gets applied for all entities across the board.</p>
+
+<h2>Profiling SQL Server</h2>
+
+<p>If you fire up SQL Server Profiler and take a peek under the hood what you find is that the queries being executed against the database apply a TOP using this configurable value.</p>
+
+<p>Now by and large you would think this to be absolutely fine. However it&rsquo;s possible to get into difficulties and I&rsquo;ve seen a variation of around 20 seconds in the speed of a view loading which was purely down to the sort order of the columns!</p>
+
+<p>Below is the offending order by clause, which was generated for a custom entity:</p>
+
+<p><div><script src='https://gist.github.com/0cc4eea312d1dac7829d.js'></script>
+<noscript><pre><code>order by
+ case &quot;new_claim0&quot;.new_Type 
+ when 948100000 then @new_Type0 
+ when 948100001 then @new_Type1 
+ when 948100002 then @new_Type2 
+ when 948100003 then @new_Type3 
+ when 948100004 then @new_Type 
+ else null end asc</code></pre></noscript></div>
+</p>
+
+<p>@new_TypeX in the above statement equals the textual description of each value in the OptionSet.</p>
+
+<p>The CASE statement in the order by clause here is applied to all the records in that large data set, before the TOP is applied.</p>
+
+<p>If you use a default system generated view which by default filters to show only Active records, and that count of Active records is in the order of millions, then this is going to cause you a major performance problem.</p>
+
+<p>You might not even realise it either. A sort order of some kind is mandatory on a CRM view, and by default the view designer applies this to the first column you add. So if that first column just so happens to be an OptionSet then you could well have this one lurking in your system, just waiting for the record counts to get adequately large to start seriously killing the view response times.</p>
+
+<p>Changing your sort order to a non-option set field &ndash; say a date &ndash; and applying an index to that field in the database will get you right back down to sub 1 second response times. So it&rsquo;s easily enough rectified, but can be easily missed &ndash; remember this is a system designed to be configured by it&rsquo;s business users &ndash; not the sort of people who will be considering the performance of under-the-hood generated SQL.</p>
+
+<h2>Further Reading</h2>
+
+<p>The following article on MSDN contains some more detail on indexing for Dynamics: <a href="http://msdn.microsoft.com/en-us/library/jj126126.aspx"></a></p>
+
+<p>See also the following: <a href="http://technet.microsoft.com/en-us/library/hh413200.aspx#BKMK_Optimize_Data_Tier">Optimizing the Data-Tier</a></p>
+
+<h2>Next Up</h2>
+
+<p>Designing indexes to support your front-end view design and including sensible filters are key to maintaining reasonable performance in a large Dynamics CRM installation.</p>
+
+<p>In a subsequent post I&rsquo;ll look at a few issues to consider when using the Dynamics API. I&rsquo;ll also look at some strategies for data migration.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Unit Testing Dynamics CRM Plugins]]></title>
+    <link href="http://tswann.github.io/blog/2013/02/13/unit-testing-dynamics-crm-plugins/"/>
+    <updated>2013-02-13T12:35:00+00:00</updated>
+    <id>http://tswann.github.io/blog/2013/02/13/unit-testing-dynamics-crm-plugins</id>
+    <content type="html"><![CDATA[<p>In this post I&rsquo;m going to take a look at the dark art of writing unit tests for Dynamics CRM 2011 plugin classes.</p>
+
+<p>OK, so it&rsquo;s not really all that dark, but it can be somewhat tricky if you&rsquo;re not familiar with how the plugin execution pipeline works and what kind of inputs an executing plugin expects to receive.</p>
+
+<p>I have seen approaches to this which involve serializing the plugin context or using <a href="http://research.microsoft.com/en-us/projects/moles/">Moles</a> (not an option for everyone now that this has been deprecated by the pricey <a href="http://msdn.microsoft.com/en-us/library/hh549175.aspx">Fakes</a> framework).</p>
+
+<p>My approach is quite simple and make use of <a href="http://code.google.com/p/moq/">Moq</a>. Rhino Mocks, NSubstitute or other feature-equivalent mocking frameworks should work just as well, so go with your preference.</p>
+
+<!-- more -->
+
+
+<h2>Mocking Dynamics</h2>
+
+<p><img src="https://dl.dropbox.com/u/47685018/Blog/2013/02-14/mocked.png" title="Yes, I've been waiting to use this" alt="Mocking Dynamics CRM" /></p>
+
+<p>Plugins by their nature are stateless and you must invoke a fair bit of mocking voodoo to set up the external pipeline execution context in which they run.</p>
+
+<p>I use a base class for all my plugin tests which contains the following core:</p>
+
+<p><div><script src='https://gist.github.com/4954043.js'></script>
+<noscript><pre><code>using System;
+using System.Collections.Generic;
+using Microsoft.Xrm.Sdk;
+using Microsoft.Xrm.Sdk.Messages;
+using Microsoft.Xrm.Sdk.Metadata;
+using Moq;
+
+namespace X1bplan.PluginTesting.Plugins.Tests.Helpers
+{
+    public abstract class PluginTestBase
+    {
+        #region Constants
+        protected const int STAGE_PREVALIDATION = 10;
+        protected const int STAGE_PREOPERATION = 20;
+        protected const int STAGE_POSTOPERATION = 40;
+        #endregion
+
+        #region Properties
+        protected Mock&lt;IServiceProvider&gt; ServiceProviderMock { get; set; }
+        protected Mock&lt;IOrganizationService&gt; OrganizationServiceMock { get; set; }
+        protected Mock&lt;IOrganizationServiceFactory&gt; OrgServiceFactoryMock { get; set; }
+        protected Mock&lt;IPluginExecutionContext&gt; PipelineContextMock { get; set; }
+        #endregion
+
+        public PluginTestBase()
+        {
+            ServiceProviderMock = new Mock&lt;IServiceProvider&gt;();
+            OrgServiceFactoryMock = new Mock&lt;IOrganizationServiceFactory&gt;();
+            OrganizationServiceMock = new Mock&lt;IOrganizationService&gt;(MockBehavior.Strict);
+            PipelineContextMock = new Mock&lt;IPluginExecutionContext&gt;(MockBehavior.Strict);
+
+            InitializeDefaults();
+        }
+
+        private void InitializeDefaults()
+        {
+            ServiceProviderMock.Setup(s =&gt; s.GetService(typeof(IPluginExecutionContext))).Returns(PipelineContextMock.Object);
+            ServiceProviderMock.Setup(s =&gt; s.GetService(typeof(IOrganizationServiceFactory))).Returns(OrgServiceFactoryMock.Object);
+            OrgServiceFactoryMock.Setup(f =&gt; f.CreateOrganizationService(It.IsAny&lt;Guid&gt;())).Returns(OrganizationServiceMock.Object);
+        }
+    }
+}
+</code></pre></noscript></div>
+</p>
+
+<p>This allows us to hide away some of the usual mock object setup code &ndash; the objects which will be common to every plugin &ndash; the IServiceProvider, IPluginExecutionContext and IOrganisationService.</p>
+
+<p>In our individual plugin classes we can then mock the typical input parameters to the plugin context.</p>
+
+<h2>An Example</h2>
+
+<p>Let&rsquo;s say we have some imaginary business pals. What they would like is for a bit of validation to be triggered whenever someone attempts to delete a Contact record from the CRM database.</p>
+
+<p>If the Contact has any open Task activities outstanding, we would like the system to display an error message and prevent the user from doing so.</p>
+
+<p>We could of course have a piece of custom JavaScript to do this, but we want the logic to be triggered <em>any time</em> a delete occurs, be it via the front end or the API.</p>
+
+<p>The following plugin code will do just that:</p>
+
+<p><div><script src='https://gist.github.com/4954084.js'></script>
+<noscript><pre><code>protected void ExecutePreValidateContactDelete(LocalPluginContext localContext)
+{
+    if (localContext == null)
+    {
+        throw new ArgumentNullException(&quot;localContext&quot;);
+    }
+
+    _service = localContext.OrganizationService;
+
+    EntityReference contact = (EntityReference)localContext.PluginExecutionContext.InputParameters[&quot;Target&quot;];
+    
+    if (HasOpenTasks(contact.Id))
+    {
+        throw new InvalidPluginExecutionException(&quot;This Contact has open Tasks associated with it.\n\nPlease resolve all outstanding tasks before deleting.&quot;);
+    }
+}
+
+private bool HasOpenTasks(Guid contactId)
+{
+    var tasks = GetRelatedTasks(contactId);
+    return tasks.Any();
+}
+
+private IEnumerable&lt;Entity&gt; GetRelatedTasks(Guid contactId)
+{
+    QueryExpression query = new QueryExpression()
+    {
+        EntityName = &quot;task&quot;,
+        ColumnSet = new ColumnSet(true),
+    };
+
+    const int STATE_OPEN = 0;
+    query.Criteria.AddCondition(new ConditionExpression(&quot;regardingobjectid&quot;, ConditionOperator.Equal, contactId));
+    query.Criteria.AddCondition(new ConditionExpression(&quot;statecode&quot;, ConditionOperator.Equal, STATE_OPEN));
+
+    return _service.RetrieveMultiple(query).Entities.ToList&lt;Entity&gt;();
+}</code></pre></noscript></div>
+</p>
+
+<p>For the sake of brevity I have cut all the boiler plate gunk that the  <a href="http://msdn.microsoft.com/en-gb/library/hh547459.aspx">Visual Studio CRM Dev  Toolkit</a> generates when you create a new plugin, leaving only the custom business logic that I actually added myself.</p>
+
+<p>So how about writing an automated unit test for this code?</p>
+
+<p>The purpose of providing mock objects for your unit tests is to isolate them &ndash; removing any dependence on external resources.</p>
+
+<p>As mentioned, plugins are stateless &ndash; all of their dependencies are supplied to the plugin Execute() method by the plugin execution context object which is passed at runtime.</p>
+
+<p>A few of the things that we will need to Mock include:</p>
+
+<ul>
+<li>The Contact object which is causing the plugin to fire</li>
+<li><p>The parameters which identify the action we want to trigger for that contact, namely:</p>
+
+<ol>
+<li>The PrimaryEntityName &ndash; &lsquo;contact&rsquo; in this scenario.</li>
+<li>The &lsquo;Message&rsquo; which identifies the data operation. In our case this is &lsquo;Delete&rsquo;.</li>
+<li>The &lsquo;Stage&rsquo; at which it should execute. We have supplied 10, which means &lsquo;Pre-Validation&rsquo;. Our base test class contains some useful constants for these values.</li>
+<li>The Guid of the calling user. Not used in our example, but could be useful if your code contains logic which is conditional on the use of a particular user account.</li>
+</ol>
+</li>
+<li><p>The methods of the IOrganisationService which our code requires. This is generally going to be a biggie. Our example plugin calls out to RetrieveMultiple, a method which takes a QueryExpression to execute against the CRM server and return a list of entities. We must mock this with an in-memory collection. Typically this is the approach you will take for all such external CRM server calls.</p></li>
+</ul>
+
+
+<h2>Writing a Test</h2>
+
+<p>So, how do we go about this? Thankfully Moq makes it pretty easy to create a lot of dependencies quickly and fluently.</p>
+
+<p><div><script src='https://gist.github.com/4954297.js'></script>
+<noscript><pre><code> [SetUp]
+public void Setup()
+{
+    this.PipelineContextMock.Setup(p =&gt; p.UserId).Returns(Guid.NewGuid);
+    this.PipelineContextMock.Setup(p =&gt; p.PrimaryEntityName).Returns(&quot;contact&quot;);
+    this.PipelineContextMock.Setup(p =&gt; p.Stage).Returns(STAGE_PREVALIDATION);
+}</code></pre></noscript></div>
+</p>
+
+<p>The Setup method above sets some specific values for your suite of tests &ndash; the entity type, user and validation stage.</p>
+
+<p>Below is an example test which sets up the scenario where the validation check fails &ndash; the call to RetrieveMultiple will successfully return a matching open Task associated with the Contact:</p>
+
+<p><div><script src='https://gist.github.com/4954348.js'></script>
+<noscript><pre><code>[Test]
+public void ShouldThrowExceptionIfOpenTaskExists()
+{
+    Entity contact = new Entity()
+    {
+        LogicalName = &quot;contact&quot;,
+        Id = Guid.NewGuid()
+    };
+
+    ParameterCollection parameters = new ParameterCollection();
+    parameters[&quot;Target&quot;] = contact.ToEntityReference();
+    this.PipelineContextMock.Setup(p =&gt; p.InputParameters).Returns(parameters);
+    this.PipelineContextMock.Setup(p =&gt; p.MessageName).Returns(&quot;Delete&quot;);
+    EntityCollection tasks = new EntityCollection() { EntityName = &quot;task&quot;, Entities = { GetRelatedTask(contact.Id) } };
+    this.OrganizationServiceMock.Setup(s =&gt; s.RetrieveMultiple(It.IsAny&lt;QueryExpression&gt;())).Returns(tasks);
+
+    PreValidateContactDelete plugin = new PreValidateContactDelete();
+    var exception = Assert.Throws&lt;InvalidPluginExecutionException&gt;(() =&gt; plugin.Execute(ServiceProviderMock.Object));
+    Assert.That(exception.Message, Is.StringContaining(OPEN_TASKS_EXCEPTION));
+}</code></pre></noscript></div>
+</p>
+
+<p>As you can see there&rsquo;s not much to it &ndash; we just set up the OrganisationService mock object to return a dummy task whenever it gets called within our plugin code under test.</p>
+
+<h2>Write ALL THE TESTS</h2>
+
+<p>I think that goes some way to illustrating that Dynamics plugins can do the TDD thing just like anything else &ndash; all you need are some great tools and <a href="http://code.google.com/p/moq/">Moq</a> is certainly one such.</p>
+
+<p>If you&rsquo;re interested, the full source code for this example can be downloaded from github: <a href="https://github.com/tswann/x1bplan.plugintesting.git">https://github.com/tswann/x1bplan.plugintesting.git</a>.</p>
+
+<p>I&rsquo;ve used a simple example based on the OOTB Contact entity, so it should work when deployed to any freshly created CRM organisation.</p>
+
+<p>Until next time!</p>
+
+<p><img src="https://dl.dropbox.com/u/47685018/Blog/2013/02-14/thesun.jpg" title="I love this game" alt="Praise the Sun" /></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Controlling Access to Dynamics CRM ribbon buttons]]></title>
+    <link href="http://tswann.github.io/blog/2013/01/07/controlling-access-to-dynamics-crm-ribbon-buttons/"/>
+    <updated>2013-01-07T14:46:00+00:00</updated>
+    <id>http://tswann.github.io/blog/2013/01/07/controlling-access-to-dynamics-crm-ribbon-buttons</id>
+    <content type="html"><![CDATA[<p>At the moment I&rsquo;m working on a project which is an interesting combination of core Dynamics CRM functionality and a set of custom processes written using ASP.NET MVC 4 and Web API.</p>
+
+<p>Each custom process is something like an [OOTB CRM dialog] &ndash; a sequence of screens which the user can progress backwards and forwards through using Next/Previous navigation. At the end of the flow the dialog is completed and a series of CRM records is saved off/workflow invoked or whatever.</p>
+
+<p>While there is much the OOTB CRM dialogs can achieve, they weren&rsquo;t a fit for the level of control we required &ndash; i.e. a more complex UI and with a slicker user experience and integration with various external systems.</p>
+
+<p>Each process is launched from a custom CRM ribbon button.</p>
+
+<p>In this blog, I&rsquo;ll take a look at the access control scheme we chose to restrict access to these processes for particular users.</p>
+
+<!-- more -->
+
+
+<h2>Using Security Roles</h2>
+
+<p>We would like to be able to specify which users have access to certain ribbon buttons using the Dynamics CRM built-in security roles mechanism.</p>
+
+<p>To achieve this, you will need to create a custom entity for each ribbon button you want to hide or display.</p>
+
+<p>For example, for a custom &lsquo;Upload File&rsquo; button on your Contact ribbon &ndash; create a &lsquo;new_rbnUploadFile&rsquo; entity. (new_ being whatever your organisation prefix actually happens to be).</p>
+
+<p>It&rsquo;s a good idea to include RBN in the name to help distinguish entities which are being used for this purpose from any other business oriented custom entities in the schema.</p>
+
+<p>You don&rsquo;t need to add anything to this entity definition beyond creating it &ndash; it should have the bare minimum of options enabled and &lsquo;Organisation&rsquo; ownership.</p>
+
+<p>The purpose of this is purely so that we can see it in the Security roles matrix.</p>
+
+<p>It should appear under the &lsquo;Custom&rsquo; tab for a role like so:</p>
+
+<p><img src="https://dl.dropbox.com/u/47685018/Blog/2013/01-09/Security_Role.png" title="Custom entity permissions" alt="Custom entity permissions" /></p>
+
+<p>So to specify that this role can access the Upload File ribbon button we are setting the &lsquo;Write&rsquo; permission on it&rsquo;s associated entity. Really we could use any of the permissions for this, but what&rsquo;s important is that you adopt a convention and &lsquo;Read&rsquo; or &lsquo;Write'probably make more sense than the others (you don&rsquo;t want anyone creating instances of these entities).</p>
+
+<h2>Defining the Display Rule</h2>
+
+<p>To make use of this we will define a Display Rule on the Upload File button which will link it to our custom entity.</p>
+
+<p>Only users or teams with a security role that has a &lsquo;Write&rsquo; privilege on the RBN Upload File entity will be able to see the button.</p>
+
+<p>This configuration can easily be done using <a href="http://www.develop1.net/public/page/Ribbon-Workbench-for-Dynamics-CRM-2011.aspx">Ribbon Workbench</a>.</p>
+
+<p>We want to add the new button to the Contact form ribbon. For this we create a new Command definition as shown below to which we will add the Display Rule:</p>
+
+<p><img src="https://dl.dropbox.com/u/47685018/Blog/2013/01-09/Add%20Command.png" title="Add Display Rule" alt="Add Display Rule" /></p>
+
+<p>The display rule will consist of a single &lsquo;Step&rsquo; of type &lsquo;Entity Privilege Rule&rsquo; as shown below.</p>
+
+<p><img src="https://dl.dropbox.com/u/47685018/Blog/2013/01-09/Rule%20Type.png" title="Entity Privilege Rule" alt="Entity Privilege Rule" /></p>
+
+<p>This rule defines that this ribbon button will only be displayed to users with &lsquo;Write&rsquo; privileges on the RBN Upload File entity.</p>
+
+<p><img src="https://dl.dropbox.com/u/47685018/Blog/2013/01-09/Entity%20Privilege%20Rule.png" alt="Rule Definitions" /></p>
+
+<p>And that&rsquo;s it! We now have a ribbon button which can be hidden or displayed via the user&rsquo;s security role.</p>
+
+<h2>Other Options</h2>
+
+<p>Annoyingly the &lsquo;Entity Privilege Rule&rsquo; is not an option if you&rsquo;re considering enabling/disabling the button using this security role controlled method.</p>
+
+<p>The best option here is probably to use the &lsquo;Custom JavaScript Rule&rsquo; and pass it the custom entity name as a parameter.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Defining Dynamics CRM entities]]></title>
+    <link href="http://tswann.github.io/blog/2012/10/31/defining-crm-entities/"/>
+    <updated>2012-10-31T16:29:00+00:00</updated>
+    <id>http://tswann.github.io/blog/2012/10/31/defining-crm-entities</id>
+    <content type="html"><![CDATA[<p>Over the last few weeks I have been tasked with configuring a sizable Dynamics CRM solution. Having been through a lengthy period of analysis it&rsquo;s somewhat nice to be building again. So, I thought it would be useful to reflect on some of the work that&rsquo;s led up to this point.</p>
+
+<p>Particularly as regards defining the entities themselves. This is the guts of any CRM project, and I&rsquo;m coming to some conclusions around what works and what doesn&rsquo;t work so well (and how I&rsquo;d ideally like to do it in future).</p>
+
+<p>We&rsquo;ve used a combination of two things:</p>
+
+<ul>
+<li>A definition of the entity data. What does this entity actually represent?<br/>
+This is where we say: What fields? Which data types are they?
+What are my OptionSet values? So on and so forth.</li>
+<li>A wireframe defining the layout of the entity&rsquo;s main form.</li>
+</ul>
+
+
+<!-- more -->
+
+
+<h2>The Long Slog</h2>
+
+<p>All in all our solution has ~60 custom entities as well as a variety of tweaks and additions to the OOTB standard stuff like Contacts and Accounts.</p>
+
+<p>Some of these have an awful lot of fields.</p>
+
+<p>When it comes to manually creating all of these via the Dynamics administrative GUI, well&hellip; it&rsquo;s time to get the headphones in shall we say.</p>
+
+<p>Somewhat unsurprisingly, all of this must be documented in Word. Each entity has a table listing the required fields, the data type, minimum/maximum values any default values and so on.</p>
+
+<p>It&rsquo;s a lot of information to capture, and no matter how nicely it&rsquo;s formatted it&rsquo;s always going to be a dry read for the customer (and the developer, let&rsquo;s be honest).</p>
+
+<p>Surround your pullquote like this {" text to be quoted "}</p>
+
+<h2>Power Mockup</h2>
+
+<p><a href="http://www.powermockup.com/">Power Mockup</a>* is a nice wireframing tool which I&rsquo;ve used to define a large number of the screens/forms in our solution where specific layout requirements are warranted. It provides a set of easy to use templates from within MS PowerPoint &ndash; the learning curve is fairly non-existent and it saves to a common format.</p>
+
+<p>The implication that not all entities require a tailored layout is important. If an entity only has a few fields and its function is purely as reference data item, well&hellip; it probably doesn&rsquo;t warrant a screen design all of its own. A bit of common sense should prevail here.</p>
+
+<p>In these cases it&rsquo;s sufficient to set a general principle that fields will appear on a form in the order that they appear in the entity&rsquo;s data definition (from top to bottom, left to right).</p>
+
+<p>For everything else there&rsquo;s a wireframe.</p>
+
+<p>The function of this is to purely show field layout. The data definition already defines the data types of fields, so why duplicate that information in the wireframe?</p>
+
+<p>* <em>Saying Power Mockup in a Ballymena accent may lead to peer ridicule.</em></p>
+
+<h2>Auto-Magic Entity Configurator</h2>
+
+<p>So if all of the data definitions have been captured and documented as part of our analysis, why should it be that we now have to go through this list and manually enter it all once again, this time through the Dynamics UI?</p>
+
+<p>Surround your pullquote like this {" text to be quoted "}</p>
+
+<p><div><script src='https://gist.github.com/3994712.js'></script>
+<noscript><pre><code>CreateEntityRequest createrequest = new CreateEntityRequest
+{
+
+    //Define the entity
+    Entity = new EntityMetadata
+    {
+        SchemaName = _customEntityName,
+        DisplayName = new Label(&quot;Bank Account&quot;, 1033),
+        DisplayCollectionName = new Label(&quot;Bank Accounts&quot;, 1033),
+        Description = new Label(&quot;An entity to store information about customer bank accounts&quot;, 1033),
+        OwnershipType = OwnershipTypes.UserOwned,
+        IsActivity = false,
+
+    },
+
+    // Define the primary attribute for the entity
+    PrimaryAttribute = new StringAttributeMetadata
+    {
+        SchemaName = &quot;new_accountname&quot;,
+        RequiredLevel = new AttributeRequiredLevelManagedProperty(AttributeRequiredLevel.None),
+        MaxLength = 100,
+        Format = StringFormat.Text,
+        DisplayName = new Label(&quot;Account Name&quot;, 1033),
+        Description = new Label(&quot;The primary attribute for the Bank Account entity.&quot;, 1033)
+    }
+
+};
+_serviceProxy.Execute(createrequest);
+Console.WriteLine(&quot;The bank account entity has been created.&quot;);</code></pre></noscript></div>
+</p>
+
+<p>What you would need are two files (.csv or similar) which the Automagic Configurator &trade; can read in and parse. It would then call the Dynamics API to do the laborious creation part for you:</p>
+
+<ul>
+<li><p>One is a &lsquo;header&rsquo; file which defines the general entity information &ndash; Name, ownership level, primary attribute etc.
+You must define these separately and up front as it&rsquo;s the easiest way to avoid order dependencies when creating Lookup fields in the next file&hellip;</p></li>
+<li><p>The second file contains the field definitions. This captures our data types, min/max values etc.</p></li>
+</ul>
+
+
+<p>Together these files would capture essentially what we&rsquo;ve currently been documenting in Word, but would feed directly into the build phase cutting out a lot of grunt work. I always like to avoid grunt work. That&rsquo;s what computers are for!</p>
+
+<p>As far as I&rsquo;m aware such a tool doesn&rsquo;t currently exist. For me it might be a case of, if it doesn&rsquo;t come &ndash; build it!</p>
+
+<h2>And so</h2>
+
+<p>The alternative to the scenario described is obviously some form of Agile. That almost goes without saying. In this blog, I&rsquo;m trying to think of a way to get round doing a whole lot of CRM configuration up front at the start of a build phase after a lengthly period of analysis.</p>
+
+<p>You can feasibly cut down on the overall time by doing your field creation and form definition at once from the Form designer (rather than creating all the fields and <strong>then</strong> firing up the form designer).</p>
+
+<p>The problem is that if you have a whole slew of custom processes for which the CRM configuration is a dependency (as part of a Portal for example) then many of your team are going to be twiddling their thumbs until the underlying entity model is in place (at least, in place to some extent). That means getting the field definitions done has to take priority over form layouts.</p>
+
+<h2>In other news</h2>
+
+<p>As previously mentioned my Raspberry Pi finally arrived last week. Unfortunately it arrived at my parent&rsquo;s house deep in the darkest hills. So I still haven&rsquo;t got to play with it yet. <a href="http://xbmc.org/about/">XBMC</a> looks like it could be the way to go for me though.</p>
+
+<p>I wonder how long I can keep making blog posts and working in a mention of <a href="http://en.wikipedia.org/wiki/Dark_Souls">Dark Souls</a>? Let&rsquo;s find out!</p>
+]]></content>
+  </entry>
+  
+</feed>

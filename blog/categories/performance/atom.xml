@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Performance | X1B Plan]]></title>
+  <link href="http://tswann.github.io/blog/categories/performance/atom.xml" rel="self"/>
+  <link href="http://tswann.github.io/"/>
+  <updated>2013-10-26T22:53:27+01:00</updated>
+  <id>http://tswann.github.io/</id>
+  <author>
+    <name><![CDATA[Tom Swann]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Dynamics CRM 2011 Performance Tuning: Part One]]></title>
+    <link href="http://tswann.github.io/blog/2013/10/23/dynamics-crm-performance-tuning/"/>
+    <updated>2013-10-23T12:53:00+01:00</updated>
+    <id>http://tswann.github.io/blog/2013/10/23/dynamics-crm-performance-tuning</id>
+    <content type="html"><![CDATA[<p>In recent months I&rsquo;ve been dealing with some big sets of data as part of a Dynamics CRM 2011 project.</p>
+
+<p>This post is the first in a series that amounts to a bit of a brain dump on the topic of performance &ndash; some lessons learned and some useful techniques for tuning.</p>
+
+<p>I hope to get a somewhat more regular stream of content on here in the coming months. I&rsquo;ve got an eye on Dynamics 2013 and some other non-CRM related gubbins that I&rsquo;ve been pondering as well.</p>
+
+<!-- more -->
+
+
+<h2>Tuning Views</h2>
+
+<p><blockquote><p>Just a note on CRM version &ndash; this tuning was carried out against an on-premise installation running CRM 2011 Rollup 11. Subsequent rollups have included updates specifically to address application performance, so some of this could potentially be of limited relevance in more current versions. Some of it will I&rsquo;m sure still be generally applicable, and probably deep in the realm of common sense.</p></blockquote></p>
+
+<p>Good view design in Dynamics CRM is about really filtering out the noise and presenting users with the information which is most relevant to them.</p>
+
+<p>For big data sets (multiple millions of records) it&rsquo;s rare that you would want a view that didn&rsquo;t do some serious filtering on this, whether that be restricting the view to records belonging to the user, a given date range or a particular option set range.</p>
+
+<p>Views in Dynamics CRM are all paged out of the box; the default page size is 50 with an option to increase this to a maximum of 250 which gets applied for all entities across the board.</p>
+
+<h2>Profiling SQL Server</h2>
+
+<p>If you fire up SQL Server Profiler and take a peek under the hood what you find is that the queries being executed against the database apply a TOP using this configurable value.</p>
+
+<p>Now by and large you would think this to be absolutely fine. However it&rsquo;s possible to get into difficulties and I&rsquo;ve seen a variation of around 20 seconds in the speed of a view loading which was purely down to the sort order of the columns!</p>
+
+<p>Below is the offending order by clause, which was generated for a custom entity:</p>
+
+<p><div><script src='https://gist.github.com/0cc4eea312d1dac7829d.js'></script>
+<noscript><pre><code>order by
+ case &quot;new_claim0&quot;.new_Type 
+ when 948100000 then @new_Type0 
+ when 948100001 then @new_Type1 
+ when 948100002 then @new_Type2 
+ when 948100003 then @new_Type3 
+ when 948100004 then @new_Type 
+ else null end asc</code></pre></noscript></div>
+</p>
+
+<p>@new_TypeX in the above statement equals the textual description of each value in the OptionSet.</p>
+
+<p>The CASE statement in the order by clause here is applied to all the records in that large data set, before the TOP is applied.</p>
+
+<p>If you use a default system generated view which by default filters to show only Active records, and that count of Active records is in the order of millions, then this is going to cause you a major performance problem.</p>
+
+<p>You might not even realise it either. A sort order of some kind is mandatory on a CRM view, and by default the view designer applies this to the first column you add. So if that first column just so happens to be an OptionSet then you could well have this one lurking in your system, just waiting for the record counts to get adequately large to start seriously killing the view response times.</p>
+
+<p>Changing your sort order to a non-option set field &ndash; say a date &ndash; and applying an index to that field in the database will get you right back down to sub 1 second response times. So it&rsquo;s easily enough rectified, but can be easily missed &ndash; remember this is a system designed to be configured by it&rsquo;s business users &ndash; not the sort of people who will be considering the performance of under-the-hood generated SQL.</p>
+
+<h2>Further Reading</h2>
+
+<p>The following article on MSDN contains some more detail on indexing for Dynamics: <a href="http://msdn.microsoft.com/en-us/library/jj126126.aspx"></a></p>
+
+<p>See also the following: <a href="http://technet.microsoft.com/en-us/library/hh413200.aspx#BKMK_Optimize_Data_Tier">Optimizing the Data-Tier</a></p>
+
+<h2>Next Up</h2>
+
+<p>Designing indexes to support your front-end view design and including sensible filters are key to maintaining reasonable performance in a large Dynamics CRM installation.</p>
+
+<p>In a subsequent post I&rsquo;ll look at a few issues to consider when using the Dynamics API. I&rsquo;ll also look at some strategies for data migration.</p>
+]]></content>
+  </entry>
+  
+</feed>

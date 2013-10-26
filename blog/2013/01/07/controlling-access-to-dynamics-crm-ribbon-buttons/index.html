@@ -1,0 +1,355 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Controlling Access to Dynamics CRM ribbon buttons - X1B Plan</title>
+  <meta name="author" content="Tom Swann">
+
+  
+  <meta name="description" content="At the moment I&rsquo;m working on a project which is an interesting combination of core Dynamics CRM functionality and a set of custom processes &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://tswann.github.io/blog/2013/01/07/controlling-access-to-dynamics-crm-ribbon-buttons">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="X1B Plan" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-35614675-2']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">X1B Plan</a></h1>
+  
+    <h2>.NET; Dynamics CRM; General Tech.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:tswann.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Controlling Access to Dynamics CRM Ribbon Buttons</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-01-07T14:46:00+00:00" pubdate data-updated="true">Jan 7<span>th</span>, 2013</time>
+        
+           | <a href="#disqus_thread"
+             data-disqus-identifier="http://tswann.github.io">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>At the moment I&rsquo;m working on a project which is an interesting combination of core Dynamics CRM functionality and a set of custom processes written using ASP.NET MVC 4 and Web API.</p>
+
+<p>Each custom process is something like an [OOTB CRM dialog] &ndash; a sequence of screens which the user can progress backwards and forwards through using Next/Previous navigation. At the end of the flow the dialog is completed and a series of CRM records is saved off/workflow invoked or whatever.</p>
+
+<p>While there is much the OOTB CRM dialogs can achieve, they weren&rsquo;t a fit for the level of control we required &ndash; i.e. a more complex UI and with a slicker user experience and integration with various external systems.</p>
+
+<p>Each process is launched from a custom CRM ribbon button.</p>
+
+<p>In this blog, I&rsquo;ll take a look at the access control scheme we chose to restrict access to these processes for particular users.</p>
+
+<!-- more -->
+
+
+<h2>Using Security Roles</h2>
+
+<p>We would like to be able to specify which users have access to certain ribbon buttons using the Dynamics CRM built-in security roles mechanism.</p>
+
+<p>To achieve this, you will need to create a custom entity for each ribbon button you want to hide or display.</p>
+
+<p>For example, for a custom &lsquo;Upload File&rsquo; button on your Contact ribbon &ndash; create a &lsquo;new_rbnUploadFile&rsquo; entity. (new_ being whatever your organisation prefix actually happens to be).</p>
+
+<p>It&rsquo;s a good idea to include RBN in the name to help distinguish entities which are being used for this purpose from any other business oriented custom entities in the schema.</p>
+
+<p>You don&rsquo;t need to add anything to this entity definition beyond creating it &ndash; it should have the bare minimum of options enabled and &lsquo;Organisation&rsquo; ownership.</p>
+
+<p>The purpose of this is purely so that we can see it in the Security roles matrix.</p>
+
+<p>It should appear under the &lsquo;Custom&rsquo; tab for a role like so:</p>
+
+<p><img src="https://dl.dropbox.com/u/47685018/Blog/2013/01-09/Security_Role.png" title="Custom entity permissions" alt="Custom entity permissions" /></p>
+
+<p>So to specify that this role can access the Upload File ribbon button we are setting the &lsquo;Write&rsquo; permission on it&rsquo;s associated entity. Really we could use any of the permissions for this, but what&rsquo;s important is that you adopt a convention and &lsquo;Read&rsquo; or &lsquo;Write&#8217;probably make more sense than the others (you don&rsquo;t want anyone creating instances of these entities).</p>
+
+<h2>Defining the Display Rule</h2>
+
+<p>To make use of this we will define a Display Rule on the Upload File button which will link it to our custom entity.</p>
+
+<p>Only users or teams with a security role that has a &lsquo;Write&rsquo; privilege on the RBN Upload File entity will be able to see the button.</p>
+
+<p>This configuration can easily be done using <a href="http://www.develop1.net/public/page/Ribbon-Workbench-for-Dynamics-CRM-2011.aspx">Ribbon Workbench</a>.</p>
+
+<p>We want to add the new button to the Contact form ribbon. For this we create a new Command definition as shown below to which we will add the Display Rule:</p>
+
+<p><img src="https://dl.dropbox.com/u/47685018/Blog/2013/01-09/Add%20Command.png" title="Add Display Rule" alt="Add Display Rule" /></p>
+
+<p>The display rule will consist of a single &lsquo;Step&rsquo; of type &lsquo;Entity Privilege Rule&rsquo; as shown below.</p>
+
+<p><img src="https://dl.dropbox.com/u/47685018/Blog/2013/01-09/Rule%20Type.png" title="Entity Privilege Rule" alt="Entity Privilege Rule" /></p>
+
+<p>This rule defines that this ribbon button will only be displayed to users with &lsquo;Write&rsquo; privileges on the RBN Upload File entity.</p>
+
+<p><img src="https://dl.dropbox.com/u/47685018/Blog/2013/01-09/Entity%20Privilege%20Rule.png" alt="Rule Definitions" /></p>
+
+<p>And that&rsquo;s it! We now have a ribbon button which can be hidden or displayed via the user&rsquo;s security role.</p>
+
+<h2>Other Options</h2>
+
+<p>Annoyingly the &lsquo;Entity Privilege Rule&rsquo; is not an option if you&rsquo;re considering enabling/disabling the button using this security role controlled method.</p>
+
+<p>The best option here is probably to use the &lsquo;Custom JavaScript Rule&rsquo; and pass it the custom entity name as a parameter.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Tom Swann</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-01-07T14:46:00+00:00" pubdate data-updated="true">Jan 7<span>th</span>, 2013</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/dynamics-2011/'>Dynamics 2011</a>, <a class='category' href='/blog/categories/security/'>Security</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://tswann.github.io/blog/2013/01/07/controlling-access-to-dynamics-crm-ribbon-buttons/" data-via="Tam_III" data-counturl="http://tswann.github.io/blog/2013/01/07/controlling-access-to-dynamics-crm-ribbon-buttons/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2012/10/31/defining-crm-entities/" title="Previous Post: Defining Dynamics CRM entities">&laquo; Defining Dynamics CRM entities</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2013/02/13/unit-testing-dynamics-crm-plugins/" title="Next Post: Unit Testing Dynamics CRM Plugins">Unit Testing Dynamics CRM Plugins &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/10/23/dynamics-crm-performance-tuning/">Dynamics CRM 2011 Performance Tuning: Part One</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/05/31/birdtrack-and-the-power-of-citizen-science/">BirdTrack and the Power of Citizen Science</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/03/22/what-is-newsql/">What Is NewSQL?</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/03/04/raven-db-part1/">NoSQL for the .NET Guy: RavenDB</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/02/13/unit-testing-dynamics-crm-plugins/">Unit Testing Dynamics CRM Plugins</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/tswann">@tswann</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'tswann',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Tom Swann -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'x1bplan';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://tswann.github.io/blog/2013/01/07/controlling-access-to-dynamics-crm-ribbon-buttons/';
+        var disqus_url = 'http://tswann.github.io/blog/2013/01/07/controlling-access-to-dynamics-crm-ribbon-buttons/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
