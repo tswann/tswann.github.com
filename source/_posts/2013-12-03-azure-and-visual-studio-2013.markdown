@@ -81,15 +81,15 @@ It's already available to MSDN subsribers, so you should check it out.
 
 Beyond the editor, there are some other really cool features in the works:
 
-- Agile Teams. Michael demoed a number of Agile specific features such as an integrated Kanban board (I'd like to have a play with this and see how it compares to Trello), burndown charts, and Team Room. This last one is basically Yet Another Chat Room, but it does have a lot of desirable features like history and logs, integrated activity feeds (think check-ins, work items and drill-down to TFS).
+- __Agile Teams:__ Michael demoed a number of Agile specific features such as an integrated Kanban board (I'd like to have a play with this and see how it compares to Trello), burndown charts, and Team Room. This last one is basically Yet Another Chat Room, but it does have a lot of desirable features like history and logs, integrated activity feeds (think check-ins, work items and drill-down to TFS).
 
-- Code lens/HUDS. Think of this as little customizable plugins which git above your methods and classes just below the comments. Can be customized to included all kind of different info like test results, code metrics and so on.
+- __Code lens/HUDS:__ Think of this as little customizable plugins which git above your methods and classes just below the comments. Can be customized to included all kind of different info like test results, code metrics and so on.
 
-- Preview/Outline pane - i.e. as you will find in Sublime Text
+- __Preview/Outline pane:__ i.e. as you will already find in Sublime Text
 
-- History based navigation. Again in line with the shift towards the browser we see the introduction of Back and Forward buttons in the solution explorer and the main window
+- __History based navigation:__ Again in line with the shift towards the browser we see the introduction of Back and Forward buttons in the solution explorer and the main window
 
-- Alt + F12. This now has a peek function were you can look at the contents of a class without actually opening a new tab.
+- __Alt + F12:__ This now has a peek function were you can look at the contents of a class without actually opening a new tab.
 
 I loved the little factoid that MS groups users into two groups when it comes to Tabs. Those who open ALL THE TABS until it becomes unmanageable and they nuke everything with a "Close All" and the OCD tab manager, who closes everything the moment they think they're done.
 
