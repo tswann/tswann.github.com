@@ -83,11 +83,11 @@ Beyond the editor, there are some other really cool features in the works:
 
 - __Agile Teams:__ Michael demoed a number of Agile specific features such as an integrated Kanban board (I'd like to have a play with this and see how it compares to Trello), burndown charts, and Team Room. This last one is basically Yet Another Chat Room, but it does have a lot of desirable features like history and logs, integrated activity feeds (think check-ins, work items and drill-down to TFS).
 
-- __Code lens/HUDS:__ Think of this as little customizable plugins which git above your methods and classes just below the comments. Can be customized to included all kind of different info like test results, code metrics and so on.
+- __Code lens/HUDS:__ Think of this as little customizable plugins which sit above your method and class definitions just below the comments. Can be customized to included all kind of different info like latest test results, code metrics and so on.
 
-- __Preview/Outline pane:__ i.e. as you will already find in Sublime Text
+- __Preview/Outline pane:__ i.e. as you will already find in Sublime Text.
 
-- __History based navigation:__ Again in line with the shift towards the browser we see the introduction of Back and Forward buttons in the solution explorer and the main window
+- __History based navigation:__ Again in line with the shift towards the browser we see the introduction of Back and Forward buttons in the solution explorer and the main window.
 
 - __Alt + F12:__ This now has a peek function were you can look at the contents of a class without actually opening a new tab.
 
