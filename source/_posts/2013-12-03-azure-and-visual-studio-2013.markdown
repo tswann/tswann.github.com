@@ -5,7 +5,7 @@ date: 2013-12-03 16:26
 comments: true
 categories: [Azure, Visual Studio 2013]
 ---
-Yesterday I had the pleasure of attending a Microsoft event down in the impressive [Helix](http://thehelix.ie/) theatre at Dublin City University. 
+On Monday I had the pleasure of attending a Microsoft event down in the impressive [Helix](http://thehelix.ie/) theatre at Dublin City University. 
 
 This featured Scott Guthrie on Azure accompanied by a variety of other guest speakers covering topics such as Visual Studio 2013, F# and Xamarin. Lots of interesting stuff and really well attended.
 
