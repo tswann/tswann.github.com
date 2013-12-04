@@ -4,7 +4,7 @@
   <title><![CDATA[X1B Plan]]></title>
   <link href="http://tswann.github.io/atom.xml" rel="self"/>
   <link href="http://tswann.github.io/"/>
-  <updated>2013-12-04T10:17:09+00:00</updated>
+  <updated>2013-12-04T10:22:14+00:00</updated>
   <id>http://tswann.github.io/</id>
   <author>
     <name><![CDATA[Tom Swann]]></name>
@@ -18,7 +18,7 @@
     <link href="http://tswann.github.io/blog/2013/12/03/azure-and-visual-studio-2013/"/>
     <updated>2013-12-03T16:26:00+00:00</updated>
     <id>http://tswann.github.io/blog/2013/12/03/azure-and-visual-studio-2013</id>
-    <content type="html"><![CDATA[<p>Yesterday I had the pleasure of attending a Microsoft event down in the impressive Helix theatre at Dublin City University.</p>
+    <content type="html"><![CDATA[<p>Yesterday I had the pleasure of attending a Microsoft event down in the impressive <a href="http://thehelix.ie/">Helix</a> theatre at Dublin City University.</p>
 
 <p>This featured Scott Guthrie on Azure accompanied by a variety of other guest speakers covering topics such as Visual Studio 2013, F# and Xamarin. Lots of interesting stuff and really well attended.</p>
 
@@ -54,7 +54,7 @@
 
 <p>Coolest gadgetry of the day probably goes to the Visual Studio Azure remote debugger. Scott demonstrated debugging into a process running on an Azure VM connected via VPN. He also demoed the Resource Browser in Visual Studio which allows you to browse all your Azure resources, restart VMs and so on without going through the portal. All really cool stuff.</p>
 
-<h2>It aint just MicroSoft</h2>
+<h2>It aint just Microsoft</h2>
 
 <p>A point that Scott was keen to stress is that it&rsquo;s not just .NET that&rsquo;s running on Azure. As well as ASP.NET, websites can also be written in node.js, PHP, ruby, Python or Java.</p>
 
@@ -66,9 +66,7 @@
 
 <p>Unfortunately we didn&rsquo;t get on to things like logging, telemetry, Hadoop and Active Directory single sign on &ndash; time went over and then ran out.</p>
 
-<p>Overall a really informative session.</p>
-
-<p>The most important information for MSDN subsrcibers out there is just how much you get for free and it made me really think I should be doing more with my own sub. A Premium MSDN sub would allow you to run 3 VMs for 16 hours a day each month for absolutely no monies.</p>
+<p>The most important information for MSDN subsrcibers out there is just how much you get for free. A Premium MSDN sub would allow you to run 3 VMs for 16 hours a day each month for absolutely no monies &ndash; pretty cool.</p>
 
 <h2>Visual Studio 2013</h2>
 
