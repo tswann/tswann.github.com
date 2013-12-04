@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Visual Studio 2013 | X1B Plan]]></title>
   <link href="http://tswann.github.io/blog/categories/visual-studio-2013/atom.xml" rel="self"/>
   <link href="http://tswann.github.io/"/>
-  <updated>2013-12-04T10:22:14+00:00</updated>
+  <updated>2013-12-04T15:53:22+00:00</updated>
   <id>http://tswann.github.io/</id>
   <author>
     <name><![CDATA[Tom Swann]]></name>
@@ -18,7 +18,7 @@
     <link href="http://tswann.github.io/blog/2013/12/03/azure-and-visual-studio-2013/"/>
     <updated>2013-12-03T16:26:00+00:00</updated>
     <id>http://tswann.github.io/blog/2013/12/03/azure-and-visual-studio-2013</id>
-    <content type="html"><![CDATA[<p>Yesterday I had the pleasure of attending a Microsoft event down in the impressive <a href="http://thehelix.ie/">Helix</a> theatre at Dublin City University.</p>
+    <content type="html"><![CDATA[<p>On Monday I had the pleasure of attending a Microsoft event down in the impressive <a href="http://thehelix.ie/">Helix</a> theatre at Dublin City University.</p>
 
 <p>This featured Scott Guthrie on Azure accompanied by a variety of other guest speakers covering topics such as Visual Studio 2013, F# and Xamarin. Lots of interesting stuff and really well attended.</p>
 
@@ -48,7 +48,7 @@
 
 <p>All of this is configurable via the Azure dashboard, but is also scriptable at the CLI. Good for automation via powershell scripts and obviously via build tools like msbuild, or something non-awful like psake.</p>
 
-<p>Interestingly it&rsquo;s all doable from within Visual Studio 2013 as well. That&rsquo;s a bit of a philosophical battle waiting to happen. It&rsquo;s interesting how MS are positioning VS as the package which has it all, certainly doing all this Ops stuff from within an IDE seems like dodgy ground to me.</p>
+<p>Interestingly it&rsquo;s all doable from within Visual Studio 2013 as well. That&rsquo;s a bit of a philosophical battle waiting to happen. It&rsquo;s interesting how MS are positioning VS as the package which has it all, certainly tightly coupling all this Ops business to an IDE is considered by many to be dodgy territory.</p>
 
 <p>A lot of the features above were put to use in a demo around using Azure VMs for a Dev/Test example scenario.</p>
 
