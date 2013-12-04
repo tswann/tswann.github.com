@@ -4,7 +4,7 @@
   <title><![CDATA[X1B Plan]]></title>
   <link href="http://tswann.github.io/atom.xml" rel="self"/>
   <link href="http://tswann.github.io/"/>
-  <updated>2013-12-04T15:53:22+00:00</updated>
+  <updated>2013-12-04T16:09:01+00:00</updated>
   <id>http://tswann.github.io/</id>
   <author>
     <name><![CDATA[Tom Swann]]></name>
@@ -91,11 +91,11 @@
 <p>Beyond the editor, there are some other really cool features in the works:</p>
 
 <ul>
-<li><p>Agile Teams. Michael demoed a number of Agile specific features such as an integrated Kanban board (I&rsquo;d like to have a play with this and see how it compares to Trello), burndown charts, and Team Room. This last one is basically Yet Another Chat Room, but it does have a lot of desirable features like history and logs, integrated activity feeds (think check-ins, work items and drill-down to TFS).</p></li>
-<li><p>Code lens/HUDS. Think of this as little customizable plugins which git above your methods and classes just below the comments. Can be customized to included all kind of different info like test results, code metrics and so on.</p></li>
-<li><p>Preview/Outline pane &ndash; i.e. as you will find in Sublime Text</p></li>
-<li><p>History based navigation. Again in line with the shift towards the browser we see the introduction of Back and Forward buttons in the solution explorer and the main window</p></li>
-<li><p>Alt + F12. This now has a peek function were you can look at the contents of a class without actually opening a new tab.</p></li>
+<li><p><strong>Agile Teams:</strong> Michael demoed a number of Agile specific features such as an integrated Kanban board (I&rsquo;d like to have a play with this and see how it compares to Trello), burndown charts, and Team Room. This last one is basically Yet Another Chat Room, but it does have a lot of desirable features like history and logs, integrated activity feeds (think check-ins, work items and drill-down to TFS).</p></li>
+<li><p><strong>Code lens/HUDS:</strong> Think of this as little customizable plugins which sit above your method and class definitions just below the comments. Can be customized to included all kind of different info like latest test results, code metrics and so on.</p></li>
+<li><p><strong>Preview/Outline pane:</strong> i.e. as you will already find in Sublime Text.</p></li>
+<li><p><strong>History based navigation:</strong> Again in line with the shift towards the browser we see the introduction of Back and Forward buttons in the solution explorer and the main window.</p></li>
+<li><p><strong>Alt + F12:</strong> This now has a peek function were you can look at the contents of a class without actually opening a new tab.</p></li>
 </ul>
 
 
