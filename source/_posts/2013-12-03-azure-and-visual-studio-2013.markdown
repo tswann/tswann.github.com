@@ -34,7 +34,7 @@ Cool stuff wot was shown:
 
 All of this is configurable via the Azure dashboard, but is also scriptable at the CLI. Good for automation via powershell scripts and obviously via build tools like msbuild, or something non-awful like psake.
 
-Interestingly it's all doable from within Visual Studio 2013 as well. That's a bit of a philosophical battle waiting to happen. It's interesting how MS are positioning VS as the package which has it all, certainly doing all this Ops stuff from within an IDE seems like dodgy ground to me.
+Interestingly it's all doable from within Visual Studio 2013 as well. That's a bit of a philosophical battle waiting to happen. It's interesting how MS are positioning VS as the package which has it all, certainly tightly coupling all this Ops business to an IDE is considered by many to be dodgy territory.
 
 A lot of the features above were put to use in a demo around using Azure VMs for a Dev/Test example scenario.
 
