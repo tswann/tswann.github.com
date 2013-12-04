@@ -5,7 +5,7 @@ date: 2013-12-03 16:26
 comments: true
 categories: [Azure, Visual Studio 2013]
 ---
-Yesterday I had the pleasure of attending a Microsoft event down in the impressive Helix theatre at Dublin City University. 
+Yesterday I had the pleasure of attending a Microsoft event down in the impressive [Helix](http://thehelix.ie/) theatre at Dublin City University. 
 
 This featured Scott Guthrie on Azure accompanied by a variety of other guest speakers covering topics such as Visual Studio 2013, F# and Xamarin. Lots of interesting stuff and really well attended.
 
@@ -40,7 +40,7 @@ A lot of the features above were put to use in a demo around using Azure VMs for
 
 Coolest gadgetry of the day probably goes to the Visual Studio Azure remote debugger. Scott demonstrated debugging into a process running on an Azure VM connected via VPN. He also demoed the Resource Browser in Visual Studio which allows you to browse all your Azure resources, restart VMs and so on without going through the portal. All really cool stuff.
 
-It aint just MicroSoft
+It aint just Microsoft
 ----------------------
 
 A point that Scott was keen to stress is that it's not just .NET that's running on Azure. As well as ASP.NET, websites can also be written in node.js, PHP, ruby, Python or Java.
@@ -54,9 +54,7 @@ FREE STUFF
 
 Unfortunately we didn't get on to things like logging, telemetry, Hadoop and Active Directory single sign on - time went over and then ran out.
 
-Overall a really informative session.
-
-The most important information for MSDN subsrcibers out there is just how much you get for free and it made me really think I should be doing more with my own sub. A Premium MSDN sub would allow you to run 3 VMs for 16 hours a day each month for absolutely no monies.
+The most important information for MSDN subsrcibers out there is just how much you get for free. A Premium MSDN sub would allow you to run 3 VMs for 16 hours a day each month for absolutely no monies - pretty cool.
 
 
 Visual Studio 2013
