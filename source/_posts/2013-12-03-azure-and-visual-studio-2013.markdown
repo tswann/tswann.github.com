@@ -62,9 +62,9 @@ Visual Studio 2013
 
 Michael Koester gave a talk on VS 2013 and he's a really engaging speaker! He endeared himself to the crowd almost immediately by admitting that his Munich accent makes him sound somewhat like a WWII movie villain.
 
-I have to say that I'd taken somewhat of an issue with the new look and feel of VS and Office 365 et al.
+I haven't been particularly taken with the new look and feel of VS and Office 365. It seems to be relying heavily on proximity of elements without much in the way of visual boundaries.
 
-Michael explained that this new 'Content over Chrome' philosophy was intended to make anything which isn't content "fade into the background".
+Michael explained that this new 'Content over Chrome' philosophy was intended to make anything which isn't content "fade into the background". And sure enough not much "pops".
 
 Most people I've talked to find it overwhelmingly GRAY.
 
