@@ -4,7 +4,7 @@
   <title><![CDATA[X1B Plan]]></title>
   <link href="http://tswann.github.io/atom.xml" rel="self"/>
   <link href="http://tswann.github.io/"/>
-  <updated>2014-01-28T21:49:23+00:00</updated>
+  <updated>2014-01-28T22:06:37+00:00</updated>
   <id>http://tswann.github.io/</id>
   <author>
     <name><![CDATA[Tom Swann]]></name>
@@ -146,8 +146,6 @@ public class AutoMapperProfile : Profile
 <h2>Non-Functional Requirements</h2>
 
 <p>The performance achieved when loading into Dynamics CRM via the SOAP web service can be slow if you are dealing with a single Application server instance. Gains can be made by scaling up the DB and App servers, however the biggest gains will come from installing multiple instances of the App server in a load balanced configuration and running your Load process in parallel against each one. This might be your only option to achieve practical timings when dealing with big sets of records (say 50 million + and if you only have a weekend in which to complete your migration).</p>
-
-<p>The following whitepaper goes into more detail about how to scale-out a Dynamics installation for integration, very similar to the process desribed above:</p>
 
 <p>Some other performance points to consider:</p>
 
