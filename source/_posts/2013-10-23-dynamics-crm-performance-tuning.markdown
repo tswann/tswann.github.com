@@ -61,3 +61,5 @@ Next Up
 Designing indexes to support your front-end view design and including sensible filters are key to maintaining reasonable performance in a large Dynamics CRM installation.
 
 In a subsequent post I'll look at a few issues to consider when using the Dynamics API. I'll also look at some strategies for data migration.
+
+__*EDIT*__ Follow-up to this post now available: [Dynamics CRM Data Migration](http://esc-plan.com/blog/2014/01/25/dynamics-crm-data-migration/)
