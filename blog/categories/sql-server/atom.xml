@@ -4,7 +4,7 @@
   <title><![CDATA[Category: SQL Server | X1B Plan]]></title>
   <link href="http://tswann.github.io/blog/categories/sql-server/atom.xml" rel="self"/>
   <link href="http://tswann.github.io/"/>
-  <updated>2013-12-04T16:43:27+00:00</updated>
+  <updated>2014-01-28T19:14:05+00:00</updated>
   <id>http://tswann.github.io/</id>
   <author>
     <name><![CDATA[Tom Swann]]></name>
@@ -77,6 +77,8 @@
 <p>Designing indexes to support your front-end view design and including sensible filters are key to maintaining reasonable performance in a large Dynamics CRM installation.</p>
 
 <p>In a subsequent post I&rsquo;ll look at a few issues to consider when using the Dynamics API. I&rsquo;ll also look at some strategies for data migration.</p>
+
+<p><strong><em>EDIT</em></strong> Follow-up to this post now available: <a href="http://esc-plan.com/blog/2014/01/25/dynamics-crm-data-migration/">Dynamics CRM Data Migration</a></p>
 ]]></content>
   </entry>
   
