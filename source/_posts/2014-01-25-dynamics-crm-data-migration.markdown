@@ -121,8 +121,6 @@ Non-Functional Requirements
 
 The performance achieved when loading into Dynamics CRM via the SOAP web service can be slow if you are dealing with a single Application server instance. Gains can be made by scaling up the DB and App servers, however the biggest gains will come from installing multiple instances of the App server in a load balanced configuration and running your Load process in parallel against each one. This might be your only option to achieve practical timings when dealing with big sets of records (say 50 million + and if you only have a weekend in which to complete your migration).
 
-The following whitepaper goes into more detail about how to scale-out a Dynamics installation for integration, very similar to the process desribed above: 
-
 Some other performance points to consider:
 
 - Turning off plugins and workflows. This can be done programatically via the API, so include pre and post migration steps in your Loader code to disable and re-enable these.
