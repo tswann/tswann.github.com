@@ -30,7 +30,7 @@ A common scenario for undertaking a data migration exercise is one where the cus
 
 There could be many reasons why this might be the case; here are just a few:
 
-- Mis-alignment with business goals (e.g. the business may wish to adopt a more lean, customer-centric philosphy. Old systems often tend to be product centric. This is a common scenario when migrating to Dynamics CRM.)
+- Mis-alignment with business goals (e.g. the business may wish to adopt a more lean, customer-centric philosophy. Old systems often tend to be product-centric. This is a common scenario when migrating to Dynamics CRM.)
 - Older technology does not offer easy extensibility.
 - Costly licensing/support.
 - Language requires specialised skills making it difficult to come by individuals capable of maintaining it.
