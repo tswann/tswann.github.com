@@ -4,7 +4,7 @@
   <title><![CDATA[X1B Plan]]></title>
   <link href="http://tswann.github.io/atom.xml" rel="self"/>
   <link href="http://tswann.github.io/"/>
-  <updated>2014-01-28T19:14:05+00:00</updated>
+  <updated>2014-01-28T21:49:23+00:00</updated>
   <id>http://tswann.github.io/</id>
   <author>
     <name><![CDATA[Tom Swann]]></name>
@@ -46,7 +46,7 @@
 <p>There could be many reasons why this might be the case; here are just a few:</p>
 
 <ul>
-<li>Mis-alignment with business goals (e.g. the business may wish to adopt a more lean, customer-centric philosphy. Old systems often tend to be product centric. This is a common scenario when migrating to Dynamics CRM.)</li>
+<li>Mis-alignment with business goals (e.g. the business may wish to adopt a more lean, customer-centric philosophy. Old systems often tend to be product-centric. This is a common scenario when migrating to Dynamics CRM.)</li>
 <li>Older technology does not offer easy extensibility.</li>
 <li>Costly licensing/support.</li>
 <li>Language requires specialised skills making it difficult to come by individuals capable of maintaining it.</li>
