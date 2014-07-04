@@ -137,7 +137,7 @@ The Cloud is our friend. The Cloud affords us the possibility of on-demand acces
 
 At the 'Big Data' scale, infrastructure is an intrisic part of the question. Hadoop was first and foremost the response to an engineering problem.
 
-Parallelism is hard. Nework programming is hard. The goal of Hadoop is to abstract these concerns away from the user and allow them to concentrate on the challenge of the analytics problem itself, and not get bogged down in failure modes and plumbing.
+Parallelism is hard. Network programming is hard. The goal of Hadoop is to abstract these concerns away from the user and allow them to concentrate on the challenge of the analytics problem itself, and not get bogged down in failure modes and plumbing.
 
 To quote from Eric Sammer's excellent book [Hadoop Operations](http://shop.oreilly.com/product/0636920025085.do), 25% of the physical storage space in a Hadoop cluster should be reserved for intermediate data. That's all the throw-away results which MapReduce generates as it gets to the _real_ answer which you want to come out the other side. Big Data analysis itself generates an awful lot of data.
 
