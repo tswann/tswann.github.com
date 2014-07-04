@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Hadoop | X1B Plan]]></title>
+  <link href="http://tswann.github.io/blog/categories/hadoop/atom.xml" rel="self"/>
+  <link href="http://tswann.github.io/"/>
+  <updated>2014-07-04T23:01:23+01:00</updated>
+  <id>http://tswann.github.io/</id>
+  <author>
+    <name><![CDATA[Tom Swann]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Thoughtworks Big Data Briefing]]></title>
+    <link href="http://tswann.github.io/blog/2014/07/04/thoughtworks-big-data-briefing/"/>
+    <updated>2014-07-04T16:00:00+01:00</updated>
+    <id>http://tswann.github.io/blog/2014/07/04/thoughtworks-big-data-briefing</id>
+    <content type="html"><![CDATA[<p>Last night I arrived in Manchester to attend <a href="http://www.thoughtworks.com/events">Thoughtworks</a> quarterly tech briefing. What dragged me all the way from Belfast? David Elliman speaking on the subject of Big Data.</p>
+
+<p>It was well worth the trip. There was a serious amount of content packed into the two hours.</p>
+
+<p>Below the jump you can find my notes and additional ruminating.</p>
+
+<!-- more -->
+
+
+<h2>The &lsquo;Big&rsquo; In Big Data misses the point</h2>
+
+<p>Taking the title of a previous <a href="http://www.thoughtworks.com/insights/blog/big-big-data-misses-point">blog post</a> by David highlighting the vagueness of the term as a starting point, the first &lsquo;section&rsquo; of the talk focused on the definition itself, the underlying problem and the opportunity.</p>
+
+<p>Big Data seems to be a term universally disliked, at least by people who like clear definitions and dislike buzzword bingo &ndash; largely engineers I guess.</p>
+
+<p>We started with the traditional definition of the three V&rsquo;s, that is:</p>
+
+<ul>
+<li>Volume: amount of stuff</li>
+<li>Velocity: high rate of new stuff arriving</li>
+<li>Variety: stuff from many sources</li>
+</ul>
+
+
+<p>You can start appending additional V words which aren&rsquo;t actually measures of magnitude to this definition (veracity, verisimilitude, I dunno&hellip;) At which point we&rsquo;ve clearly given up on the definition being useful and entered <a href="https://www.youtube.com/watch?v=PPN3KTtrnZM&amp;feature=kp">Monty Python</a> territory.</p>
+
+<p>However, the &lsquo;V&rsquo; which <em>is</em> of primary interest to us is indeed none of these, but &ldquo;Value&rdquo;.</p>
+
+<p>This point is addressed shortly, but first a hail of bullets for part 1 of the session:</p>
+
+<ul>
+<li><p>The Big Data opportunity cuts across a wide spectrum of industries, but principally:</p>
+
+<ul>
+<li>Retail</li>
+<li>Finance</li>
+<li>Healthcare</li>
+</ul>
+</li>
+<li><p>The Internet Of Things &ndash; that is, connected autonomous devices &ndash; is set to explode. 50 billion connected devices by 2020.</p></li>
+<li><p><a href="http://wikibon.org/">Wikibon</a> forecast of Big Data industry growth:</p>
+
+<ul>
+<li>In 2012: $5.1 billion</li>
+<li>In 2017: $53.4 billion</li>
+</ul>
+</li>
+</ul>
+
+
+<p>The last time I saw this 2017 figure wheeled out it was more like $30b, so either we&rsquo;re getting worse at forecasting or the growth really is picking up considerable momentum &ndash; something David has noticed as well and commented on.</p>
+
+<h2>Setting Out</h2>
+
+<p>So back to that &lsquo;V&rsquo; of value. The key takeaway from the next part of the talk was that normal Agile practice applies in any kind of analytics delivery.</p>
+
+<ul>
+<li>Start small</li>
+<li>Create value</li>
+<li>Iterate and build on it</li>
+</ul>
+
+
+<p>Immediately reaching for the Hadoop cluster, and the big scaling infrastructure toolset is probably not where you want to start out. Build small, simple models frequently.</p>
+
+<p>If you can define a concrete problem and start delivering immediate value then it becomes easier for an organisation to take the next step up in scale.</p>
+
+<p>What &lsquo;Value&rsquo; we&rsquo;re talking about in this context was left unmentioned, probably because there is no general answer.</p>
+
+<p>Though at the Big Data/Data Science end of the analytics scale, we probably mean increased efficiency, MI, automation.</p>
+
+<p>A few enumerated steps, to move us towards a better understanding of what we need to do:</p>
+
+<h2>1. What are your analysis goals?</h2>
+
+<hr />
+
+<p>There are four broad categories of analytics that an organisation can choose to implement:</p>
+
+<ul>
+<li>Descriptive <em>(What happened?)</em></li>
+<li>Diagnostic <em>(Why did it happen?)</em></li>
+<li>Predictive <em>(What is likely to happen?)</em></li>
+<li>Prescriptive <em>(How can we make things happen?)</em></li>
+</ul>
+
+
+<p><img src="https://dl.dropboxusercontent.com/u/47685018/img/analytics%20goals.png" title="Analysis Goals" alt="Analysis Goals" /></p>
+
+<p>The question we have to answer is where does the requirements of any given organisation fall on the chart above?</p>
+
+<p>Value and complexity both increase for each distinct flavour of analytics, and we can expect a greater level of differentiation from what our competitors are doing as we move further to the top right.</p>
+
+<p>As an aside, this comes back to an argument around what sets Data Science appart from traditional statistical modeling.</p>
+
+<p>One line of thought is that when we step into building predictive systems, we have moved away from vanilla statistics and into the world of Data Science.</p>
+
+<p>We&rsquo;re considering a system which not only ingests data for analysis, but also outputs data which is in turn fed back into the model.</p>
+
+<p>A nice quote from <a href="http://en.wikipedia.org/wiki/Cathy_O'Neil">Cathy O'Neil</a> in her book &ldquo;Doing Data Science&rdquo;:</p>
+
+<blockquote><p>This is very different from predicting the weather, say, where your model doesn’t influence the outcome at all. For example, you might predict it will rain next week, and unless you have some powers we don’t know about, you’re not going to cause it to rain.</p></blockquote>
+
+<p>Behaviour (of users) influences the system and the system in turn influences behaviour. This is the concept of the &ldquo;data product&rdquo;, be it Netflix recommendations or a smart electricity grid.</p>
+
+<h2>2. Start With Standard Tools</h2>
+
+<hr />
+
+<p>The bulk of innovation in analytics and Big Data tooling has been driven by open source.</p>
+
+<p><em>Embrace freely available, common tools.</em></p>
+
+<p>In line with the goal to start small and build, most of us already know the type of tools which are useful for cleaning and working with structured and semi-structured data. Tools which have stood the test of time:</p>
+
+<ul>
+<li><p>The shell: grep, sed, awk. There&rsquo;s not much you can&rsquo;t do with text using this toolset alone.</p></li>
+<li><p><a href="http://www.r-project.org/">R</a> &ndash; Statistical programming language, and you may be surprised to learn, the 2nd most popular data analysis tool after SQL</p></li>
+<li><p><a href="https://www.python.org/">Python</a> &ndash; Pythons library support for mathematical and scientific functionality makes it a popular choice in this domain</p></li>
+<li><p><a href="http://d3js.org/">D3.js</a> &ndash; powerful JavaScript library for data visualisation</p></li>
+</ul>
+
+
+<p>There is an interesting 80/20 rule when it comes to analytics activities:</p>
+
+<ul>
+<li>80% of effort is data cleaning</li>
+<li>20% is doing something with it</li>
+</ul>
+
+
+<h2>3. Use The Right Structure</h2>
+
+<hr />
+
+<p>Remember <a href="http://www-cs-faculty.stanford.edu/~uno/">Knuth</a>. Picking the correct data structure(s) is a massive factor in framing and driving your analytics exercise. Consider how you currently model data and ask how you could do it differently.</p>
+
+<p>The example given was <a href="http://neo4j.com/">Neo4j</a> and graphing relationships between employees in a global organisational structure.</p>
+
+<p>The data structure maps to the problem domain. There is no &lsquo;analytics&rsquo; here as such, but by applying a structure to the data which fits our goal of mapping relationships &ndash; the choice of structure itself gets us 90% of the way. To do the same thing in a traditional RDBMS or key/value store would require a lot of hoop jumping.</p>
+
+<h2>Scaling Out</h2>
+
+<p>The next step &ndash; and the &ldquo;big&rdquo; challenge &ndash; is to take our ideas and models which have been based on a statistical sampling and prove them at scale.</p>
+
+<p>There is an impedence mismatch here between what works for a sample, and what will work for a &lsquo;Big Data&rsquo; set. I&rsquo;ve seen this in the development of Hadoop jobs, which I&rsquo;ll come back to.</p>
+
+<p>The Cloud is our friend. The Cloud affords us the possibility of on-demand access to compute resources that would otherwise prove to be a prohibitive cost. An interesting figure shown was that 47% of cloud vendors revenue comes from servicing the needs of Big Data operations. The two things are conceptually a snug fit.</p>
+
+<p>At the &lsquo;Big Data&rsquo; scale, infrastructure is an intrisic part of the question. Hadoop was first and foremost the response to an engineering problem.</p>
+
+<p>Parallelism is hard. Nework programming is hard. The goal of Hadoop is to abstract these concerns away from the user and allow them to concentrate on the challenge of the analytics problem itself, and not get bogged down in failure modes and plumbing.</p>
+
+<p>To quote from Eric Sammer&rsquo;s excellent book <a href="http://shop.oreilly.com/product/0636920025085.do">Hadoop Operations</a>, 25% of the physical storage space in a Hadoop cluster should be reserved for intermediate data. That&rsquo;s all the throw-away results which MapReduce generates as it gets to the <em>real</em> answer which you want to come out the other side. Big Data analysis itself generates an awful lot of data.</p>
+
+<p>In a massively scaled system, even a small amount of latency can be amplified exponentially. That could be the act of boxing/unboxing Java types unnecessarily in a MapReduce job or it could be shuffling data across the network without any form of compression.</p>
+
+<p>These are examples of the type of problem that can arise from taking a solution that works on a sample and bringing it to the big data domain without considering the scale issue.</p>
+
+<p>I guess you could draw a parallel with the fallacies of network programming &ndash; if bandwidth isn&rsquo;t infinite then neither is memory!</p>
+
+<h2>Architecture</h2>
+
+<p>The final section of the talk was reserved for the question of Big Data architecture.</p>
+
+<p><a href="http://lambda-architecture.net/">The Lambda Architecture</a> is a term used for describing an architecture that tries to consolidate the two primary types of processing that can be brought to bear on big data sets; that is batch and real-time.</p>
+
+<p>MapReduce is fundamentally a batch processing system geared towards analysing whole data sets &ndash; so historical, complete picture kind of analysis.</p>
+
+<p>The need for real-time turnaround has led to the development of event processing frameworks like Apache Storm, Spark and alternatives to the traditional abstraction layers on top of MapReduce, Hive and Pig. Alternatives like Cloudera&rsquo;s Impala.</p>
+
+<p>One slide which was very funny was a comparison of the Hadoop ecosystem and vendor landscape in 2011 and what it looks like now &ndash; that is, a fine grained mosaic of logos which you can barely read. The pace of change and engagement in this field at the moment is incredible &ndash; incredibly confusing!</p>
+
+<p>We&rsquo;ve already passed well into TL;DR territory here, so I may return with a seperate post on the Lambda architecture when I&rsquo;ve read up and know a bit more.</p>
+
+<h2>And Finally</h2>
+
+<p>All in all a very informative and thought-provoking talk from <a href="http://www.thoughtworks.com/">Thoughworks</a>.</p>
+
+<p>And we haven&rsquo;t even got to security, privacy, new frameworks like Google Cascading. This stuff fills days of many a conference, never mind an evening get together.</p>
+
+<p>As for me, you&rsquo;ll see less CRM content and more on Hadoop on this blog over the coming months as I delve deeper into the Big Data and analytics landscape.
+Hadoop and whichever of those other myriad platforms, tools and vendors land within my field of vision.</p>
+
+<p>Exciting times.</p>
+]]></content>
+  </entry>
+  
+</feed>
