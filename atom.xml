@@ -4,7 +4,7 @@
   <title><![CDATA[X1B Plan]]></title>
   <link href="http://tswann.github.io/atom.xml" rel="self"/>
   <link href="http://tswann.github.io/"/>
-  <updated>2014-07-04T23:30:42+01:00</updated>
+  <updated>2014-07-05T00:41:18+01:00</updated>
   <id>http://tswann.github.io/</id>
   <author>
     <name><![CDATA[Tom Swann]]></name>
@@ -169,7 +169,7 @@
 
 <p>At the &lsquo;Big Data&rsquo; scale, infrastructure is an intrisic part of the question. Hadoop was first and foremost the response to an engineering problem.</p>
 
-<p>Parallelism is hard. Nework programming is hard. The goal of Hadoop is to abstract these concerns away from the user and allow them to concentrate on the challenge of the analytics problem itself, and not get bogged down in failure modes and plumbing.</p>
+<p>Parallelism is hard. Network programming is hard. The goal of Hadoop is to abstract these concerns away from the user and allow them to concentrate on the challenge of the analytics problem itself, and not get bogged down in failure modes and plumbing.</p>
 
 <p>To quote from Eric Sammer&rsquo;s excellent book <a href="http://shop.oreilly.com/product/0636920025085.do">Hadoop Operations</a>, 25% of the physical storage space in a Hadoop cluster should be reserved for intermediate data. That&rsquo;s all the throw-away results which MapReduce generates as it gets to the <em>real</em> answer which you want to come out the other side. Big Data analysis itself generates an awful lot of data.</p>
 
