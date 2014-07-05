@@ -135,7 +135,7 @@ There is an impedence mismatch here between what works for a sample, and what wi
 
 The Cloud is our friend. The Cloud affords us the possibility of on-demand access to compute resources that would otherwise prove to be a prohibitive cost. An interesting figure shown was that 47% of cloud vendors revenue comes from servicing the needs of Big Data operations. The two things are conceptually a snug fit.
 
-At the 'Big Data' scale, infrastructure is an intrisic part of the question. Hadoop was first and foremost the response to an engineering problem.
+At Big Data scale, infrastructure is an intrisic part of the question. Hadoop was first and foremost the response to an engineering problem.
 
 Parallelism is hard. Network programming is hard. The goal of Hadoop is to abstract these concerns away from the user and allow them to concentrate on the challenge of the analytics problem itself, and not get bogged down in failure modes and plumbing.
 
@@ -154,9 +154,9 @@ The final section of the talk was reserved for the question of Big Data architec
 
 [The Lambda Architecture](http://lambda-architecture.net/) is a term used for describing an architecture that tries to consolidate the two primary types of processing that can be brought to bear on big data sets; that is batch and real-time.
 
-MapReduce is fundamentally a batch processing system geared towards analysing whole data sets - so historical, complete picture kind of analysis.
+MapReduce is fundamentally a batch processing system geared towards analysing whole data sets - so historical, "complete picture" forms of analysis.
 
-The need for real-time turnaround has led to the development of event processing frameworks like Apache Storm, Spark and alternatives to the traditional abstraction layers on top of MapReduce, Hive and Pig. Alternatives like Cloudera's Impala.
+The need for real-time turnaround has led to the development of event processing frameworks like Apache Storm, the in-memory framework Spark and alternatives to the traditional abstraction layers on top of MapReduce, Hive and Pig - tools like Cloudera's Impala.
 
 One slide which was very funny was a comparison of the Hadoop ecosystem and vendor landscape in 2011 and what it looks like now - that is, a fine grained mosaic of logos which you can barely read. The pace of change and engagement in this field at the moment is incredible - incredibly confusing!
 
