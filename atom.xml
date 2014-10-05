@@ -1,0 +1,1216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[X1B Plan]]></title>
+  <link href="http://esc-plan.com/atom.xml" rel="self"/>
+  <link href="http://esc-plan.com/"/>
+  <updated>2014-10-05T10:19:09+01:00</updated>
+  <id>http://esc-plan.com/</id>
+  <author>
+    <name><![CDATA[Tom Swann]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Thoughtworks Big Data Briefing]]></title>
+    <link href="http://esc-plan.com/blog/2014/07/04/thoughtworks-big-data-briefing/"/>
+    <updated>2014-07-04T16:00:00+01:00</updated>
+    <id>http://esc-plan.com/blog/2014/07/04/thoughtworks-big-data-briefing</id>
+    <content type="html"><![CDATA[<p>Last night I arrived in Manchester to attend <a href="http://www.thoughtworks.com/events">Thoughtworks</a> quarterly tech briefing. What dragged me all the way from Belfast? David Elliman speaking on the subject of Big Data.</p>
+
+<p>It was well worth the trip. There was a serious amount of content packed into the two hours.</p>
+
+<p>Below the jump you can find my notes and additional ruminating.</p>
+
+<!-- more -->
+
+
+<h2>The &lsquo;Big&rsquo; In Big Data misses the point</h2>
+
+<p>Taking the title of a previous <a href="http://www.thoughtworks.com/insights/blog/big-big-data-misses-point">blog post</a> by David highlighting the vagueness of the term as a starting point, the first &lsquo;section&rsquo; of the talk focused on the definition itself, the underlying problem and the opportunity.</p>
+
+<p>Big Data seems to be a term universally disliked, at least by people who like clear definitions and dislike buzzword bingo - largely engineers I guess.</p>
+
+<p>We started with the traditional definition of the three V&rsquo;s, that is:</p>
+
+<ul>
+<li>Volume: amount of stuff</li>
+<li>Velocity: high rate of new stuff arriving</li>
+<li>Variety: stuff from many sources</li>
+</ul>
+
+
+<p>You can start appending additional V words which aren&rsquo;t actually measures of magnitude to this definition (veracity, verisimilitude, I dunno&hellip;) At which point we&rsquo;ve clearly given up on the definition being useful and entered <a href="https://www.youtube.com/watch?v=PPN3KTtrnZM&amp;feature=kp">Monty Python</a> territory.</p>
+
+<p>However, the &lsquo;V&rsquo; which <em>is</em> of primary interest to us is indeed none of these, but &ldquo;Value&rdquo;.</p>
+
+<p>This point is addressed shortly, but first a hail of bullets for part 1 of the session:</p>
+
+<ul>
+<li><p>The Big Data opportunity cuts across a wide spectrum of industries, but principally:</p>
+
+<ul>
+<li>Retail</li>
+<li>Finance</li>
+<li>Healthcare</li>
+</ul>
+</li>
+<li><p>The Internet Of Things - that is, connected autonomous devices - is set to explode. 50 billion connected devices by 2020.</p></li>
+<li><p><a href="http://wikibon.org/">Wikibon</a> forecast of Big Data industry growth:</p>
+
+<ul>
+<li>In 2012: $5.1 billion</li>
+<li>In 2017: $53.4 billion</li>
+</ul>
+</li>
+</ul>
+
+
+<p>The last time I saw this 2017 figure wheeled out it was more like $30b, so either we&rsquo;re getting worse at forecasting or the growth really is picking up considerable momentum - something David has noticed as well and commented on.</p>
+
+<h2>Setting Out</h2>
+
+<p>So back to that &lsquo;V&rsquo; of value. The key takeaway from the next part of the talk was that normal Agile practice applies in any kind of analytics delivery.</p>
+
+<ul>
+<li>Start small</li>
+<li>Create value</li>
+<li>Iterate and build on it</li>
+</ul>
+
+
+<p>Immediately reaching for the Hadoop cluster, and the big scaling infrastructure toolset is probably not where you want to start out. Build small, simple models frequently.</p>
+
+<p>If you can define a concrete problem and start delivering immediate value then it becomes easier for an organisation to take the next step up in scale.</p>
+
+<p>What &lsquo;Value&rsquo; we&rsquo;re talking about in this context was left unmentioned, probably because there is no general answer.</p>
+
+<p>Though at the Big Data/Data Science end of the analytics scale, we probably mean increased efficiency, MI, automation.</p>
+
+<p>A few enumerated steps, to move us towards a better understanding of what we need to do:</p>
+
+<h2>1. What are your analysis goals?</h2>
+
+<hr />
+
+<p>There are four broad categories of analytics that an organisation can choose to implement:</p>
+
+<ul>
+<li>Descriptive <em>(What happened?)</em></li>
+<li>Diagnostic <em>(Why did it happen?)</em></li>
+<li>Predictive <em>(What is likely to happen?)</em></li>
+<li>Prescriptive <em>(How can we make things happen?)</em></li>
+</ul>
+
+
+<p><img src="https://dl.dropboxusercontent.com/u/47685018/img/analytics%20goals.png" title="Analysis Goals" alt="Analysis Goals" /></p>
+
+<p>The question we have to answer is where does the requirements of any given organisation fall on the chart above?</p>
+
+<p>Value and complexity both increase for each distinct flavour of analytics, and we can expect a greater level of differentiation from what our competitors are doing as we move further to the top right.</p>
+
+<p>As an aside, this comes back to an argument around what sets Data Science appart from traditional statistical modeling.</p>
+
+<p>One line of thought is that when we step into building predictive systems, we have moved away from vanilla statistics and into the world of Data Science.</p>
+
+<p>We&rsquo;re considering a system which not only ingests data for analysis, but also outputs data which is in turn fed back into the model.</p>
+
+<p>A nice quote from <a href="http://en.wikipedia.org/wiki/Cathy_O'Neil">Cathy O&#8217;Neil</a> in her book &ldquo;Doing Data Science&rdquo;:</p>
+
+<blockquote><p>This is very different from predicting the weather, say, where your model doesn’t influence the outcome at all. For example, you might predict it will rain next week, and unless you have some powers we don’t know about, you’re not going to cause it to rain.</p></blockquote>
+
+<p>Behaviour (of users) influences the system and the system in turn influences behaviour. This is the concept of the &ldquo;data product&rdquo;, be it Netflix recommendations or a smart electricity grid.</p>
+
+<h2>2. Start With Standard Tools</h2>
+
+<hr />
+
+<p>The bulk of innovation in analytics and Big Data tooling has been driven by open source.</p>
+
+<p><em>Embrace freely available, common tools.</em></p>
+
+<p>In line with the goal to start small and build, most of us already know the type of tools which are useful for cleaning and working with structured and semi-structured data. Tools which have stood the test of time:</p>
+
+<ul>
+<li><p>The shell: grep, sed, awk. There&rsquo;s not much you can&rsquo;t do with text using this toolset alone.</p></li>
+<li><p><a href="http://www.r-project.org/">R</a> - Statistical programming language, and you may be surprised to learn, the 2nd most popular data analysis tool after SQL</p></li>
+<li><p><a href="https://www.python.org/">Python</a> - Pythons library support for mathematical and scientific functionality makes it a popular choice in this domain</p></li>
+<li><p><a href="http://d3js.org/">D3.js</a> - powerful JavaScript library for data visualisation</p></li>
+</ul>
+
+
+<p>There is an interesting 80/20 rule when it comes to analytics activities:</p>
+
+<ul>
+<li>80% of effort is data cleaning</li>
+<li>20% is doing something with it</li>
+</ul>
+
+
+<h2>3. Use The Right Structure</h2>
+
+<hr />
+
+<p>Remember <a href="http://www-cs-faculty.stanford.edu/~uno/">Knuth</a>. Picking the correct data structure(s) is a massive factor in framing and driving your analytics exercise. Consider how you currently model data and ask how you could do it differently.</p>
+
+<p>The example given was <a href="http://neo4j.com/">Neo4j</a> and graphing relationships between employees in a global organisational structure.</p>
+
+<p>The data structure maps to the problem domain. There is no &lsquo;analytics&rsquo; here as such, but by applying a structure to the data which fits our goal of mapping relationships - the choice of structure itself gets us 90% of the way. To do the same thing in a traditional RDBMS or key/value store would require a lot of hoop jumping.</p>
+
+<h2>Scaling Out</h2>
+
+<p>The next step - and the &ldquo;big&rdquo; challenge - is to take our ideas and models which have been based on a statistical sampling and prove them at scale.</p>
+
+<p>There is an impedence mismatch here between what works for a sample, and what will work for a &lsquo;Big Data&rsquo; set. I&rsquo;ve seen this in the development of Hadoop jobs, which I&rsquo;ll come back to.</p>
+
+<p>The Cloud is our friend. The Cloud affords us the possibility of on-demand access to compute resources that would otherwise prove to be a prohibitive cost. An interesting figure shown was that 47% of cloud vendors revenue comes from servicing the needs of Big Data operations. The two things are conceptually a snug fit.</p>
+
+<p>At Big Data scale, infrastructure is an intrisic part of the question. Hadoop was first and foremost the response to an engineering problem.</p>
+
+<p>Parallelism is hard. Network programming is hard. The goal of Hadoop is to abstract these concerns away from the user and allow them to concentrate on the challenge of the analytics problem itself, and not get bogged down in failure modes and plumbing.</p>
+
+<p>To quote from Eric Sammer&rsquo;s excellent book <a href="http://shop.oreilly.com/product/0636920025085.do">Hadoop Operations</a>, 25% of the physical storage space in a Hadoop cluster should be reserved for intermediate data. That&rsquo;s all the throw-away results which MapReduce generates as it gets to the <em>real</em> answer which you want to come out the other side. Big Data analysis itself generates an awful lot of data.</p>
+
+<p>In a massively scaled system, even a small amount of latency can be amplified exponentially. That could be the act of boxing/unboxing Java types unnecessarily in a MapReduce job or it could be shuffling data across the network without any form of compression.</p>
+
+<p>These are examples of the type of problem that can arise from taking a solution that works on a sample and bringing it to the big data domain without considering the scale issue.</p>
+
+<p>I guess you could draw a parallel with the fallacies of network programming - if bandwidth isn&rsquo;t infinite then neither is memory!</p>
+
+<h2>Architecture</h2>
+
+<p>The final section of the talk was reserved for the question of Big Data architecture.</p>
+
+<p><a href="http://lambda-architecture.net/">The Lambda Architecture</a> is a term used for describing an architecture that tries to consolidate the two primary types of processing that can be brought to bear on big data sets; that is batch and real-time.</p>
+
+<p>MapReduce is fundamentally a batch processing system geared towards analysing whole data sets - so historical, &ldquo;complete picture&rdquo; forms of analysis.</p>
+
+<p>The need for real-time turnaround has led to the development of event processing frameworks like Apache Storm, the in-memory framework Spark and alternatives to the traditional abstraction layers on top of MapReduce, Hive and Pig - tools like Cloudera&rsquo;s Impala.</p>
+
+<p>One slide which was very funny was a comparison of the Hadoop ecosystem and vendor landscape in 2011 and what it looks like now - that is, a fine grained mosaic of logos which you can barely read. The pace of change and engagement in this field at the moment is incredible - incredibly confusing!</p>
+
+<p>We&rsquo;ve already passed well into TL;DR territory here, so I may return with a seperate post on the Lambda architecture when I&rsquo;ve read up and know a bit more.</p>
+
+<h2>And Finally</h2>
+
+<p>All in all a very informative and thought-provoking talk from <a href="http://www.thoughtworks.com/">Thoughworks</a>.</p>
+
+<p>And we haven&rsquo;t even got to security, privacy, new frameworks like Google Cascading. This stuff fills days of many a conference, never mind an evening get together.</p>
+
+<p>As for me, you&rsquo;ll see less CRM content and more on Hadoop on this blog over the coming months as I delve deeper into the Big Data and analytics landscape.
+Hadoop and whichever of those other myriad platforms, tools and vendors land within my field of vision.</p>
+
+<p>Exciting times.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Dynamics CRM Data Migration]]></title>
+    <link href="http://esc-plan.com/blog/2014/01/25/dynamics-crm-data-migration/"/>
+    <updated>2014-01-25T20:07:00+00:00</updated>
+    <id>http://esc-plan.com/blog/2014/01/25/dynamics-crm-data-migration</id>
+    <content type="html"><![CDATA[<p>For some bizarre reason I&rsquo;m ridiculously early for a flight. Hence some blogging time!</p>
+
+<p>This is a much belated follow up to my previous post <a href="http://esc-plan.com/blog/2013/10/23/dynamics-crm-performance-tuning/">Dynamics CRM Performance Tuning</a>.</p>
+
+<p>I&rsquo;m going to take a look at some of the issues involved in planning and executing a large migration exercise into Dynamics CRM 2011 from one or more legacy systems.</p>
+
+<p>I&rsquo;ll cover aspects of planning, designing and developing a solution, and look at how to address some of the more pressing non-functional issues like performance and scalability when dealing with large volumes of data.</p>
+
+<p>Dear Reader, let&rsquo;s do this thing.</p>
+
+<!-- more -->
+
+
+<h2>The Migration Scenario</h2>
+
+<p>Generally speaking, legacy LOB systems are often messy affairs when it comes to data quality.</p>
+
+<p>Over a large number of years of development, support and unnumbered godless hacks, there <em>will</em> be everything and anything in there. You never know quite what murky, red-eyed creations are lurking in the corners of these old data stores!</p>
+
+<p><img src="http://i.imgur.com/lV3vFPg.jpg?1" title="Here Be Ninjas" alt="Here Be Ninjas" /></p>
+
+<p>When migrating (or indeed, just integrating) with such systems, we need to be on our toes with regards to issues of data integrity, data loss, data cleansing, data creation&hellip; basically a long list of non-trivial stuff.</p>
+
+<p>A common scenario for undertaking a data migration exercise is one where the customers current system (or systems) are no longer fit for purpose.</p>
+
+<p>There could be many reasons why this might be the case; here are just a few:</p>
+
+<ul>
+<li>Mis-alignment with business goals (e.g. the business may wish to adopt a more lean, customer-centric philosophy. Old systems often tend to be product-centric. This is a common scenario when migrating to Dynamics CRM.)</li>
+<li>Older technology does not offer easy extensibility.</li>
+<li>Costly licensing/support.</li>
+<li>Language requires specialised skills making it difficult to come by individuals capable of maintaining it.</li>
+</ul>
+
+
+<p>Every Dynamics project I&rsquo;ve worked on has had some element of migration, from ongoing integration with legacy systems to their wholesale replacement.</p>
+
+<p>Many of the issues we&rsquo;ll look at are pretty fundamental to any data migration exercise, though obviously Dynamics has it&rsquo;s own particular considerations and technical quirks.</p>
+
+<p>In this post I&rsquo;ll try to cover both. The scenario is of a customer wishing to migrate a large set of their data from multiple legacy systems into a brand new solution based around Dynamics CRM 2011. We&rsquo;re dealing with CRM On-Premise here, but a lot of this will apply equally well to the On-line (cloud) version.</p>
+
+<h2>Project Approach</h2>
+
+<p>Let&rsquo;s say that our new system is in the process of being designed and built and that our task to migrate records from the old world to the new will be progressing in parallel with the main stream of development.</p>
+
+<p>Starting to think about data migration early in the lifecycle of the project is critical. In the beginning we will have a limited understanding of the legacy systems, and on the other side of the coin the customer will be trying to understand their requirements for the new system and how their existing data can be made to fit.</p>
+
+<p>It can be hard to get a sense early on of how much effort will be involved in data migration, particularly if the requirements of the new system are liable to shift (<em>hint</em>: they will).</p>
+
+<p>An iterative process which allows for regular feedback in both directions will save you a world of pain and make that process of reaching mutual understanding with the customer go that much smoother.</p>
+
+<h2>Defining The Process</h2>
+
+<p><strong>ETL</strong> (Extract Transform Load) is a label applied to processes which essentially involve the transfer of data from point A to point B via some set of transformation rules. This is the conceptual frame for how our migration exercise will work.</p>
+
+<p>In our case point A encompasses several legacy systems, let&rsquo;s call them Legacy X and Legacy Y. Point B is the Dynamics CRM 2011 database.</p>
+
+<p>We have a technical limitation in that our interaction with Dynamics is via it&rsquo;s web services - direct access to the database is unsupported. So that will be our channel for getting data in. Obviously a web service is much slower on the face of it than a straight DB insert, so this will impact on the design of our load process and how we scale for performance.</p>
+
+<p>Here&rsquo;s a high-level overview of how our ETL process will look:</p>
+
+<p><img src="https://dl.dropboxusercontent.com/u/47685018/Blog/2014/01-26/Migration_ETL.png" title="Example Migration Process" alt="&quot;Example Migration Process&quot;" /></p>
+
+<h2>1. Source System Extracts</h2>
+
+<p>The intial step in the process is to extract the data from the customers existing source systems.</p>
+
+<p>How this is accomplished will depend on the nature of the source systems and who is responsible for producing the extract - you, the customer or some third party. Typically you&rsquo;ll agree on the subset of source tables which will come across and the format of the data within each file.</p>
+
+<p>In my example we receive two sets of CSV files from each system, one file for each source table.</p>
+
+<p>At this point I want to bring those files into SQL Server so that I can easily analyse them as my ETL process progresses. Each system is assigned a set of tables which each correspond to a file. Each table is prefixed to identify the source. In this case that&rsquo;s <strong>X_ </strong> and <strong>Y_ </strong>.</p>
+
+<p>To insert the data into SQL Server I use good old <a href="http://technet.microsoft.com/en-us/library/ms162802.aspx">BCP</a>. Each input file has an associated FMT (format) file which tells BCP how to map the source columns to the destination table.</p>
+
+<p>I can also redirect any failures out to a log file; so this is the first step in the process where I can validate the quality of the data and get a feel for any work that I will need to do around field seperators, quoted strings etc.</p>
+
+<h2>2. Transformation</h2>
+
+<p>The second step is the where the bulk of the effort is going to be - devising a set of transformation rules to convert sets of old records in the X and Y import tables and inserting them into the staging tables (STG) ready for load.</p>
+
+<p>The staging tables are effectively a mirror of the target entities in Dynamics CRM, though limited to only the subset of fields which we actually need to populate.</p>
+
+<p>Transformation rules can be developed as SQL Server stored procedures which select from the necessary source tables, apply some mapping rules and then insert into the relevant stg_ table in the new format.</p>
+
+<p>For an example at the level of a single field, a character based status code &lsquo;A&rsquo; which denotes an active record in the old system might well translate into an numeric OptionSet code in CRM (e.g. 948100000)</p>
+
+<h2>3. Load</h2>
+
+<p>My load step is accomplished by a custom C# utility which sucks the records out of the staging tables using Entity Framework and inserts them into Dynamics CRM via the SOAP web service endpoint.</p>
+
+<p>If you build a level of convention into the format of the staging tables, then this final step should be relatively trivial.</p>
+
+<p>I name each stg_* table after the corresponding record in Dynamics CRM into which it will be loaded. For example, stg_Account, stg_Contact and so on. Each staging table column is given the same name as the corresponding column in Dynamics CRM.</p>
+
+<p>Building linkages between different entity types can be achieved in the staging tables by generating the GUIDs for each record up front during step 2. You need to be careful of the order in which you load your entities into Dynamics CRM to avoid missing reference errors. For example if loading in Contacts which have a parent Account, you will need to have loaded the Accounts in first.</p>
+
+<p>A good idea is to make the list of entities which your application will load configurable via App.config. This will allow you to easily test subsets of the entities independently of the others.</p>
+
+<p>Given that I have already defined my staging schema as part of the exercise to transform the source data, I make use of <a href="http://msdn.microsoft.com/en-gb/data/jj206878.aspx">Entity Framework Database First</a> to automagically generate a set of classes in C# which I can use to extract the information from the staging tables.</p>
+
+<p>Because of the naming conventions I have adopted in my data layer, I can use <a href="https://github.com/AutoMapper/AutoMapper">AutoMapper</a> to easily map the generated POCOS to the early-bound Dynamics CRM classes (also generated) with minimal code.</p>
+
+<div><script src='https://gist.github.com/8649357.js'></script>
+<noscript><pre><code>using AutoMapper;
+using Microsoft.Xrm.Sdk;
+
+public class AutoMapperProfile : Profile
+{
+  protected override void Configure()
+  {
+    this.RecognizePrefixes(&quot;new_&quot;);
+    
+    this.CreateMap&lt;stg_Contact, Contact)
+      .ForMember(dest =&gt; dest.ParentCustomerId, o =&gt; o.MapFrom(src =&gt; new EntityReference(Account.EntityLogicalName, src.ParentCustomerId)));
+  }
+}</code></pre></noscript></div>
+
+
+<p>The gist above shows how you can add mappings to an AutoMapper profile. Basic types can be mapped without supplying an explicit mapping since our source and destination field names match.</p>
+
+<p>Note as well how we can supply a recognised prefix - this means that our stg<em> tables can leave out the &lsquo;new</em>&rsquo; (or whatever letters your Organisation is using) that Dynamics CRM prepends onto all custom fields.</p>
+
+<p>OptionSets and EntityReferences will need either a Converter class to handle them implicitly or they can be mapped explicitly as in the example above.</p>
+
+<h2>Non-Functional Requirements</h2>
+
+<p>The performance achieved when loading into Dynamics CRM via the SOAP web service can be slow if you are dealing with a single Application server instance. Gains can be made by scaling up the DB and App servers, however the biggest gains will come from installing multiple instances of the App server in a load balanced configuration and running your Load process in parallel against each one. This might be your only option to achieve practical timings when dealing with big sets of records (say 50 million + and if you only have a weekend in which to complete your migration).</p>
+
+<p>Some other performance points to consider:</p>
+
+<ul>
+<li>Turning off plugins and workflows. This can be done programatically via the API, so include pre and post migration steps in your Loader code to disable and re-enable these.</li>
+<li>Disable any nightly backup/maintenance jobs. This is kind of an obvious one, but make sure there&rsquo;s an explicit task for someone to ensure these are turned off. The last thing you want is some overnight job killing your app if the run time for your load is long.</li>
+<li>If using Entity Framework to load your data, remember that this is just a bulk read-only task. Therefore make sure you turn context tracking off, otherwise your garbage collector will scream into a pillow and jump off the roof. Below is an example method to get all records to type T with context tracking turned off. Pretty straightforward.</li>
+</ul>
+
+
+<div><script src='https://gist.github.com/8674031.js'></script>
+<noscript><pre><code>public IQueryable&lt;T&gt; GetAll&lt;T&gt;() where T : class
+{
+    return _stagingContext.Set&lt;T&gt;().AsNoTracking().AsQueryable();
+}</code></pre></noscript></div>
+
+
+<h2>Alternatives</h2>
+
+<p>Taking a step back for a moment, you should note that I have developed individual steps for each part of the ETL process over which I have very fine grained control. You could also go down the <a href="http://technet.microsoft.com/en-us/library/ms141026.aspx">SSIS</a> route to manage the whole process for you end-to-end.</p>
+
+<p>There&rsquo;s a lot to be said for this option if you have SSIS skills and want to keep the whole flow within a single tool. Personally (and - <strong>DISCLAIMER</strong> - not being an SSIS expert) I found it a bit restrictive. There is an option for connection to CRM in this <a href="http://www.kingswaysoft.com/products/ssis-integration-toolkit-for-microsoft-dynamics-crm">tool from Kingswaysoft</a>. This provides a graphical way to build mappings between the staging tables and CRM.</p>
+
+<p>Again, under the hood this is using the same Dynamics CRM web services API that any custom code would use. Personally I would rather write a minimal amount of code using something like AutoMapper than go clicking lots of checkboxes in a GUI, but <strong>that&rsquo;s just me</strong>.</p>
+
+<h2>Finally</h2>
+
+<p>That&rsquo;s my Dynamics CRM data migration approach at a fairly high level. I&rsquo;d be genuinely interested to learn how others have approached this, so please leave a comment if you&rsquo;ve been through the mill on this yourself.</p>
+
+<p>Back to staring at the flight board!</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Azure and Visual Studio 2013]]></title>
+    <link href="http://esc-plan.com/blog/2013/12/03/azure-and-visual-studio-2013/"/>
+    <updated>2013-12-03T16:26:00+00:00</updated>
+    <id>http://esc-plan.com/blog/2013/12/03/azure-and-visual-studio-2013</id>
+    <content type="html"><![CDATA[<p>On Monday I had the pleasure of attending a Microsoft event down in the impressive <a href="http://thehelix.ie/">Helix</a> theatre at Dublin City University.</p>
+
+<p>This featured Scott Guthrie on Azure accompanied by a variety of other guest speakers covering topics such as Visual Studio 2013, F# and Xamarin. Lots of interesting stuff and really well attended.</p>
+
+<p>Read on below the cut for some of my notes and random thoughts.</p>
+
+<!-- more -->
+
+
+<h2>Windows Azure</h2>
+
+<p>The highlight(s) of the day for me were the talks given by the main man Scott Guthrie (Windows Azure) and also Michael Koester (Visual Studio 2013).</p>
+
+<p>The day began with Scott&rsquo;s talk and - <em>GASP</em> - network issues. I think the greatest lesson we all took away is that it&rsquo;s hard to demo cloud services with no internet connection. In the end, the conference centre WiFi came to the rescue and there was much rejoicing.</p>
+
+<p>The Azure coverage focused mostly on the IaaS side of things. I think this was primarily down to timing issues and certainly the principle mantra of Scotts talk was <strong>Focus on Apps, Not Infrastructure</strong></p>
+
+<p>So the list of managed services got short shrift - Web, Mobile, Storage etc - but given that I was less familiar with the infrastucture offering that was fine by me and I found the whole thing very interesting nonetheless.</p>
+
+<p>Cool stuff wot was shown:</p>
+
+<ul>
+<li><p><strong>Traffic Manager:</strong> used to determine the best data centre to use in terms of performance</p></li>
+<li><p><strong>Auto Scaler:</strong> configurable CPU and other resource usage sliders that can be used to set boundaries were new VMs are spun up or down. You can also scale based on particular time ranges - for example shutting down outside of working hours.</p></li>
+<li><p><strong>Virtual networks and gateways:</strong> You can define a network in Azure and join it via VPN. I.e. you can then access everything via local IP address. Public extensibility can be completely turned off and restricted to VPN only. This goes for web and worker roles, as well as the VMs.</p></li>
+</ul>
+
+
+<p>All of this is configurable via the Azure dashboard, but is also scriptable at the CLI. Good for automation via powershell scripts and obviously via build tools like msbuild, or something non-awful like psake.</p>
+
+<p>Interestingly it&rsquo;s all doable from within Visual Studio 2013 as well. That&rsquo;s a bit of a philosophical battle waiting to happen. It&rsquo;s interesting how MS are positioning VS as the package which has it all, certainly tightly coupling all this Ops business to an IDE is considered by many to be dodgy territory.</p>
+
+<p>A lot of the features above were put to use in a demo around using Azure VMs for a Dev/Test example scenario.</p>
+
+<p>Coolest gadgetry of the day probably goes to the Visual Studio Azure remote debugger. Scott demonstrated debugging into a process running on an Azure VM connected via VPN. He also demoed the Resource Browser in Visual Studio which allows you to browse all your Azure resources, restart VMs and so on without going through the portal. All really cool stuff.</p>
+
+<h2>It aint just Microsoft</h2>
+
+<p>A point that Scott was keen to stress is that it&rsquo;s not just .NET that&rsquo;s running on Azure. As well as ASP.NET, websites can also be written in node.js, PHP, ruby, Python or Java.</p>
+
+<p>Databases extend beyond good old SQL Server into the NoSQL space, with providers for MongoDB currently available with plans to include Redis and Couch in the near future.</p>
+
+<p>A lot of what was demoed with regards to the services will be familiar to users of other cloud PaaS offerings like Heroku; the ability to push and build from a Git repository or FTP.</p>
+
+<h2>FREE STUFF</h2>
+
+<p>Unfortunately we didn&rsquo;t get on to things like logging, telemetry, Hadoop and Active Directory single sign on - time went over and then ran out.</p>
+
+<p>The most important information for MSDN subsrcibers out there is just how much you get for free. A Premium MSDN sub would allow you to run 3 VMs for 16 hours a day each month for absolutely no monies - pretty cool.</p>
+
+<h2>Visual Studio 2013</h2>
+
+<p>Michael Koester gave a talk on VS 2013 and he&rsquo;s a really engaging speaker! He endeared himself to the crowd almost immediately by admitting that his Munich accent makes him sound somewhat like a WWII movie villain.</p>
+
+<p>I haven&rsquo;t been particularly taken with the new look and feel of VS and Office 365. It seems to be relying heavily on proximity of elements without much in the way of visual boundaries.</p>
+
+<p>Michael explained that this new &lsquo;Content over Chrome&rsquo; philosophy was intended to make anything which isn&rsquo;t content &ldquo;fade into the background&rdquo;. And sure enough not much &ldquo;pops&rdquo;.</p>
+
+<p>Most people I&rsquo;ve talked to find it overwhelmingly GRAY.</p>
+
+<h2>The Connected IDE</h2>
+
+<p>The idea of Visual Studio as a connected environment, with a sign in and retention of my settings across multiple hosts is one I do find appealing I must say.</p>
+
+<p>Looking at the bigger picture, it marks another step in the road of Microsoft positioning all of their traditional desktop products with online equivalents and VS is certainly no exception.</p>
+
+<p>Project &lsquo;Monaco&rsquo; - which is essentially Visual Studio in the browser - is currently limited to web-only, that&rsquo;s CSS, HTML, JavaScript and so on, but this is early days and the plan is to expand this.</p>
+
+<p>It&rsquo;s already available to MSDN subsribers, so you should check it out.</p>
+
+<p>Beyond the editor, there are some other really cool features in the works:</p>
+
+<ul>
+<li><p><strong>Agile Teams:</strong> Michael demoed a number of Agile specific features such as an integrated Kanban board (I&rsquo;d like to have a play with this and see how it compares to Trello), burndown charts, and Team Room. This last one is basically Yet Another Chat Room, but it does have a lot of desirable features like history and logs, integrated activity feeds (think check-ins, work items and drill-down to TFS).</p></li>
+<li><p><strong>Code lens/HUDS:</strong> Think of this as little customizable plugins which sit above your method and class definitions just below the comments. Can be customized to included all kind of different info like latest test results, code metrics and so on.</p></li>
+<li><p><strong>Preview/Outline pane:</strong> i.e. as you will already find in Sublime Text.</p></li>
+<li><p><strong>History based navigation:</strong> Again in line with the shift towards the browser we see the introduction of Back and Forward buttons in the solution explorer and the main window.</p></li>
+<li><p><strong>Alt + F12:</strong> This now has a peek function were you can look at the contents of a class without actually opening a new tab.</p></li>
+</ul>
+
+
+<p>I loved the little factoid that MS groups users into two groups when it comes to Tabs. Those who open ALL THE TABS until it becomes unmanageable and they nuke everything with a &ldquo;Close All&rdquo; and the OCD tab manager, who closes everything the moment they think they&rsquo;re done.</p>
+
+<h2>And The Rest</h2>
+
+<p>Ok, this has long passed the TL/DR barrier, so I&rsquo;ll save my notes on the remaining sessions for another post.</p>
+
+<p>That includes F# and Big Data, Gamespark and their use of Azure for game backends and analytics and also Xamarin and cross-platform development with C#.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Dynamics CRM 2011 Performance Tuning: Part One]]></title>
+    <link href="http://esc-plan.com/blog/2013/10/23/dynamics-crm-performance-tuning/"/>
+    <updated>2013-10-23T12:53:00+01:00</updated>
+    <id>http://esc-plan.com/blog/2013/10/23/dynamics-crm-performance-tuning</id>
+    <content type="html"><![CDATA[<p>In recent months I&rsquo;ve been dealing with some big sets of data as part of a Dynamics CRM 2011 project.</p>
+
+<p>This post is the first in a series that amounts to a bit of a brain dump on the topic of performance - some lessons learned and some useful techniques for tuning.</p>
+
+<p>I hope to get a somewhat more regular stream of content on here in the coming months. I&rsquo;ve got an eye on Dynamics 2013 and some other non-CRM related gubbins that I&rsquo;ve been pondering as well.</p>
+
+<!-- more -->
+
+
+<h2>Tuning Views</h2>
+
+<blockquote><p>Just a note on CRM version - this tuning was carried out against an on-premise installation running CRM 2011 Rollup 11. Subsequent rollups have included updates specifically to address application performance, so some of this could potentially be of limited relevance in more current versions. Some of it will I&#8217;m sure still be generally applicable, and probably deep in the realm of common sense.</p></blockquote>
+
+
+<p>Good view design in Dynamics CRM is about really filtering out the noise and presenting users with the information which is most relevant to them.</p>
+
+<p>For big data sets (multiple millions of records) it&rsquo;s rare that you would want a view that didn&rsquo;t do some serious filtering on this, whether that be restricting the view to records belonging to the user, a given date range or a particular option set range.</p>
+
+<p>Views in Dynamics CRM are all paged out of the box; the default page size is 50 with an option to increase this to a maximum of 250 which gets applied for all entities across the board.</p>
+
+<h2>Profiling SQL Server</h2>
+
+<p>If you fire up SQL Server Profiler and take a peek under the hood what you find is that the queries being executed against the database apply a TOP using this configurable value.</p>
+
+<p>Now by and large you would think this to be absolutely fine. However it&rsquo;s possible to get into difficulties and I&rsquo;ve seen a variation of around 20 seconds in the speed of a view loading which was purely down to the sort order of the columns!</p>
+
+<p>Below is the offending order by clause, which was generated for a custom entity:</p>
+
+<div><script src='https://gist.github.com/0cc4eea312d1dac7829d.js'></script>
+<noscript><pre><code>order by
+ case &quot;new_claim0&quot;.new_Type 
+ when 948100000 then @new_Type0 
+ when 948100001 then @new_Type1 
+ when 948100002 then @new_Type2 
+ when 948100003 then @new_Type3 
+ when 948100004 then @new_Type 
+ else null end asc</code></pre></noscript></div>
+
+
+<p>@new_TypeX in the above statement equals the textual description of each value in the OptionSet.</p>
+
+<p>The CASE statement in the order by clause here is applied to all the records in that large data set, before the TOP is applied.</p>
+
+<p>If you use a default system generated view which by default filters to show only Active records, and that count of Active records is in the order of millions, then this is going to cause you a major performance problem.</p>
+
+<p>You might not even realise it either. A sort order of some kind is mandatory on a CRM view, and by default the view designer applies this to the first column you add. So if that first column just so happens to be an OptionSet then you could well have this one lurking in your system, just waiting for the record counts to get adequately large to start seriously killing the view response times.</p>
+
+<p>Changing your sort order to a non-option set field - say a date - and applying an index to that field in the database will get you right back down to sub 1 second response times. So it&rsquo;s easily enough rectified, but can be easily missed - remember this is a system designed to be configured by it&rsquo;s business users - not the sort of people who will be considering the performance of under-the-hood generated SQL.</p>
+
+<h2>Further Reading</h2>
+
+<p>The following article on MSDN contains some more detail on indexing for Dynamics: <a href="http://msdn.microsoft.com/en-us/library/jj126126.aspx"></a></p>
+
+<p>See also the following: <a href="http://technet.microsoft.com/en-us/library/hh413200.aspx#BKMK_Optimize_Data_Tier">Optimizing the Data-Tier</a></p>
+
+<h2>Next Up</h2>
+
+<p>Designing indexes to support your front-end view design and including sensible filters are key to maintaining reasonable performance in a large Dynamics CRM installation.</p>
+
+<p>In a subsequent post I&rsquo;ll look at a few issues to consider when using the Dynamics API. I&rsquo;ll also look at some strategies for data migration.</p>
+
+<p><strong><em>EDIT</em></strong> Follow-up to this post now available: <a href="http://esc-plan.com/blog/2014/01/25/dynamics-crm-data-migration/">Dynamics CRM Data Migration</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[BirdTrack and the Power of Citizen Science]]></title>
+    <link href="http://esc-plan.com/blog/2013/05/31/birdtrack-and-the-power-of-citizen-science/"/>
+    <updated>2013-05-31T13:35:00+01:00</updated>
+    <id>http://esc-plan.com/blog/2013/05/31/birdtrack-and-the-power-of-citizen-science</id>
+    <content type="html"><![CDATA[<p>I&rsquo;ve been on a bit of a hiatus as regards the blog over the last month. Becoming a father, and simultaneously a zombified version of my former self are the prime cause.</p>
+
+<p>Occasionally the volume of coffee hits just the correct tipping point such that I can string two thoughts together and hold them for just long enough that typing can happen. Now is that time.</p>
+
+<p>I&rsquo;ve been thinking a lot about <a href="http://blx1.bto.org/birdtrack">BirdTrack</a> lately - a website and app from the <a href="http://www.bto.org/">BTO</a> which allow members of the public to submit their sightings of birds. It&rsquo;s a fine case of technology, a desperate need and a willing public all combining to achieve great things. To borrow some parlance from the mighty <a href="http://www.rockpapershotgun.com/">RPS</a>, this post is <strong>Wot I Think</strong>.</p>
+
+<!-- more -->
+
+
+<blockquote><p>Before it is too late, I have tried to recapture the extraordinary beauty of this bird and to convey the wonder of the land he lived in, a land to me as profuse and glorious as Africa. It is a dying world, like Mars, but glowing still.</p>
+
+<ul>
+<li>J A Baker, <em>The Peregrine</em></li>
+</ul>
+</blockquote>
+
+<h2>The Problem</h2>
+
+<p>Written in 1967, John Bakers masterpiece of nature writing &lsquo;The Peregrine&rsquo;, is a deeply personal and lyrical account of his years spent tracking and studying the falcons across the farmland and estuaries of his native Essex.</p>
+
+<p>At that time the Peregrine falcon was undergoing a catastrophic decline in the United Kingdom (and elsewhere), owing largely to use of the <a href="http://www.nobelprize.org/nobel_prizes/medicine/laureates/1948/">pesticide DDT</a> a substance which is particularly harmful for those birds at the top of the food chain in whom it accumulates.</p>
+
+<p>A concentrated conservation effort and bans on harmful pesticides brought the Peregrine back from the brink of extinction in the UK - the fate which Baker had so feared for the bird.</p>
+
+<p>For every Pheonix there are others which have not been so lucky. The <a href="http://www.rspb.org.uk/ourwork/science/stateofnature/index.aspx">State of Nature report</a> which was published earlier this month carried the grave headline that 60% of native animal species assessed had suffered a decline in the past 50 years. 31% have suffered a &lsquo;strong&rsquo; decline.</p>
+
+<p>I was fortunate enough to grow up in an area of mid-Antrim where there was a great profusion of some of our most iconic species.</p>
+
+<p>I say <em>was</em> rather pointedly. In my lifetime the Curlew, Lapwing and Hen Harrier have all slowly followed the Corncrake (a bird of my parents&#8217; generation) on the road to local extinction. They are not there yet - but if there is not a collective will to prevent it, then it will be inevitable.</p>
+
+<h2>BirdTrack</h2>
+
+<p>In light of such a grim assessment, what can ordinary people - people who are not professionally involved in conservation efforts I suppose - contribute to help prevent species from declining?</p>
+
+<p>It&rsquo;s often said that there are two ways to vote - with your money or with your time. We technologists should be well familiar with this idea. The shiniest tech always gets carried along on a wave of popular enthusiasm.</p>
+
+<p>&ldquo;Citizen Science&rdquo; taps in to this tendency of clever and enthusiastic people to vote with their time and effort.</p>
+
+<p>I first came to BirdTrack some years ago whilst randomly browsing the BTOs site. A web app that allowed the public to sign up and submit their own detailed bird observations. I found this to be an incredibly simple idea - why had no one thought of this sooner!</p>
+
+<p>After years of operation the site has become an absolute trove of interesting and important data. Yearly trends in the reporting rates of individual species; earliest recordings of spring migrants; maps of regional distribution&hellip; there is all this and more. When I log on to the Android app I am presented with a map showing sightings that others have recorded in the vicinity of wherever I am. It truly is a fantastic tool for anyone interested in birds - if they&rsquo;d had this back in my formative years I would have been all over it!</p>
+
+<p>As well as tapping into the natural tendency in birders to meticulously list everything they see, it also throws in a few modern &lsquo;gamification&rsquo; twists as well. There are leader boards for total species in a year, total lists submitted in a month&hellip; the dedication of some people is truly staggering.</p>
+
+<h2>Why This Is Important</h2>
+
+<p>Jennifer Pahlka delivered an excellent talk available on <a href="http://www.ted.com/talks/jennifer_pahlka_coding_a_better_government.html">TED</a> called <em>&lsquo;Coding A Better Government&rsquo;</em>. It&rsquo;s a popular one among tech evangelists who like to believe that many problems of governmental bureaucracy can be overcome by using technology to empower citizens.</p>
+
+<p>It&rsquo;s an apt lesson that conservation can learn from as well. BirdTrack is a shining example of how much can be achieved when you put a powerful tool in people&rsquo;s hands.</p>
+
+<p>If you are interested in contributing, you can sign up at <a href="http://blx1.bto.org/birdtrack">http://blx1.bto.org/birdtrack</a>. There are also a variety of other surveys being run on the BTO website at any given time.</p>
+
+<p>The <a href="http://www.bto.org/shop/bird-atlas">2007 - 2011 Bird Atlas</a> is also available for pre-order - a project which owes it&rsquo;s existence in large part to the efforts of volunteers through BirdTrack and the BTOs other national surveys.</p>
+
+<p><img src="https://dl.dropboxusercontent.com/u/47685018/Blog/2013/06-01/theperegrine.jpg" alt="The Peregrine" /></p>
+
+<p>Glowing still.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[What Is NewSQL?]]></title>
+    <link href="http://esc-plan.com/blog/2013/03/22/what-is-newsql/"/>
+    <updated>2013-03-22T10:18:00+00:00</updated>
+    <id>http://esc-plan.com/blog/2013/03/22/what-is-newsql</id>
+    <content type="html"><![CDATA[<p>NewSQL is a term used to describe a variety of database which is even more new-fangled than NoSQL (yes, it wasn&rsquo;t a typo).</p>
+
+<p>It&rsquo;s a very recent term (circa 2011) - and the group of distributed database techologies which it describes are similarly up-and-coming. I suppose the name is a rare case of calling a spade a spade in the tech world.</p>
+
+<p>NewSQL challenges some of the assumptions and received wisdom around database architecture. Primarily that you have to make a choice between &ldquo;schemaless and available&rdquo; versus &ldquo;relational and consistent&rdquo;.</p>
+
+<p>The central claim which binds them all together is something approaching &ldquo;You can have your cake and eat it.&rdquo; That is:</p>
+
+<ul>
+<li>A Relational data model</li>
+<li>ACID compliant</li>
+<li>SQL interface</li>
+<li>Capability for massive scale out</li>
+<li>Designed to cope with the <a href="http://www.datacenterknowledge.com/archives/2012/03/08/three-vs-of-big-data-volume-velocity-variety/">Three Vs</a></li>
+</ul>
+
+
+<!-- more -->
+
+
+<p>Some examples of tech which currently falls under the elastically scalable RDBMS blanket:</p>
+
+<ul>
+<li><a href="http://static.googleusercontent.com/external_content/untrusted_dlcp/research.google.com/en//archive/spanner-osdi2012.pdf">Google Spanner</a></li>
+<li><a href="http://www.nuodb.com/">NuoDB</a></li>
+<li><a href="http://www.justonedb.com/">JustOne</a></li>
+<li><a href="https://voltdb.com/">VoltDB</a></li>
+</ul>
+
+
+<h2>A quick ReCAP</h2>
+
+<p>We know from CAP theorem that when designing a distributed system you have a choice to make between three qualities, of which you can pick only two:</p>
+
+<p><img src="https://dl.dropbox.com/u/47685018/Blog/2013/03-22/CAP.png" title="CAP" alt="CAP" /></p>
+
+<p>Item number one on the <a href="http://en.wikipedia.org/wiki/Fallacies_of_Distributed_Computing">8 fallacies of distributed computing</a> is thus: <em>the network is reliable</em>.</p>
+
+<p>When you combine that thought with CAP theorem it becomes apparent that partition tolerance is the obvious thing you <em>need</em> to take into account when designing a distributed system. The network is inherently an untrustworthy knave.</p>
+
+<p>In layman&rsquo;s terms, it goes something like this:</p>
+
+<p>Say I have two machines on which I have a replicated set of data connected by a cable. If I cut that cable with a pair of scissors - I&rsquo;ve just partitioned my network. How will it cope with this?</p>
+
+<p>Clients can write and request data on either machine, so how will it handle those requests? We can guarantee availability and respond with data which is potentially out of date. If favouring consistency, then we have to respond with an error (neither machine can know if it&rsquo;s the most up-to-date since we chopped the link between them).</p>
+
+<p>OK this is over-simplified, but it&rsquo;s the basic core of what CAP theory states.</p>
+
+<p>So how can NewSQL databases promise it all? How can you have ACID behaviour coupled with the high-availability of a NoSQL-like?</p>
+
+<p>Well to a certain degree it seems some partition tolerance must be sacrificed in order to achieve this best of both words. Perhaps you&rsquo;re not going to get the potent reliability of a <a href="http://hadoop.apache.org/">Hadoop</a>, but you&rsquo;d first need to ask &lsquo;Do I need it?&rsquo;. The NewSQL architectures are designed for high reliability, in practice that may well be high enough for your own needs.</p>
+
+<h2>VoltDB</h2>
+
+<p>VoltDB is somewhat distinct from the other contenders in this area by being an in-memory database.</p>
+
+<p>I thought it looked like an interesting starting point at which to enter the NewSQL fray - and luckily they have a very handy VMWare dev setup available as a free download on their website. It comes in at about 1.4GB:</p>
+
+<p>Head to <a href="http://voltdb.com/community/downloads.php">http://voltdb.com/community/downloads.php</a> and you can find the VMWare distribution under the Community Edition.</p>
+
+<p>This is a well put together demo.</p>
+
+<p><img src="https://dl.dropbox.com/u/47685018/Blog/2013/03-22/Volt%20Dashboard.jpg" title="Volt Demo Dashboard" alt="Volt Demo Dashboard" /></p>
+
+<p>The VM is running Ubuntu x64 and on loading it up, hit the &lsquo;Click here to Start&rsquo; icon and you&rsquo;re launched into the dashboard above from where all the various samples and walkthroughs are easily accessible. It&rsquo;s pretty slick.</p>
+
+<h2>What&rsquo;s To See?</h2>
+
+<p>There are two demo applications which you can run, both of which illustrate different facets of the VoltDB functionality:</p>
+
+<ol>
+<li><p> <strong>Voter</strong>
+ This sample app consists of two components:</p>
+
+<ul>
+<li> A VoltDB database process</li>
+<li> A simulated call centre client capturing phone calls for an imaginary American Idol</li>
+</ul>
+
+
+<p> Check out the dashboard which is updated with the votes in real-time:</p>
+
+<p> <img src="https://dl.dropbox.com/u/47685018/Blog/2013/03-22/Voter.jpg" alt="Voter" /></p>
+
+<p> A really cool demo to watch in action!</p>
+
+<p> It also demonstrates how to use Volt Studio performance monitor to see a breakdown of the overall throughput in terms of how many votes the app is processing and the latency for processing each one.</p></li>
+<li><p> <strong>KV Store</strong>
+ For something completely different, this example shows Volt being used as a Key/Value store with a REST interface.
+ Again the benchmarking tools give live feedback on the number of GET/PUT operations per second.</p></li>
+</ol>
+
+
+<p>Both demos also provide some examples of how you can use standard SQL select statements to get back information from the data store.</p>
+
+<h2>Expect More of This Sort of Thing</h2>
+
+<p>There&rsquo;s some really cool stuff happening out there are the moment in the NewSQL space. Big Data is very much the Big Thing at the moment, and whilst there&rsquo;s not an exact overlap between the two, NewSQL is very much in it&rsquo;s orbit. There&rsquo;s certainly a lot of be admired in the philosophy of allowing users to retain the big investment they&rsquo;ve already made in SQL skills and relational design, yet not denying them the new and shiny NoSQL, web-scale world along with it.</p>
+
+<p>The Volt demo is really nice - totally worth a dip if you&rsquo;re interested in this sort of thing.</p>
+
+<p>I&rsquo;ll get back round to RavenDB again in my next post - part 2 will be accompanying <a href="http://esc-plan.com/blog/2013/03/04/raven-db-part1/">the introduction</a> shortly.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[NoSQL for the .NET Guy: RavenDB]]></title>
+    <link href="http://esc-plan.com/blog/2013/03/04/raven-db-part1/"/>
+    <updated>2013-03-04T21:16:00+00:00</updated>
+    <id>http://esc-plan.com/blog/2013/03/04/raven-db-part1</id>
+    <content type="html"><![CDATA[<p>This is part one of an ongoing series of posts in which I will be taking a delve into at a very nifty document-oriented database: <a href="http://ravendb.net">RavenDB</a>.</p>
+
+<!-- more -->
+
+
+<h2>Too Many Sequels?</h2>
+
+<p>DavenDB belongs to the family of databases described (a bit misleadingly) as NoSQL.</p>
+
+<p>What that means to most people is that it&rsquo;s a database which isn&rsquo;t your more usual relational variety, such as SQL Server, MySQL or Oracle. The query language, or lack thereof is not really at the core of what these data stores are.</p>
+
+<p>It&rsquo;s the lack of the enforced referential integrity in the database itself that primarily distinguishes them from an RDBMS. A high degree of normalisation is usually the goal of traditional databases, whereas the NoSQL variety is distinguished by the opposite - redundancy and read-optimisation.</p>
+
+<p>As with all things under the sun they&rsquo;re very good for some things and terrible at others.</p>
+
+<p>Anyway, I&rsquo;m not trying to (or capable of) writing a novel on the history of NoSQl here.</p>
+
+<p>My interest in RavenDB is a tad less academic: I&rsquo;ve found it really fun to hack around with!</p>
+
+<p>LET&rsquo;S DO THIS THING.</p>
+
+<p>Some Features:</p>
+
+<ul>
+<li>A JSON based document-oriented database</li>
+<li>Server and client written in .NET Framework v4</li>
+<li>Indexes/queries written using LINQ</li>
+<li>REST interface</li>
+<li>Swanky Web UI management studio</li>
+<li>Runs as a Windows Service, hosted in IIS, embedded or standalone application</li>
+</ul>
+
+
+<h2>Try Out RavenDB</h2>
+
+<p>Trying it out for yourself is a very simple thing - here&rsquo;s how you can install it and have it up and running in short order:</p>
+
+<ol>
+<li> Download the <a href="http://hibernatingrhinos.com/builds/ravendb-stable">latest stable build</a></li>
+<li> Extract the zip to a desirable location</li>
+<li> In the root of the extracted directory, run Start.cmd</li>
+</ol>
+
+
+<p>This is the most straightforward way to run the software, launching the server in a command window. You should also now find your browser pointing at localhost:8080/raven/studio.html</p>
+
+<p>As this is your first time in you will receive a prompt to create a test database - give it a cool name:</p>
+
+<p><img src="https://dl.dropbox.com/u/47685018/Blog/2013/03-04/new_db.png" title="Texas Forever" alt="Texas Forever" /></p>
+
+<p>If you double-click your new database to open it up, you can pre-populate it with some test data.</p>
+
+<p>Navigate to Tasks -> Create Sample Data.</p>
+
+<p>If you now click on &lsquo;Collections&rsquo; you will see two items: Albums and Genres and a long list of sample documents.</p>
+
+<p>Open a few of these up and take a look at JSON format in which the data is stored:</p>
+
+<p><img src="https://dl.dropbox.com/u/47685018/Blog/2013/03-04/document.png" title="Greatest Hits Indeed" alt="Great Hits Indeed" /></p>
+
+<p>Note that you can still have all the Id&rsquo;s you could ever want - here the Genre refers to another document within the database: genres/1. Remember that the database isn&rsquo;t enforcing the integrity of this data - that is left entirely up to us.</p>
+
+<p>Note the format of the name of this resource:</p>
+
+<blockquote><p>albums/388.</p></blockquote>
+
+
+<p>{resource}/{id} - That has the look of REST about it, right?</p>
+
+<p>In the next post I&rsquo;ll take a dig into the HTTP interface that RavenDB provides by knocking up a simple .NET client application. We&rsquo;ll also look at the use of LINQ to write indexes/queries and have a look at Map/Reduce (if you ever did any HPC module at uni you&rsquo;ll be familiar with the concepts of crunching big data sets across a cluster of nodes; I swear to god that it&rsquo;s more fun than Fortan MPI though).</p>
+
+<p>I&rsquo;ll also run the RavenDB server as a website hosted within IIS, so that we won&rsquo;t have to leave a command window open the whole time.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Unit Testing Dynamics CRM Plugins]]></title>
+    <link href="http://esc-plan.com/blog/2013/02/13/unit-testing-dynamics-crm-plugins/"/>
+    <updated>2013-02-13T12:35:00+00:00</updated>
+    <id>http://esc-plan.com/blog/2013/02/13/unit-testing-dynamics-crm-plugins</id>
+    <content type="html"><![CDATA[<p>In this post I&rsquo;m going to take a look at the dark art of writing unit tests for Dynamics CRM 2011 plugin classes.</p>
+
+<p>OK, so it&rsquo;s not really all that dark, but it can be somewhat tricky if you&rsquo;re not familiar with how the plugin execution pipeline works and what kind of inputs an executing plugin expects to receive.</p>
+
+<p>I have seen approaches to this which involve serializing the plugin context or using <a href="http://research.microsoft.com/en-us/projects/moles/">Moles</a> (not an option for everyone now that this has been deprecated by the pricey <a href="http://msdn.microsoft.com/en-us/library/hh549175.aspx">Fakes</a> framework).</p>
+
+<p>My approach is quite simple and make use of <a href="http://code.google.com/p/moq/">Moq</a>. Rhino Mocks, NSubstitute or other feature-equivalent mocking frameworks should work just as well, so go with your preference.</p>
+
+<!-- more -->
+
+
+<h2>Mocking Dynamics</h2>
+
+<p><img src="https://dl.dropbox.com/u/47685018/Blog/2013/02-14/mocked.png" title="Yes, I've been waiting to use this" alt="Mocking Dynamics CRM" /></p>
+
+<p>Plugins by their nature are stateless and you must invoke a fair bit of mocking voodoo to set up the external pipeline execution context in which they run.</p>
+
+<p>I use a base class for all my plugin tests which contains the following core:</p>
+
+<div><script src='https://gist.github.com/4954043.js'></script>
+<noscript><pre><code>using System;
+using System.Collections.Generic;
+using Microsoft.Xrm.Sdk;
+using Microsoft.Xrm.Sdk.Messages;
+using Microsoft.Xrm.Sdk.Metadata;
+using Moq;
+
+namespace X1bplan.PluginTesting.Plugins.Tests.Helpers
+{
+    public abstract class PluginTestBase
+    {
+        #region Constants
+        protected const int STAGE_PREVALIDATION = 10;
+        protected const int STAGE_PREOPERATION = 20;
+        protected const int STAGE_POSTOPERATION = 40;
+        #endregion
+
+        #region Properties
+        protected Mock&lt;IServiceProvider&gt; ServiceProviderMock { get; set; }
+        protected Mock&lt;IOrganizationService&gt; OrganizationServiceMock { get; set; }
+        protected Mock&lt;IOrganizationServiceFactory&gt; OrgServiceFactoryMock { get; set; }
+        protected Mock&lt;IPluginExecutionContext&gt; PipelineContextMock { get; set; }
+        #endregion
+
+        public PluginTestBase()
+        {
+            ServiceProviderMock = new Mock&lt;IServiceProvider&gt;();
+            OrgServiceFactoryMock = new Mock&lt;IOrganizationServiceFactory&gt;();
+            OrganizationServiceMock = new Mock&lt;IOrganizationService&gt;(MockBehavior.Strict);
+            PipelineContextMock = new Mock&lt;IPluginExecutionContext&gt;(MockBehavior.Strict);
+
+            InitializeDefaults();
+        }
+
+        private void InitializeDefaults()
+        {
+            ServiceProviderMock.Setup(s =&gt; s.GetService(typeof(IPluginExecutionContext))).Returns(PipelineContextMock.Object);
+            ServiceProviderMock.Setup(s =&gt; s.GetService(typeof(IOrganizationServiceFactory))).Returns(OrgServiceFactoryMock.Object);
+            OrgServiceFactoryMock.Setup(f =&gt; f.CreateOrganizationService(It.IsAny&lt;Guid&gt;())).Returns(OrganizationServiceMock.Object);
+        }
+    }
+}
+</code></pre></noscript></div>
+
+
+<p>This allows us to hide away some of the usual mock object setup code - the objects which will be common to every plugin - the IServiceProvider, IPluginExecutionContext and IOrganisationService.</p>
+
+<p>In our individual plugin classes we can then mock the typical input parameters to the plugin context.</p>
+
+<h2>An Example</h2>
+
+<p>Let&rsquo;s say we have some imaginary business pals. What they would like is for a bit of validation to be triggered whenever someone attempts to delete a Contact record from the CRM database.</p>
+
+<p>If the Contact has any open Task activities outstanding, we would like the system to display an error message and prevent the user from doing so.</p>
+
+<p>We could of course have a piece of custom JavaScript to do this, but we want the logic to be triggered <em>any time</em> a delete occurs, be it via the front end or the API.</p>
+
+<p>The following plugin code will do just that:</p>
+
+<div><script src='https://gist.github.com/4954084.js'></script>
+<noscript><pre><code>protected void ExecutePreValidateContactDelete(LocalPluginContext localContext)
+{
+    if (localContext == null)
+    {
+        throw new ArgumentNullException(&quot;localContext&quot;);
+    }
+
+    _service = localContext.OrganizationService;
+
+    EntityReference contact = (EntityReference)localContext.PluginExecutionContext.InputParameters[&quot;Target&quot;];
+    
+    if (HasOpenTasks(contact.Id))
+    {
+        throw new InvalidPluginExecutionException(&quot;This Contact has open Tasks associated with it.\n\nPlease resolve all outstanding tasks before deleting.&quot;);
+    }
+}
+
+private bool HasOpenTasks(Guid contactId)
+{
+    var tasks = GetRelatedTasks(contactId);
+    return tasks.Any();
+}
+
+private IEnumerable&lt;Entity&gt; GetRelatedTasks(Guid contactId)
+{
+    QueryExpression query = new QueryExpression()
+    {
+        EntityName = &quot;task&quot;,
+        ColumnSet = new ColumnSet(true),
+    };
+
+    const int STATE_OPEN = 0;
+    query.Criteria.AddCondition(new ConditionExpression(&quot;regardingobjectid&quot;, ConditionOperator.Equal, contactId));
+    query.Criteria.AddCondition(new ConditionExpression(&quot;statecode&quot;, ConditionOperator.Equal, STATE_OPEN));
+
+    return _service.RetrieveMultiple(query).Entities.ToList&lt;Entity&gt;();
+}</code></pre></noscript></div>
+
+
+<p>For the sake of brevity I have cut all the boiler plate gunk that the  <a href="http://msdn.microsoft.com/en-gb/library/hh547459.aspx">Visual Studio CRM Dev  Toolkit</a> generates when you create a new plugin, leaving only the custom business logic that I actually added myself.</p>
+
+<p>So how about writing an automated unit test for this code?</p>
+
+<p>The purpose of providing mock objects for your unit tests is to isolate them - removing any dependence on external resources.</p>
+
+<p>As mentioned, plugins are stateless - all of their dependencies are supplied to the plugin Execute() method by the plugin execution context object which is passed at runtime.</p>
+
+<p>A few of the things that we will need to Mock include:</p>
+
+<ul>
+<li>The Contact object which is causing the plugin to fire</li>
+<li><p>The parameters which identify the action we want to trigger for that contact, namely:</p>
+
+<ol>
+<li>The PrimaryEntityName - &lsquo;contact&rsquo; in this scenario.</li>
+<li>The &lsquo;Message&rsquo; which identifies the data operation. In our case this is &lsquo;Delete&rsquo;.</li>
+<li>The &lsquo;Stage&rsquo; at which it should execute. We have supplied 10, which means &lsquo;Pre-Validation&rsquo;. Our base test class contains some useful constants for these values.</li>
+<li>The Guid of the calling user. Not used in our example, but could be useful if your code contains logic which is conditional on the use of a particular user account.</li>
+</ol>
+</li>
+<li><p>The methods of the IOrganisationService which our code requires. This is generally going to be a biggie. Our example plugin calls out to RetrieveMultiple, a method which takes a QueryExpression to execute against the CRM server and return a list of entities. We must mock this with an in-memory collection. Typically this is the approach you will take for all such external CRM server calls.</p></li>
+</ul>
+
+
+<h2>Writing a Test</h2>
+
+<p>So, how do we go about this? Thankfully Moq makes it pretty easy to create a lot of dependencies quickly and fluently.</p>
+
+<div><script src='https://gist.github.com/4954297.js'></script>
+<noscript><pre><code> [SetUp]
+public void Setup()
+{
+    this.PipelineContextMock.Setup(p =&gt; p.UserId).Returns(Guid.NewGuid);
+    this.PipelineContextMock.Setup(p =&gt; p.PrimaryEntityName).Returns(&quot;contact&quot;);
+    this.PipelineContextMock.Setup(p =&gt; p.Stage).Returns(STAGE_PREVALIDATION);
+}</code></pre></noscript></div>
+
+
+<p>The Setup method above sets some specific values for your suite of tests - the entity type, user and validation stage.</p>
+
+<p>Below is an example test which sets up the scenario where the validation check fails - the call to RetrieveMultiple will successfully return a matching open Task associated with the Contact:</p>
+
+<div><script src='https://gist.github.com/4954348.js'></script>
+<noscript><pre><code>[Test]
+public void ShouldThrowExceptionIfOpenTaskExists()
+{
+    Entity contact = new Entity()
+    {
+        LogicalName = &quot;contact&quot;,
+        Id = Guid.NewGuid()
+    };
+
+    ParameterCollection parameters = new ParameterCollection();
+    parameters[&quot;Target&quot;] = contact.ToEntityReference();
+    this.PipelineContextMock.Setup(p =&gt; p.InputParameters).Returns(parameters);
+    this.PipelineContextMock.Setup(p =&gt; p.MessageName).Returns(&quot;Delete&quot;);
+    EntityCollection tasks = new EntityCollection() { EntityName = &quot;task&quot;, Entities = { GetRelatedTask(contact.Id) } };
+    this.OrganizationServiceMock.Setup(s =&gt; s.RetrieveMultiple(It.IsAny&lt;QueryExpression&gt;())).Returns(tasks);
+
+    PreValidateContactDelete plugin = new PreValidateContactDelete();
+    var exception = Assert.Throws&lt;InvalidPluginExecutionException&gt;(() =&gt; plugin.Execute(ServiceProviderMock.Object));
+    Assert.That(exception.Message, Is.StringContaining(OPEN_TASKS_EXCEPTION));
+}</code></pre></noscript></div>
+
+
+<p>As you can see there&rsquo;s not much to it - we just set up the OrganisationService mock object to return a dummy task whenever it gets called within our plugin code under test.</p>
+
+<h2>Write ALL THE TESTS</h2>
+
+<p>I think that goes some way to illustrating that Dynamics plugins can do the TDD thing just like anything else - all you need are some great tools and <a href="http://code.google.com/p/moq/">Moq</a> is certainly one such.</p>
+
+<p>If you&rsquo;re interested, the full source code for this example can be downloaded from github: <a href="https://github.com/tswann/x1bplan.plugintesting.git">https://github.com/tswann/x1bplan.plugintesting.git</a>.</p>
+
+<p>I&rsquo;ve used a simple example based on the OOTB Contact entity, so it should work when deployed to any freshly created CRM organisation.</p>
+
+<p>Until next time!</p>
+
+<p><img src="https://dl.dropbox.com/u/47685018/Blog/2013/02-14/thesun.jpg" title="I love this game" alt="Praise the Sun" /></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Controlling Access to Dynamics CRM Ribbon Buttons]]></title>
+    <link href="http://esc-plan.com/blog/2013/01/07/controlling-access-to-dynamics-crm-ribbon-buttons/"/>
+    <updated>2013-01-07T14:46:00+00:00</updated>
+    <id>http://esc-plan.com/blog/2013/01/07/controlling-access-to-dynamics-crm-ribbon-buttons</id>
+    <content type="html"><![CDATA[<p>At the moment I&rsquo;m working on a project which is an interesting combination of core Dynamics CRM functionality and a set of custom processes written using ASP.NET MVC 4 and Web API.</p>
+
+<p>Each custom process is something like an [OOTB CRM dialog] - a sequence of screens which the user can progress backwards and forwards through using Next/Previous navigation. At the end of the flow the dialog is completed and a series of CRM records is saved off/workflow invoked or whatever.</p>
+
+<p>While there is much the OOTB CRM dialogs can achieve, they weren&rsquo;t a fit for the level of control we required - i.e. a more complex UI and with a slicker user experience and integration with various external systems.</p>
+
+<p>Each process is launched from a custom CRM ribbon button.</p>
+
+<p>In this blog, I&rsquo;ll take a look at the access control scheme we chose to restrict access to these processes for particular users.</p>
+
+<!-- more -->
+
+
+<h2>Using Security Roles</h2>
+
+<p>We would like to be able to specify which users have access to certain ribbon buttons using the Dynamics CRM built-in security roles mechanism.</p>
+
+<p>To achieve this, you will need to create a custom entity for each ribbon button you want to hide or display.</p>
+
+<p>For example, for a custom &lsquo;Upload File&rsquo; button on your Contact ribbon - create a &lsquo;new_rbnUploadFile&rsquo; entity. (new_ being whatever your organisation prefix actually happens to be).</p>
+
+<p>It&rsquo;s a good idea to include RBN in the name to help distinguish entities which are being used for this purpose from any other business oriented custom entities in the schema.</p>
+
+<p>You don&rsquo;t need to add anything to this entity definition beyond creating it - it should have the bare minimum of options enabled and &lsquo;Organisation&rsquo; ownership.</p>
+
+<p>The purpose of this is purely so that we can see it in the Security roles matrix.</p>
+
+<p>It should appear under the &lsquo;Custom&rsquo; tab for a role like so:</p>
+
+<p><img src="https://dl.dropbox.com/u/47685018/Blog/2013/01-09/Security_Role.png" title="Custom entity permissions" alt="Custom entity permissions" /></p>
+
+<p>So to specify that this role can access the Upload File ribbon button we are setting the &lsquo;Write&rsquo; permission on it&rsquo;s associated entity. Really we could use any of the permissions for this, but what&rsquo;s important is that you adopt a convention and &lsquo;Read&rsquo; or &lsquo;Write&#8217;probably make more sense than the others (you don&rsquo;t want anyone creating instances of these entities).</p>
+
+<h2>Defining the Display Rule</h2>
+
+<p>To make use of this we will define a Display Rule on the Upload File button which will link it to our custom entity.</p>
+
+<p>Only users or teams with a security role that has a &lsquo;Write&rsquo; privilege on the RBN Upload File entity will be able to see the button.</p>
+
+<p>This configuration can easily be done using <a href="http://www.develop1.net/public/page/Ribbon-Workbench-for-Dynamics-CRM-2011.aspx">Ribbon Workbench</a>.</p>
+
+<p>We want to add the new button to the Contact form ribbon. For this we create a new Command definition as shown below to which we will add the Display Rule:</p>
+
+<p><img src="https://dl.dropbox.com/u/47685018/Blog/2013/01-09/Add%20Command.png" title="Add Display Rule" alt="Add Display Rule" /></p>
+
+<p>The display rule will consist of a single &lsquo;Step&rsquo; of type &lsquo;Entity Privilege Rule&rsquo; as shown below.</p>
+
+<p><img src="https://dl.dropbox.com/u/47685018/Blog/2013/01-09/Rule%20Type.png" title="Entity Privilege Rule" alt="Entity Privilege Rule" /></p>
+
+<p>This rule defines that this ribbon button will only be displayed to users with &lsquo;Write&rsquo; privileges on the RBN Upload File entity.</p>
+
+<p><img src="https://dl.dropbox.com/u/47685018/Blog/2013/01-09/Entity%20Privilege%20Rule.png" alt="Rule Definitions" /></p>
+
+<p>And that&rsquo;s it! We now have a ribbon button which can be hidden or displayed via the user&rsquo;s security role.</p>
+
+<h2>Other Options</h2>
+
+<p>Annoyingly the &lsquo;Entity Privilege Rule&rsquo; is not an option if you&rsquo;re considering enabling/disabling the button using this security role controlled method.</p>
+
+<p>The best option here is probably to use the &lsquo;Custom JavaScript Rule&rsquo; and pass it the custom entity name as a parameter.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Defining Dynamics CRM Entities]]></title>
+    <link href="http://esc-plan.com/blog/2012/10/31/defining-crm-entities/"/>
+    <updated>2012-10-31T16:29:00+00:00</updated>
+    <id>http://esc-plan.com/blog/2012/10/31/defining-crm-entities</id>
+    <content type="html"><![CDATA[<p>Over the last few weeks I have been tasked with configuring a sizable Dynamics CRM solution. Having been through a lengthy period of analysis it&rsquo;s somewhat nice to be building again. So, I thought it would be useful to reflect on some of the work that&rsquo;s led up to this point.</p>
+
+<p>Particularly as regards defining the entities themselves. This is the guts of any CRM project, and I&rsquo;m coming to some conclusions around what works and what doesn&rsquo;t work so well (and how I&rsquo;d ideally like to do it in future).</p>
+
+<p>We&rsquo;ve used a combination of two things:</p>
+
+<ul>
+<li>A definition of the entity data. What does this entity actually represent?<br/>
+This is where we say: What fields? Which data types are they?
+What are my OptionSet values? So on and so forth.</li>
+<li>A wireframe defining the layout of the entity&rsquo;s main form.</li>
+</ul>
+
+
+<!-- more -->
+
+
+<h2>The Long Slog</h2>
+
+<p>All in all our solution has ~60 custom entities as well as a variety of tweaks and additions to the OOTB standard stuff like Contacts and Accounts.</p>
+
+<p>Some of these have an awful lot of fields.</p>
+
+<p>When it comes to manually creating all of these via the Dynamics administrative GUI, well&hellip; it&rsquo;s time to get the headphones in shall we say.</p>
+
+<p>Somewhat unsurprisingly, all of this must be documented in Word. Each entity has a table listing the required fields, the data type, minimum/maximum values any default values and so on.</p>
+
+<p>It&rsquo;s a lot of information to capture, and no matter how nicely it&rsquo;s formatted it&rsquo;s always going to be a dry read for the customer (and the developer, let&rsquo;s be honest).</p>
+
+<p><span class='pullquote-right' data-pullquote='Dynamics has quite a tight coupling between this concept of the entity&#8217;s &#8220;data type&#8221; and it&#8217;s appearance in the UI.'>
+Dynamics has quite a tight coupling between this concept of the entity&rsquo;s &ldquo;data type&rdquo; and it&rsquo;s appearance in the UI. Of course, when it comes to your documentation it need not be so.</p>
+
+<p>Our preference has been to have one definition for the data and a seperate, rather &lsquo;cartoony&rsquo; wireframe which exclusively depicts the layout.
+</span></p>
+
+<h2>Power Mockup</h2>
+
+<p><a href="http://www.powermockup.com/">Power Mockup</a>* is a nice wireframing tool which I&rsquo;ve used to define a large number of the screens/forms in our solution where specific layout requirements are warranted. It provides a set of easy to use templates from within MS PowerPoint - the learning curve is fairly non-existent and it saves to a common format.</p>
+
+<p>The implication that not all entities require a tailored layout is important. If an entity only has a few fields and its function is purely as reference data item, well&hellip; it probably doesn&rsquo;t warrant a screen design all of its own. A bit of common sense should prevail here.</p>
+
+<p>In these cases it&rsquo;s sufficient to set a general principle that fields will appear on a form in the order that they appear in the entity&rsquo;s data definition (from top to bottom, left to right).</p>
+
+<p>For everything else there&rsquo;s a wireframe.</p>
+
+<p>The function of this is to purely show field layout. The data definition already defines the data types of fields, so why duplicate that information in the wireframe?</p>
+
+<p>* <em>Saying Power Mockup in a Ballymena accent may lead to peer ridicule.</em></p>
+
+<h2>Auto-Magic Entity Configurator</h2>
+
+<p>So if all of the data definitions have been captured and documented as part of our analysis, why should it be that we now have to go through this list and manually enter it all once again, this time through the Dynamics UI?</p>
+
+<p><span class='pullquote-right' data-pullquote='I&#8217;m sure there is a better solution to be had here.'>
+I&rsquo;m sure there is a better solution to be had here. My feeling is that the <a href="http://msdn.microsoft.com/en-us/library/microsoft.xrm.sdk.messages.createentityrequest.aspx">Create Entity Request</a> class and similar classes used for field creation in the Xrm SDK could usefully automate the entity configuration process.
+</span></p>
+
+<div><script src='https://gist.github.com/3994712.js'></script>
+<noscript><pre><code>CreateEntityRequest createrequest = new CreateEntityRequest
+{
+
+    //Define the entity
+    Entity = new EntityMetadata
+    {
+        SchemaName = _customEntityName,
+        DisplayName = new Label(&quot;Bank Account&quot;, 1033),
+        DisplayCollectionName = new Label(&quot;Bank Accounts&quot;, 1033),
+        Description = new Label(&quot;An entity to store information about customer bank accounts&quot;, 1033),
+        OwnershipType = OwnershipTypes.UserOwned,
+        IsActivity = false,
+
+    },
+
+    // Define the primary attribute for the entity
+    PrimaryAttribute = new StringAttributeMetadata
+    {
+        SchemaName = &quot;new_accountname&quot;,
+        RequiredLevel = new AttributeRequiredLevelManagedProperty(AttributeRequiredLevel.None),
+        MaxLength = 100,
+        Format = StringFormat.Text,
+        DisplayName = new Label(&quot;Account Name&quot;, 1033),
+        Description = new Label(&quot;The primary attribute for the Bank Account entity.&quot;, 1033)
+    }
+
+};
+_serviceProxy.Execute(createrequest);
+Console.WriteLine(&quot;The bank account entity has been created.&quot;);</code></pre></noscript></div>
+
+
+<p>What you would need are two files (.csv or similar) which the Automagic Configurator &trade; can read in and parse. It would then call the Dynamics API to do the laborious creation part for you:</p>
+
+<ul>
+<li><p>One is a &lsquo;header&rsquo; file which defines the general entity information - Name, ownership level, primary attribute etc.
+You must define these separately and up front as it&rsquo;s the easiest way to avoid order dependencies when creating Lookup fields in the next file&hellip;</p></li>
+<li><p>The second file contains the field definitions. This captures our data types, min/max values etc.</p></li>
+</ul>
+
+
+<p>Together these files would capture essentially what we&rsquo;ve currently been documenting in Word, but would feed directly into the build phase cutting out a lot of grunt work. I always like to avoid grunt work. That&rsquo;s what computers are for!</p>
+
+<p>As far as I&rsquo;m aware such a tool doesn&rsquo;t currently exist. For me it might be a case of, if it doesn&rsquo;t come - build it!</p>
+
+<h2>And so</h2>
+
+<p>The alternative to the scenario described is obviously some form of Agile. That almost goes without saying. In this blog, I&rsquo;m trying to think of a way to get round doing a whole lot of CRM configuration up front at the start of a build phase after a lengthly period of analysis.</p>
+
+<p>You can feasibly cut down on the overall time by doing your field creation and form definition at once from the Form designer (rather than creating all the fields and <strong>then</strong> firing up the form designer).</p>
+
+<p>The problem is that if you have a whole slew of custom processes for which the CRM configuration is a dependency (as part of a Portal for example) then many of your team are going to be twiddling their thumbs until the underlying entity model is in place (at least, in place to some extent). That means getting the field definitions done has to take priority over form layouts.</p>
+
+<h2>In other news</h2>
+
+<p>As previously mentioned my Raspberry Pi finally arrived last week. Unfortunately it arrived at my parent&rsquo;s house deep in the darkest hills. So I still haven&rsquo;t got to play with it yet. <a href="http://xbmc.org/about/">XBMC</a> looks like it could be the way to go for me though.</p>
+
+<p>I wonder how long I can keep making blog posts and working in a mention of <a href="http://en.wikipedia.org/wiki/Dark_Souls">Dark Souls</a>? Let&rsquo;s find out!</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Moving]]></title>
+    <link href="http://esc-plan.com/blog/2012/10/25/moving/"/>
+    <updated>2012-10-25T16:24:00+01:00</updated>
+    <id>http://esc-plan.com/blog/2012/10/25/moving</id>
+    <content type="html"><![CDATA[<h2>Just Keep Moving</h2>
+
+<p>I&rsquo;ve finally got round to re-locating my blog from posterous to it&rsquo;s shiny new home on <a href="http://pages.github.com">Github Pages</a>.</p>
+
+<p><span class='pullquote-right' data-pullquote='just needed to give myself the requisite shove'>
+It was a while coming really. I&rsquo;ve been a bit desirous of <a href="http://yobriefca.se/">Jame&rsquo;s</a> setup using <a href="http://octopress.org/">Octopress</a> for some while now and just needed to give myself the requisite shove to sort it out.</p>
+
+<p>Now all it needs is some shiny content! I&rsquo;ll spend some time migrating the old stuff over, then it&rsquo;ll be time to plough ahead with some exciting new ramblings!
+</span></p>
+
+<p>I might have something to say on the <a href="http://www.raspberrypi.org/">Raspberry Pi</a> shortly as my order <em>finally</em> shipped after 3 months of tortured waiting.</p>
+
+<p>The <a href="http://www.thedailybrick.co.uk/lego-sets/custom/lego-custom-raspberry-pi-case.html">Lego case</a> is obviously being assembled as we speak&hellip;</p>
+
+<p><strong><em>EDIT</em></strong> Hmm. On second thoughts - lifes too short by far. You can find the old stuff at <a href="http://tswann.posterous.com">tswann.posterous.com</a>. Enjoy!</p>
+]]></content>
+  </entry>
+  
+</feed>

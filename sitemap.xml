@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  
+  <url>
+    <loc>http://esc-plan.com/blog/2014/07/04/thoughtworks-big-data-briefing/</loc>
+    
+    <lastmod>2014-07-04T16:00:00+01:00</lastmod>
+    
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>http://esc-plan.com/blog/2014/01/25/dynamics-crm-data-migration/</loc>
+    
+    <lastmod>2014-01-25T20:07:00+00:00</lastmod>
+    
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>http://esc-plan.com/blog/2013/12/03/azure-and-visual-studio-2013/</loc>
+    
+    <lastmod>2013-12-03T16:26:00+00:00</lastmod>
+    
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>http://esc-plan.com/blog/2013/10/23/dynamics-crm-performance-tuning/</loc>
+    
+    <lastmod>2013-10-23T12:53:00+01:00</lastmod>
+    
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>http://esc-plan.com/blog/2013/05/31/birdtrack-and-the-power-of-citizen-science/</loc>
+    
+    <lastmod>2013-05-31T13:35:00+01:00</lastmod>
+    
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>http://esc-plan.com/blog/2013/03/22/what-is-newsql/</loc>
+    
+    <lastmod>2013-03-22T10:18:00+00:00</lastmod>
+    
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>http://esc-plan.com/blog/2013/03/04/raven-db-part1/</loc>
+    
+    <lastmod>2013-03-04T21:16:00+00:00</lastmod>
+    
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>http://esc-plan.com/blog/2013/02/13/unit-testing-dynamics-crm-plugins/</loc>
+    
+    <lastmod>2013-02-13T12:35:00+00:00</lastmod>
+    
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>http://esc-plan.com/blog/2013/01/07/controlling-access-to-dynamics-crm-ribbon-buttons/</loc>
+    
+    <lastmod>2013-01-07T14:46:00+00:00</lastmod>
+    
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>http://esc-plan.com/blog/2012/10/31/defining-crm-entities/</loc>
+    
+    <lastmod>2012-10-31T16:29:00+00:00</lastmod>
+    
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>http://esc-plan.com/blog/2012/10/25/moving/</loc>
+    
+    <lastmod>2012-10-25T16:24:00+01:00</lastmod>
+    
+    <priority>0.8</priority>
+  </url>
+  
+  
+  <url>
+    <loc>http://esc-plan.com/blog/archives/</loc>
+    <lastmod>2014-10-05T10:19:09+01:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>http://esc-plan.com/</loc>
+    <lastmod>2014-10-05T10:19:09+01:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  
+  
+</urlset>
