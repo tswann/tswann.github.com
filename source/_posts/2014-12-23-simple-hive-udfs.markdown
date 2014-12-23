@@ -15,7 +15,7 @@ So with some time off arriving, I thought I would try and get back in the groove
 Extending Hive
 -------------
 
-One tool which I've used extensively is the [Hive](https://hive.apache.org) data warehouse. This meant getting to grips with the ins and outs of Hive QL, the SQL-live query language which provides analysts with a more usable abstraction over the [MapReduce](http://en.wikipedia.org/wiki/MapReduce) execution engine.
+One tool which I've spent a lot of time with is the [Hive](https://hive.apache.org) data warehouse. This meant getting to grips with the ins and outs of Hive QL, the SQL-live query language which provides analysts with a more usable abstraction over the [MapReduce](http://en.wikipedia.org/wiki/MapReduce) execution engine.
 
 <img style="float: left; margin-right: 5px" src="https://dl.dropboxusercontent.com/u/47685018/Blog/2014/12-22/hive.jpg">
 
