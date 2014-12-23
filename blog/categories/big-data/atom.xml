@@ -4,7 +4,7 @@
   <title><![CDATA[Category: big data | X1B Plan]]></title>
   <link href="http://esc-plan.com/blog/categories/big-data/atom.xml" rel="self"/>
   <link href="http://esc-plan.com/"/>
-  <updated>2014-10-05T10:19:09+01:00</updated>
+  <updated>2014-12-23T20:28:05+00:00</updated>
   <id>http://esc-plan.com/</id>
   <author>
     <name><![CDATA[Tom Swann]]></name>
@@ -12,6 +12,131 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Simple Hive UDFs]]></title>
+    <link href="http://esc-plan.com/blog/2014/12/23/simple-hive-udfs/"/>
+    <updated>2014-12-23T12:23:19+00:00</updated>
+    <id>http://esc-plan.com/blog/2014/12/23/simple-hive-udfs</id>
+    <content type="html"><![CDATA[<p>The lack of new content on this blog in recent months is probably a testament to my generally high level of busyness in recent months. Since I attended the <a href="http://esc-plan.com/blog/2014/07/04/thoughtworks-big-data-briefing/">Thoughtworks Big Data briefing</a> back in July it&rsquo;s been full steam ahead with helping to build up the Big Data practice in my place of work and getting immersed in a varied platter of shiny new technologies.</p>
+
+<p>In October I was in NYC for the hugely interesting <a href="http://strataconf.com">Strata &amp; Hadoop World</a> conference, which is undoubtedly worth a post in itself and something I should really have written nearer the time. But yeah - busy busy.</p>
+
+<p>So with some time off arriving, I thought I would try and get back in the groove again and write up a short post on some of the Hadoop work I&rsquo;ve been doing.</p>
+
+<!-- more-->
+
+
+<h2>Extending Hive</h2>
+
+<p>One tool which I&rsquo;ve used extensively is the <a href="https://hive.apache.org">Hive</a> data warehouse. This meant getting to grips with the ins and outs of Hive QL, the SQL-live query language which provides analysts with a more usable abstraction over the <a href="http://en.wikipedia.org/wiki/MapReduce">MapReduce</a> execution engine.</p>
+
+<p><img style="float: left; margin-right: 5px" src="https://dl.dropboxusercontent.com/u/47685018/Blog/2014/12-22/hive.jpg"></p>
+
+<p>Hive QL has a library of functions which provide the majority of the standard functionality you would expect from an ANSI SQL compliant interface. However, what it tends to lack are out-of-the-box implementations of common functions that an analyst might expect having come from a SQL Server or Oracle background.</p>
+
+<p>Recently I&rsquo;ve encountered a few requirements to implement fuzzy-matching algorithms such as Jaro-Winkler or Soundex on the Hadoop stack.</p>
+
+<p>For use cases like ETL de-duplication or fraud detection these algorithms are fairly standard, so it&rsquo;s not unreasonable to expect this functionality if you are moving this type of workload to a Hadoop cluster.</p>
+
+<p>This post will show how to use <a href="https://cwiki.apache.org/confluence/display/Hive/HivePlugins">Hive UDFs</a> to simply plug in an implementation of the Soundex algorithm for use in Hive queries.</p>
+
+<h2>The Simple UDF API</h2>
+
+<p>There are several User-Defined Function extension points in Hive. This post is going to focus on the simplest, by extending org.apache.hadoop.hive.ql.exec.UDF</p>
+
+<p>The snippet below shows the classes that our SoundexUDF requires - there isn&rsquo;t much to it:</p>
+
+<pre><code class="java">import org.apache.commons.codec.language.Soundex;
+import org.apache.hadoop.hive.ql.exec.Description;
+import org.apache.hadoop.hive.ql.exec.UDF;
+import org.apache.hadoop.io.Text;
+</code></pre>
+
+<p><a href="http://en.wikipedia.org/wiki/Soundex">Soundex</a> is a phonetic algorithm which can be used to determine how similar English words sound - typically names. It does this by generating a &lsquo;soundex code&rsquo; which is a character code representing how the name sounds. Very similar names should result in the same code.</p>
+
+<p>The implementation that I have used is the one supplied by <a href="http://commons.apache.org/proper/commons-codec/apidocs/org/apache/commons/codec/language/Soundex.html">Apache Commons</a></p>
+
+<p>Re-using well tested, common implementations which perform some transformation on scalar types is an approach which fits the UDF pattern very well.</p>
+
+<p>Our function simply wraps the soundex method in the Commons class. We receive some text and return the soundex code:</p>
+
+<pre><code class="java">@Description(name = "soundex",
+value = "_FUNC_(string) - Retrieves the Soundex code for a given string.",
+extended = "Example:\n"
+            + " SELECT _FUNC_(input_string) FROM src;")
+public final class SoundexUDF extends UDF {
+
+    public Text evaluate(final Text text) {
+        if (text == null) {
+            return null;
+        }
+
+        String soundex = new Soundex().soundex(text.toString());
+        return new Text(soundex);
+    }
+}
+</code></pre>
+
+<p>The @Description attribute is used by the Hive interpreter to provide information to the &lsquo;describe function&rsquo; or &lsquo;describe function extended&rsquo; commands from the beeline shell or with Hue. This provides usage information to the users of the function.</p>
+
+<h2>Trying it out</h2>
+
+<p>When building in Eclipse I use the <a href="http://maven.apache.org/plugins/maven-assembly-plugin/">Maven Assembly Plugin</a> to ensure that I include the requisite dependencies in my jar file (a so called &lsquo;fat jar&rsquo;).</p>
+
+<p>You can find a full sample of the <a href="https://github.com/tswann/x1bplan-soudexudf">source code</a> for this UDF class and associated pom.xml file on github.</p>
+
+<p>This sample was build against the version of Hadoop included on the <a href="http://www.cloudera.com/content/cloudera/en/downloads/quickstart_vms/cdh-5-2-x.html">Cloudera CDH 5.1</a> quickstart virtual machine.</p>
+
+<p>We&rsquo;re going to use beeline to install and test the new soundex function. The old Hive shell has been deprecated in favour of the HiveServer2 compatible beeline CLI. Check out <a href="http://blog.cloudera.com/blog/2014/02/migrating-from-hive-cli-to-beeline-a-primer/">this post</a> for more information.</p>
+
+<pre><code>[cloudera@quickstart target]$ beeline
+Beeline version 0.12.0-cdh5.1.0 by Apache Hive
+beeline&gt; !connect jdbc:hive2://localhost:10000
+0: jdbc:hive2://localhost:10000&gt;
+</code></pre>
+
+<p>From the beeline prompt we can add the newly built jar file, assuming it was placed in the cloudera users home directory on the quickstart VM:</p>
+
+<pre><code>0: jdbc:hive2://localhost:10000&gt; add jar /home/cloudera/soundex-udf-0.1.jar;
+</code></pre>
+
+<p>Once the jar file has been successfully registered we can now execute the following statement to add a new function which uses the custom class:</p>
+
+<pre><code>0: jdbc:hive2://localhost:10000&gt; create temporary function soundex as 'com.x1bplan.hive.udf.SoundexUDF';
+</code></pre>
+
+<p>You should now be able to execute a describe statement and see the usage text which we included in the class definition:</p>
+
+<pre><code>0: jdbc:hive2://localhost:10000&gt; describe function extended soundex;
++-------------------------------------------------------------------+
+|                             tab_name                              |
++-------------------------------------------------------------------+
+| soundex(string) - Retrieves the Soundex code for a given string.  |
+| Synonyms: soudex                                                  |
+| Example:                                                          |
+|  SELECT soundex(input_string) FROM src;                           |
++-------------------------------------------------------------------+
+4 rows selected (0.126 seconds)
+</code></pre>
+
+<p>And that really, is that. You can how try out the function by calling it as part of a SELECT statement and passing a text field for evaluation.</p>
+
+<h2>Hadoop Business Processes</h2>
+
+<p>UDFs allow you to easily extend Hive with additional capability that might be missing from the core Apache functions.</p>
+
+<p>I&rsquo;ve been giving some thought to the problem of building a reliable and maintainable code base on the Hadoop platform.</p>
+
+<p>Potentially you risk throwing together Hive, Pig and Impala scripts, shell, Python, Java MapReduce and all the other various kinds of extensibility points that the platform offers up and ending up with a real mish-mash which is difficult to reason about and to maintain.</p>
+
+<p>Frameworks like <a href="http://www.cascading.org">Cascading</a> would appear to offer a solution - a framework to help orchestrate the myriad of abstractions and execution engines that go with Hadoop by building a consistent and testable Java code base.</p>
+
+<p>I&rsquo;ll be taking a look at this along with <a href="http://www.cascading.org/projects/lingual/">Lingual</a> (ANSI SQL) and <a href="http://www.cascading.org/projects/pattern/">Pattern</a> (PMML based machine learning) in the near future and hopefully get another post out before the holidays come to an end.</p>
+
+<p>There&rsquo;s also the Scala abstraction called Scalding, but I&rsquo;ll see how I get on - there&rsquo;s Christmas dinner to be eaten at some point.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Thoughtworks Big Data Briefing]]></title>
