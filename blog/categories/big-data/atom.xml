@@ -4,7 +4,7 @@
   <title><![CDATA[Category: big data | X1B Plan]]></title>
   <link href="http://esc-plan.com/blog/categories/big-data/atom.xml" rel="self"/>
   <link href="http://esc-plan.com/"/>
-  <updated>2014-12-23T21:27:55+00:00</updated>
+  <updated>2014-12-23T21:29:40+00:00</updated>
   <id>http://esc-plan.com/</id>
   <author>
     <name><![CDATA[Tom Swann]]></name>
@@ -29,7 +29,7 @@
 
 <h2>Extending Hive</h2>
 
-<p>One tool which I&rsquo;ve used extensively is the <a href="https://hive.apache.org">Hive</a> data warehouse. This meant getting to grips with the ins and outs of Hive QL, the SQL-live query language which provides analysts with a more usable abstraction over the <a href="http://en.wikipedia.org/wiki/MapReduce">MapReduce</a> execution engine.</p>
+<p>One tool which I&rsquo;ve spent a lot of time with is the <a href="https://hive.apache.org">Hive</a> data warehouse. This meant getting to grips with the ins and outs of Hive QL, the SQL-live query language which provides analysts with a more usable abstraction over the <a href="http://en.wikipedia.org/wiki/MapReduce">MapReduce</a> execution engine.</p>
 
 <p><img style="float: left; margin-right: 5px" src="https://dl.dropboxusercontent.com/u/47685018/Blog/2014/12-22/hive.jpg"></p>
 
