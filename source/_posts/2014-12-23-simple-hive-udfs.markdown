@@ -5,22 +5,28 @@ date: 2014-12-23 12:23:19 +0000
 comments: true
 categories: [Big Data, Hadoop, Agile]
 ---
-2014 has been an extremely busy year for me, a decent measure of which is the lack of new content being posted to this blog.
+The lack of new content on this blog in recent months is probably a testament to my generally high level of busyness in recent months. Since I attended the [Thoughtworks Big Data briefing](http://esc-plan.com/blog/2014/07/04/thoughtworks-big-data-briefing/) back in July it's been full steam ahead with helping to build up the Big Data practice in my place of work and getting immersed in a varied platter of shiny new technologies.
 
-So with some time off arriving, I thought I would try and get back in the groove again and write up a short post on some of the Hadoop work I've been doing over these past 6 months.
+In October I was in NYC for the hugely interesting [Strata & Hadoop World](http://strataconf.com) conference, which is undoubtedly worth a post in itself and something I should really have written nearer the time. But yeah - busy busy.
 
-One tool I've been using extensively has been the [Hive](https://hive.apache.org) data warehouse. This means getting to grips with the ins and outs of Hive QL, the SQL-live query language which provides an more useable abstraction over the [MapReduce](http://en.wikipedia.org/wiki/MapReduce) execution engine.
+So with some time off arriving, I thought I would try and get back in the groove again and write up a short post on some of the Hadoop work I've been doing.
+<!-- more-->
+
+Extending Hive
+-------------
+
+One tool which I've used extensively is the [Hive](https://hive.apache.org) data warehouse. This meant getting to grips with the ins and outs of Hive QL, the SQL-live query language which provides analysts with a more usable abstraction over the [MapReduce](http://en.wikipedia.org/wiki/MapReduce) execution engine.
 
 <img style="float: left; margin-right: 5px" src="https://dl.dropboxusercontent.com/u/47685018/Blog/2014/12-22/hive.jpg">
 
-Hive QL has a library of functions which provide the majority of the standard functionality you would expect from an ANSI SQL compliant implementation. However, what it tends to lack are out-of-the-box implementations of common functions that an Analyst might expect having come from a SQL Server or Oracle background.
+Hive QL has a library of functions which provide the majority of the standard functionality you would expect from an ANSI SQL compliant interface. However, what it tends to lack are out-of-the-box implementations of common functions that an analyst might expect having come from a SQL Server or Oracle background.
 
-Recently I've seen a few requirements for fuzzy-matching algorithms such as Jaro-Winkler or Soundex to be implemented on the Hadoop stack.
+Recently I've encountered a few requirements to implement fuzzy-matching algorithms such as Jaro-Winkler or Soundex on the Hadoop stack.
 
 For use cases like ETL de-duplication or fraud detection these algorithms are fairly standard, so it's not unreasonable to expect this functionality if you are moving this type of workload to a Hadoop cluster.
 
 This post will show how to use [Hive UDFs](https://cwiki.apache.org/confluence/display/Hive/HivePlugins) to simply plug in an implementation of the Soundex algorithm for use in Hive queries.
-<!--more-->
+
 The Simple UDF API
 -----------------
 There are several User-Defined Function extension points in Hive. This post is going to focus on the simplest, by extending org.apache.hadoop.hive.ql.exec.UDF
@@ -38,7 +44,7 @@ import org.apache.hadoop.io.Text;
 
 The implementation that I have used is the one supplied by [Apache Commons](http://commons.apache.org/proper/commons-codec/apidocs/org/apache/commons/codec/language/Soundex.html)
 
-Re-using well tested,  common implementations which perform some tranformation on scalar types is a very good case for writing a UDF.
+Re-using well tested, common implementations which perform some transformation on scalar types is an approach which fits the UDF pattern very well.
 
 Our function simply wraps the soundex method in the Commons class. We receive some text and return the soundex code:
 
@@ -80,7 +86,7 @@ beeline> !connect jdbc:hive2://localhost:10000
 0: jdbc:hive2://localhost:10000>
 ```
 
-From the beeline prompt we can add the newly built jar file, assuming it was placed in he cloudera users home directory on the quickstart VM:
+From the beeline prompt we can add the newly built jar file, assuming it was placed in the cloudera users home directory on the quickstart VM:
 
 ```
 0: jdbc:hive2://localhost:10000> add jar /home/cloudera/soundex-udf-0.1.jar;
@@ -91,7 +97,7 @@ Once the jar file has been successfully registered we can now execute the follow
 ```
 0: jdbc:hive2://localhost:10000> create temporary function soundex as 'com.x1bplan.hive.udf.SoundexUDF';
 ```
-You should now be able to execute a describe statement and see the usage text which we included in the class defintion:
+You should now be able to execute a describe statement and see the usage text which we included in the class definition:
 
 ```
 0: jdbc:hive2://localhost:10000> describe function extended soundex;
@@ -105,7 +111,7 @@ You should now be able to execute a describe statement and see the usage text wh
 +-------------------------------------------------------------------+
 4 rows selected (0.126 seconds)
 ```
-And that really, is that.
+And that really, is that. You can how try out the function by calling it as part of a SELECT statement and passing a text field for evaluation.
 
 Hadoop Business Processes
 -----------------------
@@ -114,7 +120,7 @@ UDFs allow you to easily extend Hive with additional capability that might be mi
 
 I've been giving some thought to the problem of building a reliable and maintainable code base on the Hadoop platform.
 
-Potentially you risk throwing together Hive, Pig and Impala scripts, shell, Python, Java MapReduce and all the other various kinds of extensibility points that the platform offers up.
+Potentially you risk throwing together Hive, Pig and Impala scripts, shell, Python, Java MapReduce and all the other various kinds of extensibility points that the platform offers up and ending up with a real mish-mash which is difficult to reason about and to maintain.
 
 Frameworks like [Cascading](http://www.cascading.org) would appear to offer a solution - a framework to help orchestrate the myriad of abstractions and execution engines that go with Hadoop by building a consistent and testable Java code base.
 
