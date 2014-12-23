@@ -5,7 +5,7 @@ date: 2014-12-23 12:23:19 +0000
 comments: true
 categories: [Big Data, Hadoop, Agile]
 ---
-The lack of new content on this blog in recent months is probably a testament to my generally high level of busyness in recent months. Since I attended the [Thoughtworks Big Data briefing](http://esc-plan.com/blog/2014/07/04/thoughtworks-big-data-briefing/) back in July it's been full steam ahead with helping to build up the Big Data practice in my place of work and getting immersed in a varied platter of shiny new technologies.
+The lack of new content on this blog is probably a testament to my generally high level of busyness in recent months. Since I attended the [Thoughtworks Big Data briefing](http://esc-plan.com/blog/2014/07/04/thoughtworks-big-data-briefing/) back in July it's been full steam ahead with helping to build up the Big Data practice in my place of work and getting immersed in a varied platter of shiny new technologies.
 
 In October I was in NYC for the hugely interesting [Strata & Hadoop World](http://strataconf.com) conference, which is undoubtedly worth a post in itself and something I should really have written nearer the time. But yeah - busy busy.
 
