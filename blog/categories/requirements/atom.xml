@@ -4,7 +4,7 @@
   <title><![CDATA[Category: requirements | X1B Plan]]></title>
   <link href="http://esc-plan.com/blog/categories/requirements/atom.xml" rel="self"/>
   <link href="http://esc-plan.com/"/>
-  <updated>2014-12-23T21:35:03+00:00</updated>
+  <updated>2015-02-23T17:21:41+00:00</updated>
   <id>http://esc-plan.com/</id>
   <author>
     <name><![CDATA[Tom Swann]]></name>
@@ -47,7 +47,11 @@ What are my OptionSet values? So on and so forth.</li>
 
 <p>It&rsquo;s a lot of information to capture, and no matter how nicely it&rsquo;s formatted it&rsquo;s always going to be a dry read for the customer (and the developer, let&rsquo;s be honest).</p>
 
-<p>Surround your pullquote like this {&#8221; text to be quoted &#8220;}</p>
+<p>{% pullquote %}
+{&ldquo;Dynamics has quite a tight coupling between this concept of the entity&rsquo;s &#8220;data type&rdquo; and it&rsquo;s appearance in the UI.&ldquo;} Of course, when it comes to your documentation it need not be so.</p>
+
+<p>Our preference has been to have one definition for the data and a seperate, rather &lsquo;cartoony&rsquo; wireframe which exclusively depicts the layout.
+{% endpullquote %}</p>
 
 <h2>Power Mockup</h2>
 
@@ -67,39 +71,11 @@ What are my OptionSet values? So on and so forth.</li>
 
 <p>So if all of the data definitions have been captured and documented as part of our analysis, why should it be that we now have to go through this list and manually enter it all once again, this time through the Dynamics UI?</p>
 
-<p>Surround your pullquote like this {&#8221; text to be quoted &#8220;}</p>
+<p>{% pullquote %}
+{&ldquo;I&rsquo;m sure there is a better solution to be had here.&rdquo;} My feeling is that the <a href="http://msdn.microsoft.com/en-us/library/microsoft.xrm.sdk.messages.createentityrequest.aspx">Create Entity Request</a> class and similar classes used for field creation in the Xrm SDK could usefully automate the entity configuration process.
+{% endpullquote %}</p>
 
-<p><div><script src='https://gist.github.com/3994712.js'></script>
-<noscript><pre><code>CreateEntityRequest createrequest = new CreateEntityRequest
-{
-
-    //Define the entity
-    Entity = new EntityMetadata
-    {
-        SchemaName = _customEntityName,
-        DisplayName = new Label(&quot;Bank Account&quot;, 1033),
-        DisplayCollectionName = new Label(&quot;Bank Accounts&quot;, 1033),
-        Description = new Label(&quot;An entity to store information about customer bank accounts&quot;, 1033),
-        OwnershipType = OwnershipTypes.UserOwned,
-        IsActivity = false,
-
-    },
-
-    // Define the primary attribute for the entity
-    PrimaryAttribute = new StringAttributeMetadata
-    {
-        SchemaName = &quot;new_accountname&quot;,
-        RequiredLevel = new AttributeRequiredLevelManagedProperty(AttributeRequiredLevel.None),
-        MaxLength = 100,
-        Format = StringFormat.Text,
-        DisplayName = new Label(&quot;Account Name&quot;, 1033),
-        Description = new Label(&quot;The primary attribute for the Bank Account entity.&quot;, 1033)
-    }
-
-};
-_serviceProxy.Execute(createrequest);
-Console.WriteLine(&quot;The bank account entity has been created.&quot;);</code></pre></noscript></div>
-</p>
+<p>{% gist 3994712 %}</p>
 
 <p>What you would need are two files (.csv or similar) which the Automagic Configurator &trade; can read in and parse. It would then call the Dynamics API to do the laborious creation part for you:</p>
 

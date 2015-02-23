@@ -4,7 +4,7 @@
   <title><![CDATA[Category: sql server | X1B Plan]]></title>
   <link href="http://esc-plan.com/blog/categories/sql-server/atom.xml" rel="self"/>
   <link href="http://esc-plan.com/"/>
-  <updated>2014-12-23T21:35:03+00:00</updated>
+  <updated>2015-02-23T17:21:41+00:00</updated>
   <id>http://esc-plan.com/</id>
   <author>
     <name><![CDATA[Tom Swann]]></name>
@@ -29,7 +29,9 @@
 
 <h2>Tuning Views</h2>
 
-<p><blockquote><p>Just a note on CRM version - this tuning was carried out against an on-premise installation running CRM 2011 Rollup 11. Subsequent rollups have included updates specifically to address application performance, so some of this could potentially be of limited relevance in more current versions. Some of it will I&rsquo;m sure still be generally applicable, and probably deep in the realm of common sense.</p></blockquote></p>
+<p>{% blockquote %}
+Just a note on CRM version - this tuning was carried out against an on-premise installation running CRM 2011 Rollup 11. Subsequent rollups have included updates specifically to address application performance, so some of this could potentially be of limited relevance in more current versions. Some of it will I&rsquo;m sure still be generally applicable, and probably deep in the realm of common sense.
+{% endblockquote %}</p>
 
 <p>Good view design in Dynamics CRM is about really filtering out the noise and presenting users with the information which is most relevant to them.</p>
 
@@ -45,16 +47,7 @@
 
 <p>Below is the offending order by clause, which was generated for a custom entity:</p>
 
-<p><div><script src='https://gist.github.com/0cc4eea312d1dac7829d.js'></script>
-<noscript><pre><code>order by
- case &quot;new_claim0&quot;.new_Type 
- when 948100000 then @new_Type0 
- when 948100001 then @new_Type1 
- when 948100002 then @new_Type2 
- when 948100003 then @new_Type3 
- when 948100004 then @new_Type 
- else null end asc</code></pre></noscript></div>
-</p>
+<p>{% gist 0cc4eea312d1dac7829d %}</p>
 
 <p>@new_TypeX in the above statement equals the textual description of each value in the OptionSet.</p>
 

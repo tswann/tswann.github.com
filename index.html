@@ -9,7 +9,7 @@
   <meta name="author" content="Tom Swann">
 
   
-  <meta name="description" content="The lack of new content on this blog is probably a testament to my generally high level of busyness in recent months. Since I attended the &hellip;">
+  <meta name="description" content="I&rsquo;m going off on a bit of a tangent from my usual Big Data ramblings this week, to talk about the Play 2 framework (for Java) and integrating &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -77,6 +77,49 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/02/23/play-framework-plus-knockout/">Play Framework + Knockout</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-02-23T16:03:37+00:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2015</span></span> <span class='time'>4:03 pm</span></time>
+        
+           | <a href="/blog/2015/02/23/play-framework-plus-knockout/#disqus_thread"
+             data-disqus-identifier="http://esc-plan.com/blog/2015/02/23/play-framework-plus-knockout/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I&rsquo;m going off on a bit of a tangent from my usual Big Data ramblings this week, to talk about the <a href="https://www.playframework.com/">Play 2</a> framework (for Java) and integrating this with the rather neat MVVM client-side JavaScript library that is <a href="http://knockoutjs.com/">knockout.js</a>.</p>
+
+<p>In this post I will present a short walk-through on how to set up a simple play project that uses knockout.js for dynamic data binding.</p>
+
+<p>This was quite a straightforward and fun exercise - I didn&rsquo;t find too many tutorials on knockout + Play Java specifically.</p>
+
+<p>The official Play site has a demo app using the <a href="http://typesafe.com/activator/template/play-mongo-knockout">Scala API + MongoDB + knockout</a>, so I recommend that if you&rsquo;re inclined to use Scala.</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2015/02/23/play-framework-plus-knockout/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -460,51 +503,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/01/07/controlling-access-to-dynamics-crm-ribbon-buttons/">Controlling Access to Dynamics CRM Ribbon Buttons</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2013-01-07T14:46:00+00:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>2:46 pm</span></time>
-        
-           | <a href="/blog/2013/01/07/controlling-access-to-dynamics-crm-ribbon-buttons/#disqus_thread"
-             data-disqus-identifier="http://esc-plan.com/blog/2013/01/07/controlling-access-to-dynamics-crm-ribbon-buttons/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>At the moment I&rsquo;m working on a project which is an interesting combination of core Dynamics CRM functionality and a set of custom processes written using ASP.NET MVC 4 and Web API.</p>
-
-<p>Each custom process is something like an [OOTB CRM dialog] - a sequence of screens which the user can progress backwards and forwards through using Next/Previous navigation. At the end of the flow the dialog is completed and a series of CRM records is saved off/workflow invoked or whatever.</p>
-
-<p>While there is much the OOTB CRM dialogs can achieve, they weren&rsquo;t a fit for the level of control we required - i.e. a more complex UI and with a slicker user experience and integration with various external systems.</p>
-
-<p>Each process is launched from a custom CRM ribbon button.</p>
-
-<p>In this blog, I&rsquo;ll take a look at the access control scheme we chose to restrict access to these processes for particular users.</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2013/01/07/controlling-access-to-dynamics-crm-ribbon-buttons/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/2">&larr; Older</a>
@@ -520,6 +518,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/02/23/play-framework-plus-knockout/">Play Framework + Knockout</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/12/23/simple-hive-udfs/">Simple Hive UDFs</a>
       </li>
     
@@ -533,10 +535,6 @@
     
       <li class="post">
         <a href="/blog/2013/12/03/azure-and-visual-studio-2013/">Azure and Visual Studio 2013</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/10/23/dynamics-crm-performance-tuning/">Dynamics CRM 2011 Performance Tuning: Part One</a>
       </li>
     
   </ul>
@@ -581,7 +579,7 @@
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2014 - Tom Swann -
+  Copyright &copy; 2015 - Tom Swann -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

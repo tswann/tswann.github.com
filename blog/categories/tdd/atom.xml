@@ -4,7 +4,7 @@
   <title><![CDATA[Category: tdd | X1B Plan]]></title>
   <link href="http://esc-plan.com/blog/categories/tdd/atom.xml" rel="self"/>
   <link href="http://esc-plan.com/"/>
-  <updated>2014-12-23T21:35:03+00:00</updated>
+  <updated>2015-02-23T17:21:41+00:00</updated>
   <id>http://esc-plan.com/</id>
   <author>
     <name><![CDATA[Tom Swann]]></name>
@@ -37,51 +37,7 @@
 
 <p>I use a base class for all my plugin tests which contains the following core:</p>
 
-<p><div><script src='https://gist.github.com/4954043.js'></script>
-<noscript><pre><code>using System;
-using System.Collections.Generic;
-using Microsoft.Xrm.Sdk;
-using Microsoft.Xrm.Sdk.Messages;
-using Microsoft.Xrm.Sdk.Metadata;
-using Moq;
-
-namespace X1bplan.PluginTesting.Plugins.Tests.Helpers
-{
-    public abstract class PluginTestBase
-    {
-        #region Constants
-        protected const int STAGE_PREVALIDATION = 10;
-        protected const int STAGE_PREOPERATION = 20;
-        protected const int STAGE_POSTOPERATION = 40;
-        #endregion
-
-        #region Properties
-        protected Mock&lt;IServiceProvider&gt; ServiceProviderMock { get; set; }
-        protected Mock&lt;IOrganizationService&gt; OrganizationServiceMock { get; set; }
-        protected Mock&lt;IOrganizationServiceFactory&gt; OrgServiceFactoryMock { get; set; }
-        protected Mock&lt;IPluginExecutionContext&gt; PipelineContextMock { get; set; }
-        #endregion
-
-        public PluginTestBase()
-        {
-            ServiceProviderMock = new Mock&lt;IServiceProvider&gt;();
-            OrgServiceFactoryMock = new Mock&lt;IOrganizationServiceFactory&gt;();
-            OrganizationServiceMock = new Mock&lt;IOrganizationService&gt;(MockBehavior.Strict);
-            PipelineContextMock = new Mock&lt;IPluginExecutionContext&gt;(MockBehavior.Strict);
-
-            InitializeDefaults();
-        }
-
-        private void InitializeDefaults()
-        {
-            ServiceProviderMock.Setup(s =&gt; s.GetService(typeof(IPluginExecutionContext))).Returns(PipelineContextMock.Object);
-            ServiceProviderMock.Setup(s =&gt; s.GetService(typeof(IOrganizationServiceFactory))).Returns(OrgServiceFactoryMock.Object);
-            OrgServiceFactoryMock.Setup(f =&gt; f.CreateOrganizationService(It.IsAny&lt;Guid&gt;())).Returns(OrganizationServiceMock.Object);
-        }
-    }
-}
-</code></pre></noscript></div>
-</p>
+<p>{%gist 4954043 %}</p>
 
 <p>This allows us to hide away some of the usual mock object setup code - the objects which will be common to every plugin - the IServiceProvider, IPluginExecutionContext and IOrganisationService.</p>
 
@@ -97,45 +53,7 @@ namespace X1bplan.PluginTesting.Plugins.Tests.Helpers
 
 <p>The following plugin code will do just that:</p>
 
-<p><div><script src='https://gist.github.com/4954084.js'></script>
-<noscript><pre><code>protected void ExecutePreValidateContactDelete(LocalPluginContext localContext)
-{
-    if (localContext == null)
-    {
-        throw new ArgumentNullException(&quot;localContext&quot;);
-    }
-
-    _service = localContext.OrganizationService;
-
-    EntityReference contact = (EntityReference)localContext.PluginExecutionContext.InputParameters[&quot;Target&quot;];
-    
-    if (HasOpenTasks(contact.Id))
-    {
-        throw new InvalidPluginExecutionException(&quot;This Contact has open Tasks associated with it.\n\nPlease resolve all outstanding tasks before deleting.&quot;);
-    }
-}
-
-private bool HasOpenTasks(Guid contactId)
-{
-    var tasks = GetRelatedTasks(contactId);
-    return tasks.Any();
-}
-
-private IEnumerable&lt;Entity&gt; GetRelatedTasks(Guid contactId)
-{
-    QueryExpression query = new QueryExpression()
-    {
-        EntityName = &quot;task&quot;,
-        ColumnSet = new ColumnSet(true),
-    };
-
-    const int STATE_OPEN = 0;
-    query.Criteria.AddCondition(new ConditionExpression(&quot;regardingobjectid&quot;, ConditionOperator.Equal, contactId));
-    query.Criteria.AddCondition(new ConditionExpression(&quot;statecode&quot;, ConditionOperator.Equal, STATE_OPEN));
-
-    return _service.RetrieveMultiple(query).Entities.ToList&lt;Entity&gt;();
-}</code></pre></noscript></div>
-</p>
+<p>{%gist 4954084 %}</p>
 
 <p>For the sake of brevity I have cut all the boiler plate gunk that the  <a href="http://msdn.microsoft.com/en-gb/library/hh547459.aspx">Visual Studio CRM Dev  Toolkit</a> generates when you create a new plugin, leaving only the custom business logic that I actually added myself.</p>
 
@@ -166,42 +84,13 @@ private IEnumerable&lt;Entity&gt; GetRelatedTasks(Guid contactId)
 
 <p>So, how do we go about this? Thankfully Moq makes it pretty easy to create a lot of dependencies quickly and fluently.</p>
 
-<p><div><script src='https://gist.github.com/4954297.js'></script>
-<noscript><pre><code> [SetUp]
-public void Setup()
-{
-    this.PipelineContextMock.Setup(p =&gt; p.UserId).Returns(Guid.NewGuid);
-    this.PipelineContextMock.Setup(p =&gt; p.PrimaryEntityName).Returns(&quot;contact&quot;);
-    this.PipelineContextMock.Setup(p =&gt; p.Stage).Returns(STAGE_PREVALIDATION);
-}</code></pre></noscript></div>
-</p>
+<p>{% gist 4954297 %}</p>
 
 <p>The Setup method above sets some specific values for your suite of tests - the entity type, user and validation stage.</p>
 
 <p>Below is an example test which sets up the scenario where the validation check fails - the call to RetrieveMultiple will successfully return a matching open Task associated with the Contact:</p>
 
-<p><div><script src='https://gist.github.com/4954348.js'></script>
-<noscript><pre><code>[Test]
-public void ShouldThrowExceptionIfOpenTaskExists()
-{
-    Entity contact = new Entity()
-    {
-        LogicalName = &quot;contact&quot;,
-        Id = Guid.NewGuid()
-    };
-
-    ParameterCollection parameters = new ParameterCollection();
-    parameters[&quot;Target&quot;] = contact.ToEntityReference();
-    this.PipelineContextMock.Setup(p =&gt; p.InputParameters).Returns(parameters);
-    this.PipelineContextMock.Setup(p =&gt; p.MessageName).Returns(&quot;Delete&quot;);
-    EntityCollection tasks = new EntityCollection() { EntityName = &quot;task&quot;, Entities = { GetRelatedTask(contact.Id) } };
-    this.OrganizationServiceMock.Setup(s =&gt; s.RetrieveMultiple(It.IsAny&lt;QueryExpression&gt;())).Returns(tasks);
-
-    PreValidateContactDelete plugin = new PreValidateContactDelete();
-    var exception = Assert.Throws&lt;InvalidPluginExecutionException&gt;(() =&gt; plugin.Execute(ServiceProviderMock.Object));
-    Assert.That(exception.Message, Is.StringContaining(OPEN_TASKS_EXCEPTION));
-}</code></pre></noscript></div>
-</p>
+<p>{% gist 4954348 %}</p>
 
 <p>As you can see there&rsquo;s not much to it - we just set up the OrganisationService mock object to return a dummy task whenever it gets called within our plugin code under test.</p>
 

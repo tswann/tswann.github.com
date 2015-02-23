@@ -3,6 +3,14 @@
   
   
   <url>
+    <loc>http://esc-plan.com/blog/2015/02/23/play-framework-plus-knockout/</loc>
+    
+    <lastmod>2015-02-23T16:03:37+00:00</lastmod>
+    
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
     <loc>http://esc-plan.com/blog/2014/12/23/simple-hive-udfs/</loc>
     
     <lastmod>2014-12-23T12:23:19+00:00</lastmod>
@@ -101,14 +109,14 @@
   
   <url>
     <loc>http://esc-plan.com/blog/archives/</loc>
-    <lastmod>2014-12-23T21:35:03+00:00</lastmod>
+    <lastmod>2015-02-23T17:21:41+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
     <loc>http://esc-plan.com/</loc>
-    <lastmod>2014-12-23T21:35:03+00:00</lastmod>
+    <lastmod>2015-02-23T17:21:41+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
